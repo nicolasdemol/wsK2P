@@ -1,0 +1,2325 @@
+Testeur fonctionnel ilot carte test de carte OLCT100 EXPLO
+Version:1.00
+Auteur:PETIT PATRIC
+**
+0
+FEUILLE INITIALISATION
+titre: INITIALISATION
+Declare:mesure
+Declare:boucle
+Declare:erreur
+Declare:erreur1
+Declare:erreur2
+Declare:erreur3
+Declare:erreur4
+Declare:oper[25]
+Declare:nom
+Declare:datecode
+Declare:serie
+Declare:heuredeb
+Declare:heurefin
+Declare:T1
+Declare:T2
+Declare:T3
+Declare:mesure_courant
+Declare:mesure_courant1
+Declare:Test1
+Declare:Test2
+Declare:Test3
+Declare:Test4
+Declare:Test4_2
+Declare:Test5
+Declare:Test6
+Declare:Test7_0
+Declare:Test7
+Declare:Test8_0
+Declare:Test8
+Declare:Test9
+Declare:Test10
+Declare:Test11
+Declare:Test12
+Declare:Test13
+Declare:Test14
+Declare:Test15
+Declare:Test16
+Declare:Test17
+Declare:Test18
+Declare:Test19
+Declare:Test20
+Declare:Test21
+Declare:Test22
+Declare:Test23
+Declare:Test24
+Declare:Test25
+Declare:Test26
+Declare:Test27
+Declare:Test28
+Declare:Test29
+Declare:Test30
+Declare:Test31
+->5
+**
+5
+FEUILLE VARIABLE
+status:En cours
+heuredeb:HEURE_SYSTEME
+etat:non terminé
+->7
+**
+7
+FEUILLE FICTEMP
+titre:VARIABLES DES BOUTEILLES
+fichierTemp:Q:\CONTROLE_EN_COURS\Ilot Cartes\operateur.TXT
+mode:lecture
+LISTE
+L1C1:oper[1]
+L2C1:oper[2]
+L3C1:oper[3]
+L4C1:oper[4]
+L5C1:oper[5]
+L6C1:oper[6]
+L7C1:oper[7]
+L8C1:oper[8]
+L9C1:oper[9]
+L10C1:oper[10]
+L11C1:oper[11]
+L12C1:oper[12]
+L13C1:oper[13]
+L14C1:oper[14]
+L16C1:oper[16]
+L17C1:oper[17]
+L18C1:oper[18]
+L19C1:oper[19]
+L20C1:oper[20]
+L21C1:oper[21]
+L22C1:oper[22]
+L23C1:oper[23]
+L24C1:oper[24]
+L25C1:oper[25]
+FIN_LISTE
+->10
+**
+10
+FEUILLE COMMANDE RS232
+titre:RESET DE LA CENTRALE mesure
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+commande:"*RST"[10]
+affichage commande:NON
+duree:0.35
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->15
+**
+15
+FEUILLE COMMANDE RS232
+titre:RESET DE LA CENTRALE actionneur
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+commande:"*RST"[10]
+affichage commande:NON
+duree:0.35
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->20
+**
+20
+FEUILLE COMMANDE RS232
+titre:reset de l'alim HP
+fenetre:
+port:5,9600,n,8,1@SANS
+temporeception:0
+commande:"*RST"[10]
+affichage commande:NON
+duree:0.7
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->25
+**
+25
+FEUILLE COMMANDE RS232
+titre:commande a distance de l'alim HP
+fenetre:
+port:5,9600,n,8,1@SANS
+temporeception:0
+commande:"SYST:REM"[10]
+affichage commande:NON
+duree:0.7
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->30
+**
+30
+FEUILLE COMMANDE RS232
+titre:reset de l'alim keithley
+fenetre:
+port:6,38400,n,8,1@SANS
+temporeception:0
+commande:"*RST"[10]
+affichage commande:non
+duree:0.7
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:non
+type:SANS
+->35
+**
+35
+FEUILLE QUESTION
+titre:Date
+fenetre:ENTREZ LA DATE
+resultat:date
+option:/ECR
+memorisation:oui
+->40
+**
+40
+FEUILLE QUESTION
+titre:Nom du controleur
+fenetre:     choisissez votre nom dans la liste
+resultat:LISTE/V
+%oper[1]
+%oper[2]
+%oper[3]
+%oper[4]
+%oper[5]
+%oper[6]
+%oper[7]
+%oper[8]
+%oper[9]
+%oper[10]
+%oper[11]
+%oper[12]
+%oper[13]
+%oper[14]
+%oper[15]
+FIN_LISTE
+option:/ECR
+memorisation:oui
+->45
+**
+45
+FEUILLE VARIABLE
+nom:{40}
+->50
+**
+50
+FEUILLE QUESTION
+titre:OF
+fenetre:ENTREZ LE NUMERO ODF
+resultat:
+variable:datecode
+option:/ECR
+memorisation:oui
+->55
+**
+55
+FEUILLE QUESTION
+titre:Numero de serie
+fenetre:ENTREZ LE NUMERO DE SERIE DE LA CARTE
+resultat:
+variable:serie
+option:/ECR
+memorisation:non
+->56
+**
+56
+FEUILLE COMMANDE RS232
+titre:protection
+fenetre:
+port:6,38400,n,8,1@XON/XOFF
+temporeception:0
+commande:":SENS:FUNC 'CURR'"[10]
+affichage commande:NON
+duree:0.5
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->57
+**
+57
+FEUILLE COMMANDE RS232
+titre:protection
+fenetre:
+port:6,38400,n,8,1@XON/XOFF
+temporeception:0
+commande:"SENS:CURR:PROT 0.06"[10]
+affichage commande:NON
+duree:0.5
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->58
+**
+58
+FEUILLE COMMANDE RS232
+titre:bornes arriere
+fenetre:
+port:6,38400,n,8,1@XON/XOFF
+temporeception:0
+commande:":ROUT:TERM REAR"[10]
+affichage commande:NON
+duree:0.5
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->59
+**
+59
+FEUILLE COMMANDE RS232
+titre:activation
+fenetre:
+port:6,38400,n,8,1@XON/XOFF
+temporeception:0
+commande:":OUTPUT ON"[10]
+affichage commande:NON
+duree:0.5
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->60
+**
+60
+FEUILLE COMMANDE RS232
+titre: Relais keithley
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@107,108)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->65
+**
+REM******************************************************************
+REM*************** Reglage alimentation a 19 V **********************
+REM******************************************************************
+65
+FEUILLE COMMANDE RS232
+titre:Alimentation 19.0V sur l'alim HP
+fenetre:
+port:5,9600,n,8,1@SANS
+commande:"APPL P25V ,19.0,0.200"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->70
+**
+70
+FEUILLE COMMANDE RS232
+titre:Alimentation 6.0V sur l'alim HP
+fenetre:
+port:5,9600,n,8,1@SANS
+commande:"APPL P6V ,1,0.010"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->75
+**
+75
+FEUILLE COMMANDE RS232
+titre:ALIM HP OUTPUT ON
+fenetre:
+port:5,9600,n,8,1@SANS
+commande:"OUTP ON"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->80
+**
+80
+FEUILLE COMMANDE RS232
+titre:alimentation 19V relais CH9 active
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->85
+**
+REM********************************************************************
+REM**************** controle courant I de J3 < 2mA ********************
+REM********************************************************************
+85
+FEUILLE COMMANDE RS232
+titre:mesure I de J3 
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@109)"[10]
+variable:Test1
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.####
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->90
+**
+90
+FEUILLE SAUT CONDITIONNEL
+titre:verif I de J3
+condition:NUM
+resultat:{85}
+Cond1:>0.20->95
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->105
+**
+95
+FEUILLE QUESTION
+titre:Probleme avec Test1
+fenetre:        Probleme avec Test1, 
+fenetre:        
+fenetre:       
+fenetre:     le courant mesuré est de : %Test1 mA
+fenetre:              
+resultat:LISTE/V
+Continuer le test
+Recommencer le test
+Arreter le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->100
+**
+100
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{95}
+Cond1:=Recommencer le test->85
+Cond2:=Continuer le test->105
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->105
+**
+REM***********************************************************************
+REM******************* mesure alimentation 3.3V **************************
+REM***********************************************************************
+105
+FEUILLE COMMANDE RS232
+titre:mesure 3.3V de la carte
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@101)"[10]
+variable:Test2
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->110
+**
+110
+FEUILLE SAUT CONDITIONNEL
+titre:verif 3.3V
+condition:NUM
+resultat:{105}
+Cond1:>3.33->115
+Cond2:<3.27->115
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->125
+**
+115
+FEUILLE QUESTION
+titre:Probleme avec Test2
+fenetre:        
+fenetre:        
+fenetre:       
+fenetre:     la tension mesurée est de : %Test2 V
+fenetre:             
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->120
+**
+120
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{115}
+Cond1:=Recommencer le test->105
+Cond2:=Continuer le test->125
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->125
+**
+REM*************************************************************
+REM****************** mesure de VREF ***************************
+REM*************************************************************
+125
+FEUILLE COMMANDE RS232
+titre:mesure de VREF
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@102)"[10]
+variable:Test3
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->130
+**
+130
+FEUILLE SAUT CONDITIONNEL
+titre:verif VREF
+condition:NUM
+resultat:{125}
+Cond1:>1.270->135
+Cond2:<1.205->135
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->145
+**
+135
+FEUILLE QUESTION
+titre:Probleme avec Test3
+fenetre:        Probleme avec Test3, 
+fenetre:        
+fenetre:       
+fenetre:     la tension mesurée est de : %Test3 V
+fenetre:             
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->140
+**
+140
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{135}
+Cond1:=Recommencer le test->125
+Cond2:=Continuer le test->145
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->145
+**
+REM*****************************************************************
+REM************************* mesure de VREF2 ***********************
+REM*****************************************************************
+145
+FEUILLE COMMANDE RS232
+titre:mesure de VREF2
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@103)"[10]
+variable:Test4_2
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->150
+**
+150
+FEUILLE SAUT CONDITIONNEL
+titre:verif VREF2
+condition:NUM
+resultat:{145}
+Cond1:>0.405->155
+Cond2:<0.395->155
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->170
+**
+155
+FEUILLE QUESTION
+titre:Probleme avec Test4.2
+fenetre:        Probleme avec Test4.2,
+fenetre:        
+fenetre:       
+fenetre:     la tension mesurée est de : %Test4_2
+fenetre:              spécification : 0.399 V < V < 0.401 
+resultat:LISTE/V
+Arreter le test
+Recommencer le test
+Continuer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->160
+**
+160
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{155}
+Cond1:=Recommencer le test->145
+Cond2:=Continuer le test->170
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->170
+**
+REM******************************************************************
+REM********************* Verif excurtion de VREF2 *******************
+REM******************************************************************
+165
+FEUILLE COMMANDE RS232
+titre:mesure de la tension VREF2 
+fenetre: reglez le potentiometre P3 pour obtenir le minimum
+fenetre:
+fenetre:     LE SENS DE ROTATION EST INVERSE
+fenetre:     ________________________________
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"READ?"[10]
+affichage commande:NON
+duree:200
+interval:0.5
+unite:mV
+format:###.#
+option:/ECR
+chrono:NON
+tempo:NON
+type:TRAME
+decl min:360
+decl max:380
+decl mes:10
+->166
+**
+166
+FEUILLE COMMANDE RS232
+titre:mesure de la tension VREF2 
+fenetre: reglez le potentiometre P3 pour obtenir le maximum
+fenetre:
+fenetre:     LE SENS DE ROTATION EST INVERSE
+fenetre:     ________________________________
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"READ?"[10]
+affichage commande:NON
+duree:200
+interval:0.5
+unite:mV
+format:###.#
+option:/ECR
+chrono:NON
+tempo:NON
+type:TRAME
+decl min:400
+decl max:430
+decl mes:10
+->167
+**
+167
+FEUILLE COMMANDE RS232
+titre:mesure de la tension VREF2 
+fenetre: reglez le potentiometre P3 pour obtenir 0.4 +/-1mv
+fenetre:
+fenetre:     LE SENS DE ROTATION EST INVERSE
+fenetre:     ________________________________
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"READ?"[10]
+affichage commande:NON
+duree:200
+interval:0.5
+unite:mV
+format:###.#
+option:/ECR
+chrono:NON
+tempo:NON
+type:TRAME
+decl min:399
+decl max:401
+decl mes:10
+->170
+**
+REM*******************************************************************
+REM**************** controle de la temperature ***********************
+REM*******************************************************************
+170
+FEUILLE COMMANDE RS232
+titre:Controle de la temperature
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@104)"[10]
+variable:Test5
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->190
+**
+REM************************************************************
+REM************* Connexion de la resistance 1k ****************
+REM************************************************************
+190
+FEUILLE COMMANDE RS232
+titre:connection resistance 1k
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@203)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->195
+**
+REM************************************************************
+REM******************* Programmation **************************
+REM************************************************************
+195
+FEUILLE COMMANDE RS232
+titre:connection PICKIT2
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@205,206,207,208,209,210)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->200
+**
+200
+FEUILLE COMMANDE RS232
+titre:deconnection PICKIT2
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@205,206,207,208,209,210)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->215
+**
+REM*************************************************************
+REM**************** cordon maintenance *************************
+REM*************************************************************
+215
+FEUILLE COMMANDE RS232
+titre:mesure signal maintenance
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@105)"[10]
+variable:Test7_0
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->220
+**
+220
+FEUILLE SAUT CONDITIONNEL
+titre:verif signal maintenance
+condition:NUM
+resultat:{215}
+Cond1:<2.90->225
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->235
+**
+225
+FEUILLE QUESTION
+titre:Probleme avec le signal maintenance
+fenetre:        Probleme avec le signal maintenance,
+fenetre:        
+fenetre:       
+fenetre:     la tension mesurée est de : %Test7_0 V
+fenetre:              spécification : 3.00 V < V 
+resultat:LISTE/V
+Arreter le test
+Recommencer le test
+Continuer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->230
+**
+230
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{225}
+Cond1:=Recommencer le test->215
+Cond2:=Continuer le test->235
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->235
+**
+235
+FEUILLE COMMANDE RS232
+titre:connection cordon maintenance
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@113,114)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->240
+**
+240
+FEUILLE COMMANDE RS232
+titre:mesure signal maintenance
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@105)"[10]
+variable:Test7
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->245
+**
+245
+FEUILLE SAUT CONDITIONNEL
+titre:verif signal maintenace
+condition:NUM
+resultat:{240}
+Cond1:>0.10->250
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->260
+**
+250
+FEUILLE QUESTION
+titre:Probleme avec Test7
+fenetre:        Probleme avec Test7
+fenetre:        
+fenetre:       
+fenetre:     la tension mesurée est de : %Test7 V
+fenetre:             
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->255
+**
+255
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{250}
+Cond1:=Recommencer le test->235
+Cond2:=Continuer le test->260
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->260
+**
+260
+FEUILLE COMMANDE RS232
+titre:deconnection cordon maintenance
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@113,114)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->265
+**
+REM**************************************************************
+REM********************* Controle touche BP1 ********************
+REM**************************************************************
+265
+FEUILLE COMMANDE RS232
+titre:mesure PT24 touche BP1
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@106)"[10]
+variable:Test8_0
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->270
+**
+270
+FEUILLE SAUT CONDITIONNEL
+titre:verif PT24
+condition:NUM
+resultat:{265}
+Cond1:<3.00->275
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->285
+**
+275
+FEUILLE QUESTION
+titre:Probleme BP1
+fenetre:        Probleme avec BP1,
+fenetre:        
+fenetre:       
+fenetre:     la tension mesurée est de : %Test8_0 V
+fenetre:              spécification : 3.00 V < V 
+resultat:LISTE/V
+Recommencer le test
+Continuer le test
+Arreter le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->280
+**
+280
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{275}
+Cond1:=Recommencer le test->265
+Cond2:=Continuer le test->285
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->285
+**
+285
+FEUILLE INFOS
+titre:
+fenetre:        Maintenir BP1
+fenetre:        
+fenetre:       
+FEUILLE COMMANDE RS232
+titre:simulation appuie BP1
+fenetre:
+->290
+**
+2850
+FEUILLE COMMANDE RS232
+titre:simulation appuie BP1
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@201,202)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->2900
+**
+290
+FEUILLE COMMANDE RS232
+titre:mesure PT24 touche BP1
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@106)"[10]
+variable:Test8
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->295
+**
+295
+FEUILLE SAUT CONDITIONNEL
+titre:verif PT24
+condition:NUM
+resultat:{290}
+Cond1:>0.1->300
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->310
+**
+300
+FEUILLE QUESTION
+titre:Probleme Test8
+fenetre:        Probleme avec Test8,
+fenetre:        
+fenetre:       
+fenetre:     la tension mesurée est de : %Test8 V
+fenetre:              
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->305
+**
+305
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{300}
+Cond1:=Recommencer le test->285
+Cond2:=Continuer le test->310
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->310
+**
+310
+FEUILLE INFOS
+titre:
+fenetre:        Lacher BP1
+fenetre:        
+fenetre:  
+->315
+**
+3100
+FEUILLE COMMANDE RS232
+titre:fermeture BP1
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@201,202)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->3150
+**
+REM**************************************************************
+REM************************ Reglage VFIL ************************
+REM**************************************************************
+315
+FEUILLE COMMANDE RS232
+titre:ALIM HP OUTPUT ON
+fenetre:
+port:5,9600,n,8,1@SANS
+commande:"OUTP OFF"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->320
+**
+320
+FEUILLE COMMANDE RS232
+titre:ALIM HP OUTPUT OFF
+fenetre:
+port:5,9600,n,8,1@SANS
+commande:"OUTP ON"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->321
+**
+321
+FEUILLE TEMPO
+titre:tempo calcul checksum
+duree:5
+COMPTEUR_1_SEC
+->325
+**
+325
+FEUILLE COMMANDE RS232
+titre:mesure VFIL
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@107)"[10]
+variable:Test9
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.##
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->335
+**
+330
+FEUILLE COMMANDE RS232
+titre:mesure de la tension VFIL 2V (entre 2.01 et 1.99 V)
+fenetre: reglez le potentiometre P4 pour obtenir 2V +ou- 10 mV
+fenetre:
+fenetre:     
+fenetre:     ________________________________
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"READ?"[10]
+affichage commande:NON
+duree:200
+interval:0.5
+unite:V
+format:#.###
+option:/ECR
+chrono:NON
+tempo:NON
+type:TRAME
+decl min:1.99
+decl max:2.01
+decl mes:10
+->335
+**
+335
+FEUILLE COMMANDE RS232
+titre:alimentation 19V coupee relais CH9 desactive
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->340
+**
+340
+FEUILLE COMMANDE RS232
+titre:connexion filaments fictifs
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@110,111,112)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->345
+**
+345
+FEUILLE COMMANDE RS232
+titre:alimentation 19V relais CH9 active
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:OUI
+type:SANS
+->350
+**
+350
+FEUILLE COMMANDE RS232
+titre:mesure courant carte
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@110)"[10]
+variable:Test10
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->355
+**
+355
+FEUILLE SAUT CONDITIONNEL
+titre:verif courant carte
+condition:NUM
+resultat:{350}
+Cond1:>0.100->360
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->370
+**
+360
+FEUILLE QUESTION
+titre:Probleme Test10
+fenetre:        Probleme Test10,
+fenetre:        
+fenetre:       
+fenetre:     le courant mesuré est de : %Test10 A
+fenetre:             
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->365
+**
+365
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{360}
+Cond1:=Recommencer le test->
+Cond2:=Continuer le test->370
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->370
+**
+370
+FEUILLE COMMANDE RS232
+titre:mesure VFIL
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@107)"[10]
+variable:Test11
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.##
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->380
+**
+375
+FEUILLE COMMANDE RS232
+titre:mesure de la tension VFIL 2V (entre 2.01 et 1.99 V)
+fenetre: reglez le potentiometre P4 pour obtenir 2V +ou- 10 mV
+fenetre:
+fenetre:     
+fenetre:     ________________________________
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"READ?"[10]
+affichage commande:NON
+duree:200
+interval:0.5
+unite:V
+format:#.###
+option:/ECR
+chrono:NON
+tempo:NON
+type:TRAME
+decl min:1.99
+decl max:2.01
+decl mes:10
+->380
+**
+REM***********************************************************************
+REM********************** Controle de Vmesure ****************************
+REM***********************************************************************
+380
+FEUILLE COMMANDE RS232
+titre:mesure Vmesure
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@108)"[10]
+variable:Test12
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->390
+**
+385
+FEUILLE COMMANDE RS232
+titre:mesure de la tension Vmesure (Vmesure = VREF)
+fenetre: reglez le potentiometre P2 pour obtenir 1.24V  
+fenetre: (min = 1.205V max = 1.270V)
+fenetre:     
+fenetre:     ________________________________
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"READ?"[10]
+affichage commande:NON
+duree:200
+interval:0.5
+unite:V
+format:#.###
+option:/ECR
+chrono:NON
+tempo:NON
+type:TRAME
+decl min:1.205
+decl max:1.270
+decl mes:10
+->390
+**
+REM*******************************************************************************************
+REM******************* Connexion de la liaison serie pour calibrage **************************
+REM*******************************************************************************************
+390
+FEUILLE COMMANDE RS232
+titre:connection cordon maintenance
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@113,114)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->395
+**
+395
+FEUILLE COMMANDE RS232
+titre:alimentation 19V desactivee
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->400
+**
+400
+FEUILLE COMMANDE RS232
+titre: COM1
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@115,116,117,118,119)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->425
+**
+425
+FEUILLE COMMANDE RS232
+titre:alimentation 19V relais CH9 active
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->430
+**
+430
+FEUILLE TEMPO
+titre:tempo calcul checksum
+duree:30
+COMPTEUR_1_SEC
+->435
+**
+435
+FEUILLE LANCER PROGRAMME
+titre:Lancement calibrateur 4 /20 mA
+Programme:Q:\CONTROLE_EN_COURS\Ilot Cartes\hpcde\_validation soustraitant\6451594 - OLCT100 EXPLO\ProgOLCT.exe
+Option:1
+Controle:
+->440
+**
+440
+FEUILLE QUESTION
+titre:
+fenetre:        /!\/!\ PROCEDURE /!\/!\
+fenetre: 
+fenetre:        Ne pas fermer le soft pour memoriser les resultats
+fenetre:       	
+fenetre:     	
+fenetre: 	
+fenetre:
+fenetre:	
+fenetre:	
+fenetre:
+fenetre:               
+resultat:LISTE/V
+OUI
+Recommencer le test
+Arreter le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->445
+**
+445
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{440}
+Cond1:=OUI->450
+Cond2:=Recommencer le test->390
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->450
+**
+450
+FEUILLE QUESTION
+titre:courant
+fenetre:ENTREZ LA VALEUR DU 4mA :
+resultat:
+memorisation:oui
+variable:Test13
+option:/ECR
+->452
+**
+452
+FEUILLE QUESTION
+titre:courant
+fenetre:ENTREZ LA VALEUR DU 20mA :
+resultat:
+memorisation:oui
+variable:Test14
+option:/ECR
+->453
+**
+453
+FEUILLE QUESTION
+titre:courant
+fenetre:ENTREZ LA VALEUR DU 28mA :
+resultat:
+memorisation:oui
+variable:Test16
+option:/ECR
+->454
+**
+454
+FEUILLE COMMANDE RS232
+titre: COM1
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@115,116,117,118,119)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->455
+**
+455
+FEUILLE COMMANDE RS232
+titre:activation OFF
+fenetre:
+port:6,38400,n,8,1@XON/XOFF
+temporeception:0
+commande:":OUTPUT OFF"[10]
+affichage commande:NON
+duree:0.5
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->460
+**
+460
+FEUILLE COMMANDE RS232
+titre: Deconnection Alim
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->465
+**
+465
+FEUILLE COMMANDE RS232
+titre: Connection Alim
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->470
+**
+470
+FEUILLE TEMPO
+titre:tempo 2
+duree:30
+COMPTEUR_1_SEC
+->475
+**
+REM****************************************************************
+REM******************* decalage du zero  **************************
+REM****************************************************************
+**
+475
+FEUILLE COMMANDE RS232
+titre:activation l'alim keithley
+fenetre:
+port:6,38400,n,8,1@SANS
+temporeception:0
+commande:"OUTPUT ON"[10]
+affichage commande:non
+duree:0.3
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->480
+**
+480
+FEUILLE COMMANDE RS232
+titre:simulation appuie BP1
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@201,202)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->495
+**
+485
+FEUILLE COMMANDE RS232
+titre:mesure I de J3 
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@109)"[10]
+variable:erreur
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.###
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->490
+**
+490
+FEUILLE COMMANDE RS232
+titre:mesure du courant I
+fenetre: reglez le potentiometre P2 pour obtenir 5 mV  
+fenetre:           4.9 < V < 5.1
+fenetre:     
+fenetre:     ________________________________
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"READ?"[10]
+affichage commande:NON
+duree:200
+interval:0.5
+unite:MV
+format:#.##
+option:/ECR
+chrono:NON
+tempo:NON
+type:TRAME
+decl min:4.90
+decl max:5.40
+decl mes:10
+->495
+**
+495
+FEUILLE INFOS
+titre:
+fenetre:        Maintenir BP1
+fenetre:        
+fenetre:
+->500
+**
+500
+FEUILLE TEMPO
+titre:tempo 3
+duree:5
+COMPTEUR_1_SEC
+->505
+**
+505
+FEUILLE COMMANDE RS232
+titre:mesure I de J3 
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@109)"[10]
+variable:Test19
+affichage commande:NON
+duree:0.8
+interval:0
+unite:MV
+format:#.####
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->510
+**
+510
+FEUILLE SAUT CONDITIONNEL
+titre:verif I de J3
+condition:NUM
+resultat:{505}
+Cond1:>4.2->515
+Cond2:<3.8->515
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->525
+**
+515
+FEUILLE QUESTION
+titre:Probleme avec Test19
+fenetre:        Probleme avec Test19, 
+fenetre:        
+fenetre:       
+fenetre:     le courant mesuré est de : %Test19 mA
+fenetre:              spécification : mesure = 4 mA
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->520
+**
+520
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{515}
+Cond1:=Recommencer le test->475
+Cond2:=Continuer le test->525
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->525
+**
+525
+FEUILLE INFOS
+titre:
+fenetre:        Lacher BP1
+fenetre:        
+fenetre:
+->530
+**
+5250
+FEUILLE COMMANDE RS232
+titre:simulation appuie BP1
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@201,202)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->5300
+**
+530
+FEUILLE COMMANDE RS232
+titre:deconnection cordon maintenance
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@113,114)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->535
+**
+REM***************************************************************************
+REM******************* controle defaut alimentation **************************
+REM***************************************************************************
+535
+FEUILLE COMMANDE RS232
+titre:Alimentation 15.0V sur l'alim HP
+fenetre:
+port:5,9600,n,8,1@SANS
+commande:"APPL P25V ,15.0,0.200"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->540
+**
+540
+FEUILLE TEMPO
+titre:tempo calcul checksum
+duree:5
+COMPTEUR_1_SEC
+->545
+**
+545
+FEUILLE COMMANDE RS232
+titre:mesure I de J3 
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@109)"[10]
+variable:Test20
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.####
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->550
+**
+550
+FEUILLE SAUT CONDITIONNEL
+titre:verif I de J3
+condition:NUM
+resultat:{545}
+Cond1:>0.1->555
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->565
+**
+555
+FEUILLE QUESTION
+titre:Probleme avec Test20
+fenetre:        Probleme avec Test20, 
+fenetre:        
+fenetre:       
+fenetre:     le courant mesuré est de : %Test20 mA
+fenetre:              spécification : mesure < 1 mA
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->560
+**
+560
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{555}
+Cond1:=Recommencer le test->535
+Cond2:=Continuer le test->565
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->565
+**
+565
+FEUILLE COMMANDE RS232
+titre:deconnexion alim 19 V
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->570
+**
+570
+FEUILLE COMMANDE RS232
+titre:Alimentation 19.0V sur l'alim HP
+fenetre:
+port:5,9600,n,8,1@SANS
+commande:"APPL P25V ,19.0,0.200"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->575
+**
+575
+FEUILLE COMMANDE RS232
+titre:connexion alim 19 V
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:CLOSE (@109)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->580
+**
+REM***********************************************************************
+REM******************* controle defaut filament **************************
+REM***********************************************************************
+580
+FEUILLE COMMANDE RS232
+titre:deconnexion filaments fictifs et 1,1V
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"ROUT:OPEN (@203,110,111,112)"[10]
+affichage commande:NON
+duree:0.5
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->585
+**
+585
+FEUILLE TEMPO
+titre:tempo
+duree:28
+COMPTEUR_1_SEC
+->590
+**
+590
+FEUILLE COMMANDE RS232
+titre:mesure I de J3 
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@109)"[10]
+variable:Test21
+affichage commande:NON
+duree:0.8
+interval:0
+unite:MV
+format:#.####
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->595
+**
+595
+FEUILLE SAUT CONDITIONNEL
+titre:verif I de J3
+condition:NUM
+resultat:{590}
+Cond1:>1.00->600
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->610
+**
+600
+FEUILLE QUESTION
+titre:Probleme avec Test21
+fenetre:        Probleme avec Test21, 
+fenetre:        
+fenetre:       
+fenetre:     le courant mesuré est de : %Test21 mA
+fenetre:              spécification : mesure < 1 mA
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->605
+**
+605
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{600}
+Cond1:=Recommencer le test->580
+Cond2:=Continuer le test->610
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->610
+**
+610
+FEUILLE COMMANDE RS232
+titre:mesure VFIL
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+temporeception:0
+commande:"MEAS:VOLT:DC? (@107)"[10]
+variable:Test22
+affichage commande:NON
+duree:0.8
+interval:0
+unite:
+format:#.####
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->615
+**
+615
+FEUILLE SAUT CONDITIONNEL
+titre:verif VFIL
+condition:NUM
+resultat:{610}
+Cond1:>0.1->620
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->630
+**
+620
+FEUILLE QUESTION
+titre:Probleme avec Test22
+fenetre:        Probleme avec Test22, 
+fenetre:        
+fenetre:       
+fenetre:     la tension mesuré est de : %Test22 V
+fenetre:              spécification : mesure = 0 V
+resultat:LISTE/V
+Continuer le test
+Arreter le test
+Recommencer le test
+FIN_LISTE
+variable:status
+option:/ECR
+memorisation:non
+->625
+**
+625
+FEUILLE SAUT CONDITIONNEL
+titre:Verif arret ou continue
+condition:ALPHA
+resultat:{620}
+Cond1:=Recommencer le test->610
+Cond2:=Continuer le test->630
+Cond3:=Arreter le test->10
+FIN_CONDITION
+nombre_condition:100
+tempo:NON
+->630
+**
+REM*****************************************************************************************
+REM******************* Fin des controle et conformite de la carte **************************
+REM*****************************************************************************************
+630
+FEUILLE VARIABLE
+heurefin:HEURE_SYSTEME
+->631
+**
+631
+FEUILLE FICTEMP
+titre:FICHIER TEXTE RESULTAT
+fichierTemp:Q:\CONTROLE_EN_COURS\Ilot Cartes\RESULTAT\_validation soustraitant\6451594 - OLCT100 EXPLO\6451594 - OLCT100 EXPLO.RES
+mode:ecriture/ajout
+LISTE
+------------------------
+%heuredeb
+DATE: {35}
+OPERATEUR: {40}
+OF: {50}
+NUMSERIE: {55}
+Test1: %Test1 A
+Test2: %Test2 V
+Test3: %Test3 V
+Test4.2: %Test4_2 V
+Test5: %Test5 V
+Test7: %Test7_0 V ---> %Test7 V
+Test8: %Test8_0 V ---> %Test8 V
+Test9: %Test9 V
+Test10: %Test10 A
+Test11: %Test11 V
+Test12: %Test12 V
+Test13: %Test13 mA
+Test14: %Test14 mA
+Test19: %Test19 A
+Test20: %Test20 A
+Test21: %Test21 A
+Test22: %Test22 V
+%heurefin
+------------------------
+FIN_LISTE
+->632
+**
+632
+FEUILLE VARIABLE
+heuredeb:HEURE_SYSTEME
+->633
+**
+633
+FEUILLE QUESTION
+titre:FIN
+fenetre:Tous les controles sont effectués, la carte OLCT100 EXPLO est conforme !
+fenetre: Validez pour terminer le programme
+fenetre:
+resultat: 
+option:/ECR
+memorisation:non
+->635
+**
+635
+FEUILLE COMMANDE RS232
+titre:RESET DE LA CENTRALE mesure
+fenetre:
+port:3,38400,n,8,1@RTS/CTS
+commande:"*RST"[10]
+affichage commande:NON
+duree:0.35
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->640
+**
+640
+FEUILLE COMMANDE RS232
+titre:RESET DE LA CENTRALE actionneur
+fenetre:
+port:4,38400,n,8,1@RTS/CTS
+commande:"*RST"[10]
+affichage commande:NON
+duree:0.35
+interval:0
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->645
+**
+645
+FEUILLE COMMANDE RS232
+titre:reset de l'alim HP
+fenetre:
+port:5,9600,n,8,1@SANS
+temporeception:0
+commande:"*RST"[10]
+affichage commande:NON
+duree:0.5
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:NON
+type:SANS
+->650
+**
+650
+FEUILLE COMMANDE RS232
+titre:reset de l'alim keithley
+fenetre:
+port:6,38400,n,8,1@SANS
+temporeception:0
+commande:"*RST"[10]
+affichage commande:non
+duree:0.5
+interval:000000
+unite:
+format:
+option:
+chrono:NON
+tempo:non
+type:SANS
+->655
+**
+655
+FEUILLE VARIABLE
+erreur:na
+erreur1:na
+erreur2:na
+erreur3:na
+->55
+**

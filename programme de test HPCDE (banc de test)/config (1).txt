@@ -1,0 +1,190 @@
+Testeur fonctionnel ilot carte test de carte OLCT100 EXPLO
+Version:1.00
+Auteur:Pierrick
+**
+0
+FEUILLE INITIALISATION
+titre: INITIALISATION
+Declare:heuredeb
+Declare:oper[25]
+->5
+**
+5
+FEUILLE FICTEMP
+titre:VARIABLES DES BOUTEILLES
+fichierTemp:Q:\CONTROLE_EN_COURS\Ilot Cartes\operateur.TXT
+mode:lecture
+LISTE
+L1C1:oper[1]
+L2C1:oper[2]
+L3C1:oper[3]
+L4C1:oper[4]
+L5C1:oper[5]
+L6C1:oper[6]
+L7C1:oper[7]
+L8C1:oper[8]
+L9C1:oper[9]
+L10C1:oper[10]
+L11C1:oper[11]
+L12C1:oper[12]
+L13C1:oper[13]
+L14C1:oper[14]
+L16C1:oper[16]
+L17C1:oper[17]
+L18C1:oper[18]
+L19C1:oper[19]
+L20C1:oper[20]
+L21C1:oper[21]
+L22C1:oper[22]
+L23C1:oper[23]
+L24C1:oper[24]
+L25C1:oper[25]
+FIN_LISTE
+->10
+**
+10
+FEUILLE QUESTION
+titre:Date
+fenetre:ENTREZ LA DATE
+resultat:date
+option:/ECR
+memorisation:oui
+->40
+**
+40
+FEUILLE QUESTION
+titre:Nom du controleur
+fenetre:     choisissez votre nom dans la liste
+resultat:LISTE/V
+%oper[1]
+%oper[2]
+%oper[3]
+%oper[4]
+%oper[5]
+%oper[6]
+%oper[7]
+%oper[8]
+%oper[9]
+%oper[10]
+%oper[11]
+%oper[12]
+%oper[13]
+%oper[14]
+%oper[15]
+FIN_LISTE
+option:/ECR
+memorisation:oui
+->45
+**
+45
+FEUILLE VARIABLE
+nom:{40}
+->50
+**
+50
+FEUILLE QUESTION
+titre:OF
+fenetre:ENTREZ LE NUMERO ODF K2P
+resultat:
+variable:datecode
+option:/ECR
+memorisation:oui
+->51
+**
+51
+FEUILLE VARIABLE
+heuredeb:HEURE_SYSTEME
+->55
+**
+55
+FEUILLE QUESTION
+titre:Numero de serie K2P
+fenetre:ENTREZ LE NUMERO DE SERIE DE LA CARTE
+resultat:
+variable:serie
+option:/ECR
+memorisation:non
+->60
+**
+60
+FEUILLE QUESTION
+titre:verif CRC
+fenetre:     
+resultat:LISTE/V
+OK
+Non conforme
+FIN_LISTE
+option:/ECR
+memorisation:oui
+->65
+**
+65
+FEUILLE QUESTION
+titre:verif Version
+fenetre:     
+resultat:LISTE/V
+OK
+Non conforme
+FIN_LISTE
+option:/ECR
+memorisation:oui
+->70
+**
+70
+FEUILLE QUESTION
+titre:Date
+fenetre:ENTREZ la mesure du 4mA
+resultat:
+option:/ECR
+memorisation:non
+->75
+**
+75
+FEUILLE QUESTION
+titre:Date
+fenetre:ENTREZ la mesure du 20mA
+resultat:
+option:/ECR
+memorisation:non
+->80
+**
+80
+FEUILLE QUESTION
+titre:OF
+fenetre:ENTREZ LE NUMERO ODF oldham
+resultat:
+variable:datecode
+option:/ECR
+memorisation:oui
+->85
+**
+85
+FEUILLE QUESTION
+titre:Numero de serie 
+fenetre:ENTREZ LE NUMERO DE SERIE oldham
+resultat:
+variable:serie
+option:/ECR
+memorisation:non
+->90
+**
+90
+FEUILLE FICTEMP
+titre:FICHIER TEXTE RESULTAT
+fichierTemp:Q:\CONTROLE_EN_COURS\Ilot Cartes\RESULTAT\_validation soustraitant\6451594 - test manuel OLCT100 EXPLO\6451594 - test manuel OLCT100 EXPLO.RES
+mode:ecriture/ajout
+LISTE
+------------------------
+%heuredeb
+DATE: {10}
+OPERATEUR: {40}
+num serie K2P: {50} {55}
+CRC: {60}
+Version: {65}
+4mA: {70}
+20mA: {75}
+num oldham: {80} {85}
+------------------------
+FIN_LISTE
+->55
+**
