@@ -34,7 +34,7 @@ function Logo() {
           K2 Process
         </Typography>
         <Typography className={classes.subtitle}>
-          Optimisation Industrielle
+          Optimisation Industrielle™
         </Typography>
       </div>
     </Box>

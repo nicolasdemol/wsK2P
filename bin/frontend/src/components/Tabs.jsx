@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -36,9 +37,11 @@ export default function CustomizedTabs() {
     setValue(newValue);
   };
 
+  let history = useHistory();
+
   return (
     <AntTabs value={value} onChange={handleChange} aria-label="ant example">
-      <AntTab label="Accueil" />
+      <AntTab onClick={() => history.push("/")} label="Accueil" />
       <AntTab label="Produits & Services" />
       <AntTab label="Partenaires" />
       <AntTab label="Contact" />

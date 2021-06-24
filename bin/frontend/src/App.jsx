@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 
+
 function App() {
   useEffect(() => {
     WebFont.load({

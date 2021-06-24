@@ -6,7 +6,8 @@ import AppBar from "@material-ui/core/AppBar";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
+import FingerprintIcon from "@material-ui/icons/Fingerprint";
+import DoneAllIcon from "@material-ui/icons/DoneAll";
 
 import Logo from "./Logo";
 import CustomizedTabs from "./Tabs";
@@ -29,11 +30,15 @@ export default function NavBar() {
         <Toolbar className={classes.toolbar}>
           <Logo />
           <CustomizedTabs />
-          <ButtonGroup variant="contained">
-            <Button color="primary" onClick={() => history.push("/login")}>
+          <ButtonGroup color="primary">
+            <Button variant="contained" onClick={() => history.push("/login")}>
+              <FingerprintIcon />
               Se connecter
             </Button>
-            <Button>S'inscrire</Button>
+            <Button variant="outlined">
+              <DoneAllIcon />
+              S'inscrire
+            </Button>
           </ButtonGroup>
         </Toolbar>
       </AppBar>

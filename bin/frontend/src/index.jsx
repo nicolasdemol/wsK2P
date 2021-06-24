@@ -2,20 +2,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import WebFont from "webfontloader";
 import "./index.css";
+import Button from "@material-ui/core/Button";
 import App from "./App";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core/styles";
-import orange from "@material-ui/core/colors/orange";
-import green from "@material-ui/core/colors/green";
+import deepOrange from "@material-ui/core/colors/deepOrange";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: orange[800],
+      main: deepOrange[500],
+      dark: deepOrange[600],
     },
-    secondary: {
-      main: green[600],
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 2,
+        textTransform: "normal",
+      },
     },
   },
 });
