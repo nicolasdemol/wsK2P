@@ -1,27 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import WebFont from "webfontloader";
 import "./index.css";
-import Button from "@material-ui/core/Button";
 import App from "./App";
 
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core/styles";
 import deepOrange from "@material-ui/core/colors/deepOrange";
+import { amber } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: deepOrange[500],
-      dark: deepOrange[600],
+      main: amber[600],
+      dark: amber[700],
     },
+  },
+  typography: {
+    fontFamily: [
+      "-apple-system",
+      "Lato",
+      "Inter",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
   },
   overrides: {
     MuiButton: {
-      root: {
-        borderRadius: 2,
-        textTransform: "normal",
-      },
+      root: {},
     },
   },
 });

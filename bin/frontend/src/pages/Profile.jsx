@@ -1,5 +1,7 @@
+import Container from "@material-ui/core/Container";
+
 function Profile() {
-  return <div>Hello2</div>;
+  return <Container>Hello2</Container>;
 }
 
 export default Profile;

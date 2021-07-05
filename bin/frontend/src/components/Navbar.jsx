@@ -6,17 +6,28 @@ import AppBar from "@material-ui/core/AppBar";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import FingerprintIcon from "@material-ui/icons/Fingerprint";
+import LockIcon from "@material-ui/icons/Lock";
 import DoneAllIcon from "@material-ui/icons/DoneAll";
+import Hidden from "@material-ui/core/Hidden";
+import TemporaryDrawer from "./Drawer";
 
 import Logo from "./Logo";
 import CustomizedTabs from "./Tabs";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
-  toolbar: {
-    display: "flex",
-    justifyContent: "space-around",
+  root: {
+    borderBottom: "1px solid #EEEEEE",
+  },
+  logo: {
+    flexGrow: 1,
+  },
+  tabs: {
+    flexGrow: 1,
+    alignSelf: "flex-end",
+  },
+  button: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
 }));
 
@@ -25,21 +36,46 @@ export default function NavBar() {
   let history = useHistory();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="transparent">
+    <div>
+      <AppBar
+        className={classes.root}
+        position="sticky"
+        color="inherit"
+        elevation={0}
+      >
         <Toolbar className={classes.toolbar}>
-          <Logo />
-          <CustomizedTabs />
-          <ButtonGroup color="primary">
-            <Button variant="contained" onClick={() => history.push("/login")}>
-              <FingerprintIcon />
-              Se connecter
-            </Button>
-            <Button variant="outlined">
-              <DoneAllIcon />
-              S'inscrire
-            </Button>
-          </ButtonGroup>
+          <div
+            className={classes.logo}
+            style={{ cursor: "pointer" }}
+            onClick={() => history.push("/")}
+          >
+            <Logo />
+          </div>
+          <Hidden smDown>
+            <div className={classes.tabs}>
+              <CustomizedTabs />
+            </div>
+            <div>
+              <Button
+                className={classes.button}
+                variant="outlined"
+                onClick={() => history.push("/login")}
+              >
+                <LockIcon />
+                Se connecter
+              </Button>
+              <Button
+                className={classes.button}
+                disableElevation
+                color="primary"
+                variant="contained"
+              >
+                <DoneAllIcon />
+                S'inscrire
+              </Button>
+            </div>
+          </Hidden>
+          <TemporaryDrawer />
         </Toolbar>
       </AppBar>
     </div>

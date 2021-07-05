@@ -1,31 +1,28 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
 
 const AntTabs = withStyles((theme) => ({
-  root: {
-    borderBottom: "1px solid #e8e8e8",
-  },
   indicator: {
-    backgroundColor: "#0c0C0C",
+    backgroundColor: theme.palette.primary.main,
   },
 }))(Tabs);
 
 const AntTab = withStyles((theme) => ({
   root: {
     textTransform: "none",
+    fontSize: 16,
+    lineHeight: 3,
     minWidth: 72,
     fontWeight: theme.typography.fontWeightRegular,
     "&:hover": {
       opacity: 1,
     },
     "&$selected": {
-      fontWeight: theme.typography.fontWeightMedium,
+      fontWeight: theme.typography.fontWeightBold,
     },
-    "&:focus": {},
   },
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
