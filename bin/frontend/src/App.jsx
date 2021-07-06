@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import WebFont from "webfontloader";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import PrivateRoute from "./components/routes/PrivateRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -11,7 +12,7 @@ function App() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ["Inter", "Faster One", "Lato"],
+        families: ["Faster One", "Muli"],
       },
     });
   }, []);
@@ -22,7 +23,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
-        <Route path="/profile" component={Profile} />
+        <PrivateRoute path="/profile">
+          <Profile />
+        </PrivateRoute>
       </Switch>
     </Router>
   );

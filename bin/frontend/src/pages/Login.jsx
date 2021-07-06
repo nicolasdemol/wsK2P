@@ -14,6 +14,9 @@ import Paper from "@material-ui/core/Paper";
 import boardLogin from "../images/boardLogin.jpg";
 import processor from "../images/processor.png";
 import Hidden from "@material-ui/core/Hidden";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../hooks/useAuth";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -72,6 +75,18 @@ function Background() {
 function LoginForm() {
   const classes = useStyles();
 
+  let history = useHistory();
+
+  const { signin } = useAuth();
+
+  const { handleSubmit, register } = useForm();
+
+  const onSubmit = async (data) => {
+    await signin(data.email, data.password).then(() => {
+      history.push("/profile");
+    });
+  };
+
   return (
     <Grid container spacing={0} direction="column" alignItems="center">
       <Grid item xs={12} sm={8} md={6} lg={4}>
@@ -82,13 +97,14 @@ function LoginForm() {
           <Typography component="h1" variant="h5">
             SE CONNECTER
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
               id="email"
+              {...register("email")}
               label="Adresse email"
               name="email"
               autoComplete="email"
@@ -100,6 +116,7 @@ function LoginForm() {
               required
               fullWidth
               name="password"
+              {...register("password")}
               label="Mot de passe"
               type="password"
               id="password"

@@ -17,6 +17,8 @@ import CallIcon from "@material-ui/icons/Call";
 import LockIcon from "@material-ui/icons/Lock";
 import DoneAllIcon from "@material-ui/icons/DoneAll";
 import Hidden from "@material-ui/core/Hidden";
+import { useAuth } from "../hooks/useAuth";
+import ExitToApp from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles({
   list: {
@@ -27,13 +29,15 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TemporaryDrawer() {
+export default function SideNav() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false,
   });
 
   const history = useHistory();
+
+  const { user, signout } = useAuth();
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -82,20 +86,31 @@ export default function TemporaryDrawer() {
         </ListItem>
       </List>
       <Divider />
-      <List>
-        <ListItem button onClick={() => history.push("/login")}>
-          <ListItemIcon>
-            <LockIcon />
-          </ListItemIcon>
-          <ListItemText primary="Se connecter" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <DoneAllIcon />
-          </ListItemIcon>
-          <ListItemText primary="S'inscrire" />
-        </ListItem>
-      </List>
+      {user ? (
+        <List>
+          <ListItem button onClick={() => signout()}>
+            <ListItemIcon>
+              <ExitToApp />
+            </ListItemIcon>
+            <ListItemText primary="Se déconnecter" />
+          </ListItem>
+        </List>
+      ) : (
+        <List>
+          <ListItem button onClick={() => history.push("/login")}>
+            <ListItemIcon>
+              <LockIcon />
+            </ListItemIcon>
+            <ListItemText primary="Se connecter" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <DoneAllIcon />
+            </ListItemIcon>
+            <ListItemText primary="S'inscrire" />
+          </ListItem>
+        </List>
+      )}
     </div>
   );
 

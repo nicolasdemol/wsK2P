@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 
-import { createMuiTheme } from "@material-ui/core/styles";
+import { AuthProvider } from "./hooks/useAuth";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
 import deepOrange from "@material-ui/core/colors/deepOrange";
 import { amber } from "@material-ui/core/colors";
 
@@ -14,35 +15,28 @@ const theme = createMuiTheme({
       main: amber[600],
       dark: amber[700],
     },
+    secondary: {
+      main: "#673de6",
+    },
   },
   typography: {
-    fontFamily: [
-      "-apple-system",
-      "Lato",
-      "Inter",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
-  },
-  overrides: {
-    MuiButton: {
-      root: {},
+    h3: {
+      fontWeight: "bold",
     },
+    button: {
+      fontWeight: "bold",
+    },
+    fontFamily: ["Muli"].join(","),
   },
 });
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

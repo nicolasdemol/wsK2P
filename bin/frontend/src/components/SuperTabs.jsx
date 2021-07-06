@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
@@ -27,8 +27,8 @@ const AntTab = withStyles((theme) => ({
   selected: {},
 }))((props) => <Tab disableRipple {...props} />);
 
-export default function CustomizedTabs() {
-  const [value, setValue] = React.useState(0);
+export default function SuperTabs() {
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -37,7 +37,7 @@ export default function CustomizedTabs() {
   let history = useHistory();
 
   return (
-    <AntTabs value={value} onChange={handleChange} aria-label="ant example">
+    <AntTabs value={value} onChange={handleChange}>
       <AntTab onClick={() => history.push("/")} label="Accueil" />
       <AntTab label="Produits & Services" />
       <AntTab label="Partenaires" />

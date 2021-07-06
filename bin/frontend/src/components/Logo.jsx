@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 26,
+    fontWeight: 400,
     fontFamily: "Faster One",
     lineHeight: 1,
   },

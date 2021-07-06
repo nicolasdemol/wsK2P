@@ -8,32 +8,45 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import LockIcon from "@material-ui/icons/Lock";
 import DoneAllIcon from "@material-ui/icons/DoneAll";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Hidden from "@material-ui/core/Hidden";
-import TemporaryDrawer from "./Drawer";
+import SideNav from "./SideNav";
+
+import { useAuth } from "../hooks/useAuth";
 
 import Logo from "./Logo";
-import CustomizedTabs from "./Tabs";
+import SuperTabs from "./SuperTabs";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    borderBottom: "1px solid #EEEEEE",
+    borderBottom: `1px solid ${theme.palette.grey[300]}`,
+  },
+  toolbar: {
+    display: "flex",
+    justifyContent: "center",
   },
   logo: {
     flexGrow: 1,
   },
   tabs: {
+    position: "absolute",
     flexGrow: 1,
     alignSelf: "flex-end",
   },
   button: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    margin: theme.spacing(1),
+    textTransform: "",
   },
 }));
 
 export default function NavBar() {
   const classes = useStyles();
   let history = useHistory();
+
+  const removeIndicator = () => {};
+
+  const { user, signout } = useAuth();
 
   return (
     <div>
@@ -51,31 +64,50 @@ export default function NavBar() {
           >
             <Logo />
           </div>
-          <Hidden smDown>
+          <Hidden mdDown>
             <div className={classes.tabs}>
-              <CustomizedTabs />
+              <SuperTabs />
             </div>
-            <div>
-              <Button
-                className={classes.button}
-                variant="outlined"
-                onClick={() => history.push("/login")}
-              >
-                <LockIcon />
-                Se connecter
-              </Button>
-              <Button
-                className={classes.button}
-                disableElevation
-                color="primary"
-                variant="contained"
-              >
-                <DoneAllIcon />
-                S'inscrire
-              </Button>
-            </div>
+            {user ? (
+              <div>
+                <Button
+                  className={classes.button}
+                  variant="outlined"
+                  onClick={() => {
+                    signout();
+                  }}
+                >
+                  <ExitToAppIcon style={{ paddingRight: 2 }} />
+                  Se déconnecter
+                </Button>
+              </div>
+            ) : (
+              <div>
+                <Button
+                  className={classes.button}
+                  variant="outlined"
+                  onClick={() => {
+                    history.push("/login");
+                  }}
+                >
+                  <LockIcon style={{ paddingRight: 2 }} />
+                  Se connecter
+                </Button>
+                <Button
+                  className={classes.button}
+                  disableElevation
+                  color="primary"
+                  variant="contained"
+                >
+                  <DoneAllIcon style={{ paddingRight: 2 }} />
+                  S'inscrire
+                </Button>
+              </div>
+            )}
           </Hidden>
-          <TemporaryDrawer />
+          <Hidden lgUp>
+            <SideNav />
+          </Hidden>
         </Toolbar>
       </AppBar>
     </div>
