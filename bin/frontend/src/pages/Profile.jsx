@@ -3,6 +3,8 @@ import Table from "../components/Table";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import { classes } from "istanbul-lib-coverage";
+import { BackgroundSection } from "../components/Sections";
+import boardProfile from "../images/boardProfile.jpg"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +21,7 @@ function Profile() {
     <Container className={classes.root} maxWidth="sm">
       <Paper className={classes.paper} elevation={2}>
         <Table />
+        <BackgroundSection position="left bottom" image={boardProfile} />
       </Paper>
     </Container>
   );

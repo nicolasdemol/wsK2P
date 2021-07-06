@@ -12,12 +12,12 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import boardLogin from "../images/boardLogin.jpg";
-import processor from "../images/processor.png";
 import Hidden from "@material-ui/core/Hidden";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../hooks/useAuth";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { BackgroundSection } from "../components/Sections"
 
 function Copyright() {
   return (
@@ -55,23 +55,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0),
     padding: 10,
   },
-  image: {
-    position: "absolute",
-    bottom: 0,
-    right: 0,
-    zIndex: -1,
-    height: "400px",
-  },
 }));
 
-function Background() {
-  const classes = useStyles();
-  return (
-    <Hidden smDown>
-      <img className={classes.image} src={boardLogin} alt="board-login" />
-    </Hidden>
-  );
-}
 
 function LoginForm() {
   const classes = useStyles();
@@ -169,7 +154,7 @@ function Login() {
   return (
     <React.Fragment>
       <LoginForm />
-      <Background />
+      <BackgroundSection position="right bottom" image={boardLogin} />
     </React.Fragment>
   );
 }
