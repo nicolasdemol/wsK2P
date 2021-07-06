@@ -11,6 +11,7 @@ import DoneAllIcon from "@material-ui/icons/DoneAll";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Hidden from "@material-ui/core/Hidden";
 import SideNav from "./SideNav";
+import BadgeAvatars from "./BadgeAvatars";
 
 import { useAuth } from "../hooks/useAuth";
 
@@ -36,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: theme.spacing(1),
-    textTransform: "",
   },
 }));
 
@@ -69,18 +69,7 @@ export default function NavBar() {
               <SuperTabs />
             </div>
             {user ? (
-              <div>
-                <Button
-                  className={classes.button}
-                  variant="outlined"
-                  onClick={() => {
-                    signout();
-                  }}
-                >
-                  <ExitToAppIcon style={{ paddingRight: 2 }} />
-                  Se déconnecter
-                </Button>
-              </div>
+              <BadgeAvatars />
             ) : (
               <div>
                 <Button
@@ -92,15 +81,6 @@ export default function NavBar() {
                 >
                   <LockIcon style={{ paddingRight: 2 }} />
                   Se connecter
-                </Button>
-                <Button
-                  className={classes.button}
-                  disableElevation
-                  color="primary"
-                  variant="contained"
-                >
-                  <DoneAllIcon style={{ paddingRight: 2 }} />
-                  S'inscrire
                 </Button>
               </div>
             )}

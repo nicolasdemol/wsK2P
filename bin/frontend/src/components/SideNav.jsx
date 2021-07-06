@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -9,7 +9,10 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import { ListItemSecondaryAction } from "@material-ui/core";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ListItemText from "@material-ui/core/ListItemText";
+import { Avatar, Typography, ListItemAvatar } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import GroupIcon from "@material-ui/icons/Group";
@@ -19,6 +22,8 @@ import DoneAllIcon from "@material-ui/icons/DoneAll";
 import Hidden from "@material-ui/core/Hidden";
 import { useAuth } from "../hooks/useAuth";
 import ExitToApp from "@material-ui/icons/ExitToApp";
+import BadgeAvatars from "./BadgeAvatars";
+import CloudIcon from "@material-ui/icons/Cloud";
 
 const useStyles = makeStyles({
   list: {
@@ -60,6 +65,27 @@ export default function SideNav() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
+        {user ? (
+          <React.Fragment>
+            <ListItem
+              alignItems="flex-start"
+              onClick={() => history.push("/profile")}
+            >
+              <ListItemAvatar>
+                <BadgeAvatars />
+              </ListItemAvatar>
+              <ListItemText primary="Teledyne Oldham Simtronics" />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="delete">
+                  <NavigateNextIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+            <Divider variant="outset" component="li" />
+          </React.Fragment>
+        ) : (
+          ""
+        )}
         <ListItem button onClick={() => history.push("/")}>
           <ListItemIcon>
             <HomeIcon />
@@ -90,6 +116,12 @@ export default function SideNav() {
         <List>
           <ListItem button onClick={() => signout()}>
             <ListItemIcon>
+              <CloudIcon />
+            </ListItemIcon>
+            <ListItemText primary="Vos données" />
+          </ListItem>
+          <ListItem button onClick={() => signout()}>
+            <ListItemIcon>
               <ExitToApp />
             </ListItemIcon>
             <ListItemText primary="Se déconnecter" />
@@ -102,12 +134,6 @@ export default function SideNav() {
               <LockIcon />
             </ListItemIcon>
             <ListItemText primary="Se connecter" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <DoneAllIcon />
-            </ListItemIcon>
-            <ListItemText primary="S'inscrire" />
           </ListItem>
         </List>
       )}

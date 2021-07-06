@@ -17,11 +17,12 @@ import Hidden from "@material-ui/core/Hidden";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../hooks/useAuth";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
+      {"Tous droits réservés © "}
       <Link color="inherit" href="/">
         K2Process
       </Link>{" "}
@@ -78,13 +79,18 @@ function LoginForm() {
   let history = useHistory();
 
   const { signin } = useAuth();
+  const [error, setError] = useState();
 
   const { handleSubmit, register } = useForm();
 
   const onSubmit = async (data) => {
-    await signin(data.email, data.password).then(() => {
-      history.push("/profile");
-    });
+    await signin(data.email, data.password)
+      .catch((error) => {
+        setError(error);
+      })
+      .then(() => {
+        history.push("/profile");
+      });
   };
 
   return (
@@ -136,6 +142,7 @@ function LoginForm() {
             >
               Connexion
             </Button>
+            {error}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
