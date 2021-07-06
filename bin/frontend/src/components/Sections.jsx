@@ -22,10 +22,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
   },
   section: {
-    width: "100vw",
+    width: "100%",
     backgroundColor: "white",
     borderTop: `1px solid ${theme.palette.grey[300]}`,
-    height: "80vh",
+    height: "80%",
   },
   content: {
     padding: theme.spacing(10, 0),

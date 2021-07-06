@@ -24,15 +24,13 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `1px solid ${theme.palette.grey[300]}`,
   },
   toolbar: {
-    display: "flex",
     justifyContent: "center",
   },
   logo: {
-    flexGrow: 1,
+    marginRight: "auto"
   },
   tabs: {
     position: "absolute",
-    flexGrow: 1,
     alignSelf: "flex-end",
   },
   button: {
