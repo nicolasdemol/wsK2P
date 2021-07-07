@@ -17,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../hooks/useAuth";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { BackgroundSection } from "../components/Sections"
+import { BackgroundSection } from "../components/Sections";
 
 function Copyright() {
   return (
@@ -57,21 +57,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function LoginForm() {
   const classes = useStyles();
 
   let history = useHistory();
 
   const { signin } = useAuth();
-  const [error, setError] = useState();
+  const [error, setError] = useState([]);
 
   const { handleSubmit, register } = useForm();
 
   const onSubmit = async (data) => {
     await signin(data.email, data.password)
       .catch((error) => {
-        setError(error);
+        setError(error.message);
       })
       .then(() => {
         history.push("/profile");

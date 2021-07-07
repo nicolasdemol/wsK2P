@@ -6,7 +6,9 @@ function Home() {
   return (
     <div>
       <ShapeSection image={green}>
-        <Typography variant="h3">Hello I am a server</Typography>
+        <Typography variant="h4">
+          Bienvenue, vous êtes sur le Portail de Connexion K2 Process
+        </Typography>
       </ShapeSection>
       <SimpleSection />
     </div>

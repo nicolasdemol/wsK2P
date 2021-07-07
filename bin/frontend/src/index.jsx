@@ -20,7 +20,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    h3: {
+    h4: {
       fontWeight: "bold",
     },
     button: {
