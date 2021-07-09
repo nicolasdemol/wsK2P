@@ -44,12 +44,13 @@ export default function NavBar() {
   const { user, signout } = useAuth();
 
   useEffect(() => {
-    document.addEventListener("scroll", () => {
-      const Top = window.scrollY > 10;
-      if (isTop !== Top) {
+    const onScroll = () => {
+      if (isTop !== window.scrollY > 10) {
         setTop(!isTop);
       }
-    });
+    };
+    document.addEventListener("scroll", onScroll, true);
+    return () => document.removeEventListener("scroll", onScroll, false);
   });
 
   return (
