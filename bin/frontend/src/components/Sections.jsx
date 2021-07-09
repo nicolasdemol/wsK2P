@@ -1,36 +1,39 @@
-import React, { useEffect } from "react"
-import Container from "@material-ui/core/Container";
+import React, { useEffect } from "react";
+import { Container, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Hidden from "@material-ui/core/Hidden";
-import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   image: {
     position: "absolute",
     left: 0,
     zIndex: -1,
-    height: 700,
+    height: "80%",
+    width: "100%",
+    opacity: 0.8,
+  },
+  container: {
+    padding: theme.spacing(2, 0),
   },
   shape: {
     width: 0,
     height: 0,
-    borderTop: "700px solid white",
+    borderTopWidth: "80vh",
+    borderTopColor: "white",
+    borderTopStyle: "solid",
     borderRight: "100px solid transparent",
   },
   intro: {
-    width: 700,
-    height: 700,
+    width: 800,
+    padding: theme.spacing(4, 2),
+    height: "100%",
     backgroundColor: "white",
   },
   section: {
-    width: "100%",
-    backgroundColor: "white",
+    display: "flex",
     borderTop: `1px solid ${theme.palette.grey[300]}`,
-    height: "80%",
-  },
-  content: {
-    padding: theme.spacing(10, 0),
-    fontWeight: "bold",
+    height: "80vh",
+    overflow: "hidden",
   },
   image_background: {
     position: "absolute",
@@ -44,40 +47,48 @@ const useStyles = makeStyles((theme) => ({
 export function ShapeSection(props) {
   const classes = useStyles();
   return (
-    <div style={{ display: "flex" }}>
+    <section className={classes.section}>
       <div className={classes.intro}>
-        <Container maxWidth="sm">
-          <Box className={classes.content}>{ props.children }</Box>
-        </Container>
+        <Container maxWidth="lg">{props.children}</Container>
       </div>
       <Hidden smDown>
-        <div className={classes.shape}></div>
-        <img className={classes.image} src={props.image} width="100%" height="100%" />
+        <Box className={classes.shape}></Box>
+        <img className={classes.image} src={props.image} />
       </Hidden>
-    </div>
+    </section>
   );
 }
 
 export function SimpleSection(props) {
   const classes = useStyles();
-  return <section className={classes.section}>{ props.children }</section>;
+  return (
+    <section className={classes.section}>
+      <Container className={classes.container} maxWidth="lg">
+        {props.children}
+      </Container>
+    </section>
+  );
 }
 
 export function BackgroundSection(props) {
   const classes = useStyles();
 
   const getPosition = (position) => {
-    const obj = {}
+    const obj = {};
     for (const key of position.split(" ")) {
-      obj[key] = 0
+      obj[key] = 0;
     }
-    return obj
-  }
-
+    return obj;
+  };
 
   return (
     <Hidden smDown>
-      <img style={getPosition(props.position)} className={classes.image_background} src={props.image} alt="image" />
+      <img
+        style={getPosition(props.position)}
+        className={classes.image_background}
+        src={props.image}
+        alt="image"
+      />
     </Hidden>
   );
 }

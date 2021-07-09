@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,14 +20,11 @@ import SuperTabs from "./SuperTabs";
 import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    borderBottom: `1px solid ${theme.palette.grey[300]}`,
-  },
   toolbar: {
     justifyContent: "center",
   },
   logo: {
-    marginRight: "auto"
+    marginRight: "auto",
   },
   tabs: {
     position: "absolute",
@@ -42,17 +39,26 @@ export default function NavBar() {
   const classes = useStyles();
   let history = useHistory();
 
-  const removeIndicator = () => {};
+  const [isTop, setTop] = useState(false);
 
   const { user, signout } = useAuth();
 
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      const Top = window.scrollY > 10;
+      if (isTop !== Top) {
+        setTop(!isTop);
+      }
+    });
+  });
+
   return (
-    <div>
+    <React.Fragment>
       <AppBar
         className={classes.root}
-        position="sticky"
+        position={"sticky"}
         color="inherit"
-        elevation={0}
+        elevation={isTop ? 5 : 0}
       >
         <Toolbar className={classes.toolbar}>
           <div
@@ -62,7 +68,7 @@ export default function NavBar() {
           >
             <Logo />
           </div>
-          <Hidden mdDown>
+          <Hidden smDown>
             <div className={classes.tabs}>
               <SuperTabs />
             </div>
@@ -83,11 +89,11 @@ export default function NavBar() {
               </div>
             )}
           </Hidden>
-          <Hidden lgUp>
+          <Hidden mdUp>
             <SideNav />
           </Hidden>
         </Toolbar>
       </AppBar>
-    </div>
+    </React.Fragment>
   );
 }

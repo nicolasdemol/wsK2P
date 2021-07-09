@@ -6,8 +6,7 @@ import App from "./App";
 import { AuthProvider } from "./hooks/useAuth";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
-import deepOrange from "@material-ui/core/colors/deepOrange";
-import { amber } from "@material-ui/core/colors";
+import { blue, amber, green } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   palette: {
