@@ -1,5 +1,5 @@
 import React from "react";
-import EnhancedTable from "../components/EnhanceTable/Index";
+import EnhancedTable from "../components/EnhanceTable";
 import makeData from "../js/makeData";
 
 export default function Controls() {
