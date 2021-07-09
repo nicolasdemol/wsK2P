@@ -6,28 +6,32 @@ import App from "./App";
 import { AuthProvider } from "./hooks/useAuth";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
-import { red, amber, green } from "@material-ui/core/colors";
-import { deepOrange } from "@material-ui/core/colors";
+import { red, blueGrey } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: amber[600],
-      dark: amber[700],
+      main: blueGrey[900],
+      dark: blueGrey[700],
     },
     secondary: {
-      main: deepOrange[500],
-      dark: deepOrange[700],
+      main: "#DF2000",
+      dark: red["A700"],
     },
   },
   typography: {
-    h4: {
-      fontWeight: "bold",
+    fontWeightBold: 900,
+    h2: {
+      fontSize: "60px",
+    },
+
+    subtitle1: {
+      color: blueGrey[500],
     },
     button: {
       fontWeight: "bold",
     },
-    fontFamily: ["Muli"].join(","),
+    fontFamily: ["Lato"].join(","),
   },
 });
 

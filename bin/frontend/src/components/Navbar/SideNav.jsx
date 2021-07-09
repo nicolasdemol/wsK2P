@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useHistory } from "react-router-dom";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -12,18 +12,18 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import { ListItemSecondaryAction } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ListItemText from "@material-ui/core/ListItemText";
-import { Avatar, Typography, ListItemAvatar } from "@material-ui/core";
+import { ListItemAvatar } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import GroupIcon from "@material-ui/icons/Group";
 import CallIcon from "@material-ui/icons/Call";
 import LockIcon from "@material-ui/icons/Lock";
-import DoneAllIcon from "@material-ui/icons/DoneAll";
 import Hidden from "@material-ui/core/Hidden";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 import ExitToApp from "@material-ui/icons/ExitToApp";
 import BadgeAvatars from "./BadgeAvatars";
 import CloudIcon from "@material-ui/icons/Cloud";
+import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
 
 const useStyles = makeStyles({
   list: {
@@ -74,7 +74,7 @@ export default function SideNav() {
               <ListItemAvatar>
                 <BadgeAvatars />
               </ListItemAvatar>
-              <ListItemText primary="Teledyne Oldham Simtronics" />
+              <ListItemText primary="Teledyne Oldham Simtronic" />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
                   <NavigateNextIcon />
@@ -114,7 +114,13 @@ export default function SideNav() {
       <Divider />
       {user ? (
         <List>
-          <ListItem button onClick={() => signout()}>
+          <ListItem button onClick={() => history.push("/controls")}>
+            <ListItemIcon>
+              <DoneOutlineIcon />
+            </ListItemIcon>
+            <ListItemText primary="Tracabilité" />
+          </ListItem>
+          <ListItem button onClick={() => history.push("/data")}>
             <ListItemIcon>
               <CloudIcon />
             </ListItemIcon>

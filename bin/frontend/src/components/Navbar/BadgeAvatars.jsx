@@ -1,21 +1,19 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import DraftsIcon from "@material-ui/icons/Drafts";
-import SendIcon from "@material-ui/icons/Send";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Badge from "@material-ui/core/Badge";
+import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import ExitToApp from "@material-ui/icons/ExitToApp";
 import CloudIcon from "@material-ui/icons/Cloud";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
+import teledyne from "../../images/teledyne.png";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -48,7 +46,7 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles((theme) => ({
   root: {
     "&:focus": {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: theme.palette.secondary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.common.white,
       },
@@ -72,7 +70,7 @@ export default function BadgeAvatars() {
   };
 
   return (
-    <div>
+    <Box onMouseEnter={handleClick} onMouseDown={handleClose}>
       <StyledBadge
         style={{ cursor: "pointer" }}
         overlap="circle"
@@ -82,18 +80,13 @@ export default function BadgeAvatars() {
         }}
         variant="dot"
       >
-        <Avatar
-          alt="Teledyne"
-          src="/static/images/avatar/1.jpg"
-          onClick={handleClick}
-        />
+        <Avatar alt="Teledyne" src={teledyne} />
       </StyledBadge>
       <StyledMenu
         id="customized-menu"
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}
       >
         <StyledMenuItem onClick={() => history.push("/profile")}>
           <ListItemIcon>
@@ -101,7 +94,13 @@ export default function BadgeAvatars() {
           </ListItemIcon>
           <ListItemText primary="Votre profile" />
         </StyledMenuItem>
-        <StyledMenuItem>
+        <StyledMenuItem onClick={() => history.push("/controls")}>
+          <ListItemIcon>
+            <DoneOutlineIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Tracabilité" />
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => history.push("/data")}>
           <ListItemIcon>
             <CloudIcon fontSize="small" />
           </ListItemIcon>
@@ -114,6 +113,6 @@ export default function BadgeAvatars() {
           <ListItemText primary="Se déconnecter" />
         </StyledMenuItem>
       </StyledMenu>
-    </div>
+    </Box>
   );
 }

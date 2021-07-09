@@ -2,7 +2,7 @@ import React from "react";
 
 import AddUserDialog from "./AddUserDialog";
 import clsx from "clsx";
-import DeleteIcon from "@material-ui/icons/Delete";
+import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import GlobalFilter from "./GlobalFilter";
 import IconButton from "@material-ui/core/IconButton";
 import { lighten, makeStyles } from "@material-ui/core/styles";
@@ -58,14 +58,14 @@ const TableToolbar = (props) => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle">
-          Ordres de fabrication Teledyne
+          Ordres de fabrication
         </Typography>
       )}
 
       {numSelected > 0 ? (
-        <Tooltip title="Supprimer">
+        <Tooltip title="Télécharger">
           <IconButton aria-label="delete" onClick={deleteUserHandler}>
-            <DeleteIcon />
+            <CloudDownloadIcon />
           </IconButton>
         </Tooltip>
       ) : (

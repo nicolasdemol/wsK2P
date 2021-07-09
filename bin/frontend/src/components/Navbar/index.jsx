@@ -3,21 +3,18 @@ import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import LockIcon from "@material-ui/icons/Lock";
-import DoneAllIcon from "@material-ui/icons/DoneAll";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Hidden from "@material-ui/core/Hidden";
+import Typography from "@material-ui/core/Typography";
 import SideNav from "./SideNav";
 import BadgeAvatars from "./BadgeAvatars";
 
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 import Logo from "./Logo";
 import SuperTabs from "./SuperTabs";
-import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -35,17 +32,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBar() {
+export default function Navbar() {
   const classes = useStyles();
   let history = useHistory();
 
   const [isTop, setTop] = useState(false);
 
-  const { user, signout } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     const onScroll = () => {
-      if (isTop !== window.scrollY > 10) {
+      const Top = window.scrollY > 10;
+      if (isTop !== Top) {
         setTop(!isTop);
       }
     };
@@ -74,7 +72,12 @@ export default function NavBar() {
               <SuperTabs />
             </div>
             {user ? (
-              <BadgeAvatars />
+              <React.Fragment>
+                <Typography style={{ fontWeight: "bold", paddingRight: 10 }}>
+                  Teledyne Oldham Simtronic
+                </Typography>
+                <BadgeAvatars />
+              </React.Fragment>
             ) : (
               <div>
                 <Button
