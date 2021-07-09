@@ -10,10 +10,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   title: {
-    fontSize: 26,
-    fontWeight: 400,
-    fontFamily: "Faster One",
+    fontSize: 24,
+    fontWeight: 900,
+    fontFamily: "Syncopate",
     lineHeight: 1,
+    color: theme.palette.secondary.dark
   },
   subtitle: {
     fontSize: 16,
@@ -26,13 +27,13 @@ function Logo() {
   const classes = useStyles();
   return (
     <Box className={classes.logo}>
-      <img src={logo} alt="logo" width="36" height="60" />
+      <img src={logo} alt="logo" width="38" height="64" />
       <div>
         <Typography color="primary" className={classes.title}>
-          K2 Process
+          K2 PROCESS
         </Typography>
         <Typography className={classes.subtitle}>
-          Optimisation Industrielle™
+          Optimisation Industrielle
         </Typography>
       </div>
     </Box>

@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   span: {
-    color: theme.palette.secondary.main,
+    color: theme.palette.secondary.dark,
   },
   subtitle: {
     padding: theme.spacing(1, 2),

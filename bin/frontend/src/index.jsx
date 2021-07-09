@@ -31,7 +31,7 @@ const theme = createMuiTheme({
     button: {
       fontWeight: "bold",
     },
-    fontFamily: ["Lato"].join(","),
+    fontFamily: ["Roboto"].join(","),
   },
 });
 

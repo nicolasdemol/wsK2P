@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ["Lato", "Faster One", "Muli", "Lato"],
+        families: ["Roboto", "Syncopate"],
       },
     });
   }, []);

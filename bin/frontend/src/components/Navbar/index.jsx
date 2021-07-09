@@ -19,6 +19,10 @@ import SuperTabs from "./SuperTabs";
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     justifyContent: "center",
+    margin: theme.spacing(0,4),
+    [theme.breakpoints.down("sm")]: {
+      margin: 0
+    }
   },
   logo: {
     marginRight: "auto",
