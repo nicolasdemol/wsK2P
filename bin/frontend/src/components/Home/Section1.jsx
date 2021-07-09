@@ -65,7 +65,7 @@ export default function Section1() {
         <Container maxWidth="md">
           <Box>
             <Typography className={classes.title} variant="h2">
-              La <span className={classes.span}>solution</span> pour la
+              La solution pour la
               fabriquation de vos cartes électroniques
             </Typography>
           </Box>

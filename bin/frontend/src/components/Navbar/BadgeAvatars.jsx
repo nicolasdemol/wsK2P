@@ -3,6 +3,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import MenuList from "@material-ui/core/MenuList";
 import Badge from "@material-ui/core/Badge";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
@@ -29,6 +30,7 @@ const StyledMenu = withStyles({
   },
 })((props) => (
   <Menu
+    disableScrollLock={true}
     elevation={0}
     getContentAnchorEl={null}
     anchorOrigin={{
@@ -70,7 +72,7 @@ export default function BadgeAvatars() {
   };
 
   return (
-    <Box onMouseEnter={handleClick} onMouseDown={handleClose}>
+    <Box >
       <StyledBadge
         style={{ cursor: "pointer" }}
         overlap="circle"
@@ -79,6 +81,7 @@ export default function BadgeAvatars() {
           horizontal: "right",
         }}
         variant="dot"
+        onMouseEnter={handleClick}
       >
         <Avatar alt="Teledyne" src={teledyne} />
       </StyledBadge>
@@ -88,6 +91,7 @@ export default function BadgeAvatars() {
         keepMounted
         open={Boolean(anchorEl)}
       >
+        <MenuList onMouseLeave={handleClose}>
         <StyledMenuItem onClick={() => history.push("/profile")}>
           <ListItemIcon>
             <AccountCircleIcon fontSize="small" />
@@ -112,6 +116,8 @@ export default function BadgeAvatars() {
           </ListItemIcon>
           <ListItemText primary="Se déconnecter" />
         </StyledMenuItem>
+
+        </MenuList>
       </StyledMenu>
     </Box>
   );
