@@ -38,7 +38,7 @@ const StyledMenu = withStyles({
       horizontal: "center",
     }}
     transformOrigin={{
-      vertical: "top",
+      vertical: "bottom",
       horizontal: "center",
     }}
     {...props}
@@ -72,7 +72,7 @@ export default function BadgeAvatars() {
   };
 
   return (
-    <Box >
+    <Box>
       <StyledBadge
         style={{ cursor: "pointer" }}
         overlap="circle"
@@ -91,32 +91,31 @@ export default function BadgeAvatars() {
         keepMounted
         open={Boolean(anchorEl)}
       >
-        <MenuList onMouseLeave={handleClose}>
-        <StyledMenuItem onClick={() => history.push("/profile")}>
-          <ListItemIcon>
-            <AccountCircleIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Votre profile" />
-        </StyledMenuItem>
-        <StyledMenuItem onClick={() => history.push("/controls")}>
-          <ListItemIcon>
-            <DoneOutlineIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Tracabilité" />
-        </StyledMenuItem>
-        <StyledMenuItem onClick={() => history.push("/data")}>
-          <ListItemIcon>
-            <CloudIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Vos données" />
-        </StyledMenuItem>
-        <StyledMenuItem onClick={() => signout()}>
-          <ListItemIcon>
-            <ExitToApp fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Se déconnecter" />
-        </StyledMenuItem>
-
+        <MenuList onMouseLeave={handleClose} style={{ outline: "none" }}>
+          <StyledMenuItem onClick={() => history.push("/profile")}>
+            <ListItemIcon>
+              <AccountCircleIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Votre profile" />
+          </StyledMenuItem>
+          <StyledMenuItem onClick={() => history.push("/controls")}>
+            <ListItemIcon>
+              <DoneOutlineIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Tracabilité" />
+          </StyledMenuItem>
+          <StyledMenuItem onClick={() => history.push("/data")}>
+            <ListItemIcon>
+              <CloudIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Vos données" />
+          </StyledMenuItem>
+          <StyledMenuItem onClick={() => signout()}>
+            <ListItemIcon>
+              <ExitToApp fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Se déconnecter" />
+          </StyledMenuItem>
         </MenuList>
       </StyledMenu>
     </Box>

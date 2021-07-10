@@ -64,9 +64,8 @@ export default function Section1() {
       <Paper className={classes.paper} elevation={3} square>
         <Container maxWidth="md">
           <Box>
-            <Typography className={classes.title} variant="h2">
-              La solution pour la
-              fabriquation de vos cartes électroniques
+            <Typography className={classes.title} variant="h3">
+              La solution pour la fabriquation de vos cartes électroniques
             </Typography>
           </Box>
           <ReactPlayer
