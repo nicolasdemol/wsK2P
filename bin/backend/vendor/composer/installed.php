@@ -200,6 +200,24 @@
       ),
       'reference' => '006aa5d32f887a4db4353b13b5b5095613e0611f',
     ),
+    'icewind/smb' => 
+    array (
+      'pretty_version' => 'v3.4.1',
+      'version' => '3.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9dba42ab2a3990de29e18cc62b0a8270aceb74e3',
+    ),
+    'icewind/streams' => 
+    array (
+      'pretty_version' => 'v0.7.5',
+      'version' => '0.7.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0c6aae16ebdadb257f0bd089c1e1e4cf5e20ddc2',
+    ),
     'laminas/laminas-code' => 
     array (
       'pretty_version' => '4.4.2',
@@ -217,6 +235,15 @@
       array (
       ),
       'reference' => '0b964b665016dfb61dd0fd2bb8c24afb1ae45a93',
+    ),
+    'nikic/php-parser' => 
+    array (
+      'pretty_version' => 'v4.11.0',
+      'version' => '4.11.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fe14cf3672a149364fb66dfe11bf6549af899f94',
     ),
     'ocramius/package-versions' => 
     array (
@@ -539,6 +566,15 @@
       array (
       ),
       'reference' => '90ad9f4b21ddcb8ebe9faadfcca54929ad23f9f8',
+    ),
+    'symfony/maker-bundle' => 
+    array (
+      'pretty_version' => 'v1.33.0',
+      'version' => '1.33.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f093d906c667cba7e3f74487d9e5e55aaf25a031',
     ),
     'symfony/password-hasher' => 
     array (

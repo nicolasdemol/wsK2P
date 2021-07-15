@@ -1,11 +1,4 @@
-import {
-  Paper,
-  Box,
-  Typography,
-  Hidden,
-  Container,
-  Grid,
-} from "@material-ui/core";
+import { Box, Typography, Container, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
