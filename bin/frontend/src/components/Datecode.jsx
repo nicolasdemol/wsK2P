@@ -1,10 +1,30 @@
-import { Container, Paper, Typography, InputBase } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+import { useRef } from "react";
+import {
+  Container,
+  Paper,
+  Typography,
+  TextField,
+  Box,
+  IconButton,
+} from "@material-ui/core";
+import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
-  paper: { margin: "auto" },
+  root: {
+    marginTop: theme.spacing(10),
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 0,
+    },
+  },
+  paper: {
+    padding: theme.spacing(3),
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+  },
   title: {
     fontWeight: theme.typography.fontWeightBold,
   },
@@ -12,33 +32,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Datecode() {
   const classes = useStyles();
+  const textRef = useRef();
+
+  const handleDownload = () => {
+    console.log(textRef.current.value);
+    axios({ url: `http://localhost:8000/controls/${textRef.current.value}` });
+  };
+
   return (
-    <Container maxWidth="sm" className={classes.root}>
+    <Container maxWidth="xs" className={classes.root}>
       <Paper className={classes.paper}>
-        <Typography className={classes.title}>
-          Rechercher & Télécharger
-        </Typography>
-        <SearchBar />
+        <Box>
+          <Typography variant="h6" className={classes.title}>
+            Rechercher & Télécharger
+          </Typography>
+        </Box>
+        <Box>
+          <TextField inputRef={textRef} label="Datecode" />
+          <IconButton edge="end" onClick={() => handleDownload()}>
+            <CloudDownloadIcon />
+          </IconButton>
+        </Box>
       </Paper>
     </Container>
-  );
-}
-
-function SearchBar() {
-  const classes = useStyles;
-  return (
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon />
-      </div>
-      <InputBase
-        placeholder={`Datecode`}
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        inputProps={{ "aria-label": "recherche" }}
-      />
-    </div>
   );
 }

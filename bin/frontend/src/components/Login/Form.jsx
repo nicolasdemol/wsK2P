@@ -21,7 +21,7 @@ import { useForm } from "react-hook-form";
 import Copyright from "./Copyright";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
+  root: {
     marginTop: theme.spacing(10),
     [theme.breakpoints.down("sm")]: {
       marginTop: 0,
@@ -71,7 +71,7 @@ export default function Form() {
   };
 
   return (
-    <Container className={classes.container} maxWidth="sm">
+    <Container className={classes.root} maxWidth="sm">
       <Paper elevation={2} className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
