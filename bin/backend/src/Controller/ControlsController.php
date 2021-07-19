@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use phpseclib3\Net\SFTP;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class ControlsController extends AbstractController
 {
@@ -26,15 +28,24 @@ class ControlsController extends AbstractController
 
         $sftp->get($filepath, $filename);
 
-        if (file_exists($filename)) {
-            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($filename));
-            exit;
-        } else throw new \Exception('Cannot login to the server.');
+        $publicResourcesFolderPath = $this->getParameter('kernel.project_dir') . '/public/';
+
+        // This should return the file to the browser as response
+        $response = new BinaryFileResponse($publicResourcesFolderPath . $filename);
+
+        // Guess the mimetype of the file according to the extension of the file
+        $response->headers->set('Content-Type', 'mime/type');
+        // Set the mimetype of the file manually, in this case for a text file is text/plain
+        $response->headers->set('Content-Type', 'text/plain');
+
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        // Set content disposition inline of the file
+        $response->setContentDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            $filename
+        );
+
+        return $response;
     }
 }

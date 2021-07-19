@@ -35,8 +35,25 @@ export default function Datecode() {
   const textRef = useRef();
 
   const handleDownload = () => {
-    console.log(textRef.current.value);
-    axios({ url: `http://localhost:8000/controls/${textRef.current.value}` });
+    const method = "GET";
+    const url = `http://localhost:8000/controls/${textRef.current.value}`;
+
+    axios
+      .request({
+        url,
+        method,
+        responseType: "blob", //important
+      })
+      .then(({ data }) => {
+        const downloadUrl = window.URL.createObjectURL(new Blob([data]));
+        const link = document.createElement("a");
+
+        link.href = downloadUrl;
+        link.setAttribute("download", `${textRef.current.value}.txt`); //any other extension
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
   };
 
   return (
