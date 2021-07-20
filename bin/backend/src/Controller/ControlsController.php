@@ -11,8 +11,8 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class ControlsController extends AbstractController
 {
-    #[Route('/controls/{datecode}', name: 'controls')]
-    public function index(int $datecode): Response
+
+    private function connectVM()
     {
         $host = "192.168.10.5";
         $username = "Acces_serveur_pour_w";
@@ -21,30 +21,97 @@ class ControlsController extends AbstractController
         $sftp = new SFTP($host);
         $sftp->login($username, $password);
 
-        $path = "/D:/QUALITE/Resultat pour client";
+        return $sftp;
+    }
 
+    /**
+     * @Route("/controls/{datecode}", name="controls")
+     */
+    public function datecode_file(int $datecode): Response
+    {
+        $sftp = $this->connectVM();
+
+        $path_results = "/D:/QUALITE/Resultat pour client";
         $filename = $datecode . ".txt";
-        $filepath = $path . "/" . $filename;
+        $filepath = $path_results . "/" . $filename;
 
         $sftp->get($filepath, $filename);
 
         $publicResourcesFolderPath = $this->getParameter('kernel.project_dir') . '/public/';
 
-        // This should return the file to the browser as response
         $response = new BinaryFileResponse($publicResourcesFolderPath . $filename);
-
-        // Guess the mimetype of the file according to the extension of the file
-        $response->headers->set('Content-Type', 'mime/type');
-        // Set the mimetype of the file manually, in this case for a text file is text/plain
         $response->headers->set('Content-Type', 'text/plain');
-
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-
-        // Set content disposition inline of the file
         $response->setContentDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
             $filename
         );
+        $response->deleteFileAfterSend();
+
+        return $response;
+    }
+
+    public function get_datecode_info(int $datecode)
+    {
+        $sftp = $this->connectVM();
+
+        $path_traca = "/D:/QUALITE/Tracabilite";
+        $filename = $datecode . ".tra";
+        $filepath = $path_traca . "/" . $filename;
+
+        // Parse file
+        $traca = $sftp->get($filepath);
+        $traca = preg_replace("/\s+/", " ", $traca);
+        $traca = explode(" ", $traca);
+
+        $data = array(
+            "products" => array(),
+            "images" => array(),
+        );
+
+        foreach ($traca as $key => $value) {
+            if ($key % 2 == 0) {
+                array_push($data["products"], $value);
+            } else {
+                array_push($data["images"], $value);
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * @Route("/controls/{datecode}/img/", name="controls_img")
+     */
+    public function datecode_info(int $datecode): Response
+    {
+        $data = $this->get_datecode_info($datecode);
+
+        $response = new Response();
+        $response->setContent(json_encode($data));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @Route("/controls/{datecode}/img/{number}", name="controls_img_")
+     */
+    public function datecode_img($number): Response
+    {
+
+        $sftp = $this->connectVM();
+
+        $path_traca = "/D:/QUALITE/Tracabilite";
+        $filename_image = $number . ".jpg";
+        $filepath_image = $path_traca . "/" . substr($number, 0, 3) . "/" . $filename_image;
+        $sftp->get($filepath_image, $filename_image);
+
+        $publicResourcesFolderPath = $this->getParameter('kernel.project_dir') . '/public/';
+
+        $response = new BinaryFileResponse($publicResourcesFolderPath . $filename_image);
+        $response->headers->set('Content-Type', 'image/jpeg');
+        $response->deleteFileAfterSend();
+
 
         return $response;
     }
