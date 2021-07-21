@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use phpseclib3\Net\SFTP;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class ControlsController extends AbstractController
@@ -50,7 +51,12 @@ class ControlsController extends AbstractController
         return $response;
     }
 
-    public function get_datecode_info(int $datecode)
+
+
+    /**
+     * @Route("/controls/{datecode}/img/", name="controls_img")
+     */
+    public function datecode_info(Request $request, int $datecode): Response
     {
         $sftp = $this->connectVM();
 
@@ -76,22 +82,14 @@ class ControlsController extends AbstractController
             }
         }
 
-        return $data;
-    }
-
-    /**
-     * @Route("/controls/{datecode}/img/", name="controls_img")
-     */
-    public function datecode_info(int $datecode): Response
-    {
-        $data = $this->get_datecode_info($datecode);
-
         $response = new Response();
         $response->setContent(json_encode($data));
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }
+
+
 
     /**
      * @Route("/controls/{datecode}/img/{number}", name="controls_img_")

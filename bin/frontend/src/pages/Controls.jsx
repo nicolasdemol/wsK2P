@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 import Datecode from "../components/Controls/Datecode";
 import ProductDef from "../components/Controls/ProductDef";
-import { makeStyles } from "@material-ui/core";
+import { Container, makeStyles } from "@material-ui/core";
 import axios from "axios";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    flexGrow: 1,
-    flexWrap: "wrap",
-    [theme.breakpoints.up("sm")]: {
-      flexWrap: "nowrap",
+    [theme.breakpoints.down("sm")]: {
+      padding: 0,
     },
   },
 }));
@@ -70,12 +68,12 @@ export default function Controls() {
   }, [text]);
 
   return (
-    <div className={classes.root}>
+    <Container maxWidth={"lg"} className={classes.root}>
       <Datecode
         onChange={(value) => handleChange(value)}
         onDownload={() => handleDownload()}
       />
       <ProductDef itemData={data} />
-    </div>
+    </Container>
   );
 }

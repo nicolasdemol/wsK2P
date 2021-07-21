@@ -4,10 +4,16 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function TitlebarImageList(props) {
   return (
-    <ImageList sx={{ width: 500, height: 450 }} gap={2} rowHeight={300}>
+    <ImageList
+      sx={{ width: 500, height: 450 }}
+      gap={2}
+      rowHeight={200}
+      cols={4}
+    >
       {props.itemData
         ? props.itemData.map((item) => (
             <ImageListItem key={item.img}>
