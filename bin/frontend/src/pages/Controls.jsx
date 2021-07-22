@@ -1,22 +1,12 @@
 import { useState, useEffect } from "react";
 import Datecode from "../components/Controls/Datecode";
 import ProductDef from "../components/Controls/ProductDef";
-import { Container, makeStyles } from "@material-ui/core";
 import axios from "axios";
 import React from "react";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    [theme.breakpoints.down("sm")]: {
-      padding: 0,
-    },
-  },
-}));
-
 export default function Controls() {
-  const classes = useStyles();
   const [text, setText] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   const handleChange = (value) => {
     setText(value);
@@ -44,36 +34,35 @@ export default function Controls() {
       });
   };
 
-  const handleData = () => {
-    axios.get(`https://localhost:8000/controls/${text}/img`).then((res) => {
-      let imgs = [];
-      res.data.images.forEach((img) => {
-        imgs.push(`https://localhost:8000/controls/${text}/img/${img}`);
-      });
-      let items = imgs.map((id, index) => {
-        return {
-          img: imgs[index],
-          title: res.data.products[index],
-        };
-      });
-      setData(items);
-    });
-  };
-
   useEffect(() => {
+    const handleData = () => {
+      axios.get(`https://localhost:8000/controls/${text}/img`).then((res) => {
+        let imgs = [];
+        res.data.images.forEach((img) => {
+          imgs.push(`https://localhost:8000/controls/${text}/img/${img}`);
+        });
+        let items = imgs.map((id, index) => {
+          return {
+            img: imgs[index],
+            title: res.data.products[index],
+          };
+        });
+        setData(items);
+      });
+    };
+
     if (text.length === 7) {
       handleData();
-      console.log(data);
     }
   }, [text]);
 
   return (
-    <Container maxWidth={"lg"} className={classes.root}>
+    <React.Fragment>
       <Datecode
         onChange={(value) => handleChange(value)}
         onDownload={() => handleDownload()}
       />
       <ProductDef itemData={data} />
-    </Container>
+    </React.Fragment>
   );
 }

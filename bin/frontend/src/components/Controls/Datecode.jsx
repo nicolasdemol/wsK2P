@@ -1,19 +1,9 @@
 import React from "react";
 import {
-  Container,
   Paper,
   Typography,
   TextField,
   Box,
-  Hidden,
-  Card,
-  AppBar,
-  CardActionArea,
-  CardContent,
-  CardActions,
-  CardMedia,
-  Button,
-  Toolbar,
   Tooltip,
   IconButton,
 } from "@material-ui/core";
@@ -26,15 +16,16 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     margin: theme.spacing(4, 0),
-    padding: theme.spacing(1, 8),
+    padding: theme.spacing(1, 12),
     [theme.breakpoints.down("xs")]: {
       padding: theme.spacing(1, 2),
     },
-    border: "1px dashed black",
+    borderTop: "1px dotted grey",
+    borderBottom: "1px dotted grey",
   },
-  logo: {
+  navLeft: {
+    marginLeft: 14,
     marginRight: "auto",
-    paddingRight: "10px",
     display: "flex",
     alignItems: "center",
   },
@@ -44,12 +35,12 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "18px",
     },
   },
+  text: {
+    margin: theme.spacing(0, 4),
+  },
   navRight: {
     display: "flex",
     alignItems: "center",
-  },
-  button: {
-    margin: theme.spacing(0, 1),
   },
 }));
 
@@ -72,19 +63,20 @@ export default function Datecode(props) {
 
   return (
     <Paper className={classes.paper} elevation={0} square>
-      <Box className={classes.logo}>
-        <DoneOutlineIcon fontSize="small" style={{ paddingRight: 4 }} />
+      <Box className={classes.navLeft}>
+        <DoneOutlineIcon fontSize="small" style={{ marginRight: 8 }} />
         <Typography variant="h6" className={classes.title}>
           Tracabilité
         </Typography>
-      </Box>
-      <Box className={classes.navRight}>
         <TextField
+          className={classes.text}
           onChange={(event) => handleChange(event)}
           label="Datecode"
           variant={"outlined"}
           size={"small"}
         />
+      </Box>
+      <Box className={classes.navRight}>
         <HtmlTooltip
           title={
             <React.Fragment>
@@ -95,12 +87,7 @@ export default function Datecode(props) {
             </React.Fragment>
           }
         >
-          <IconButton
-            edge={"end"}
-            className={classes.button}
-            color="primary"
-            onClick={props.onDownload}
-          >
+          <IconButton color="primary" onClick={props.onDownload}>
             <CloudDownloadIcon />
           </IconButton>
         </HtmlTooltip>

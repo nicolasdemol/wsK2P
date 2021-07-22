@@ -68,11 +68,11 @@ export default function Section1() {
               La solution pour la fabriquation de vos cartes électroniques
             </Typography>
           </Box>
-          <ReactPlayer
-            className={classes.video}
-            url="https://www.youtube.com/watch?v=o8NPllzkFhE"
-            width="100%"
-          />
+            <ReactPlayer
+              className={classes.video}
+              url="https://www.youtube.com/watch?v=o8NPllzkFhE"
+              width="100%"
+            />
           <Box>
             <Typography variant="subtitle1" className={classes.subtitle}>
               <span style={{ fontWeight: "bold", color: "black" }}>
