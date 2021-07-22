@@ -41,6 +41,7 @@ class ControlsController extends AbstractController
         $publicResourcesFolderPath = $this->getParameter('kernel.project_dir') . '/public/';
 
         $response = new BinaryFileResponse($publicResourcesFolderPath . $filename);
+        $response->headers->set("Access-Control-Allow-Origin", "*");
         $response->headers->set('Content-Type', 'text/plain');
         $response->setContentDisposition(
             ResponseHeaderBag::DISPOSITION_ATTACHMENT,
@@ -83,8 +84,9 @@ class ControlsController extends AbstractController
         }
 
         $response = new Response();
-        $response->setContent(json_encode($data));
+        $response->headers->set("Access-Control-Allow-Origin", "*");
         $response->headers->set('Content-Type', 'application/json');
+        $response->setContent(json_encode($data));
 
         return $response;
     }
@@ -107,6 +109,7 @@ class ControlsController extends AbstractController
         $publicResourcesFolderPath = $this->getParameter('kernel.project_dir') . '/public/';
 
         $response = new BinaryFileResponse($publicResourcesFolderPath . $filename_image);
+        $response->headers->set("Access-Control-Allow-Origin", "*");
         $response->headers->set('Content-Type', 'image/jpeg');
         $response->deleteFileAfterSend();
 
