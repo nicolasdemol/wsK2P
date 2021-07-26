@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ["Roboto", "Syncopate"],
+        families: ["Roboto:wght@900", "Syncopate:wght@700"],
       },
     });
   }, []);

@@ -11,10 +11,10 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 24,
-    fontWeight: 900,
+    fontWeight: 700,
     fontFamily: "Syncopate",
     lineHeight: 1,
-    color: theme.palette.secondary.dark
+    color: theme.palette.secondary.main,
   },
   subtitle: {
     fontSize: 16,

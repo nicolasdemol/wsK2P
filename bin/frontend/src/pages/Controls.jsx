@@ -14,7 +14,7 @@ export default function Controls() {
 
   const handleDownload = () => {
     const method = "GET";
-    const url = `http://192.168.10.5:8000/controls/${text}`;
+    const url = `https://localhost:8000/controls/${text}`;
 
     axios
       .request({
@@ -36,10 +36,10 @@ export default function Controls() {
 
   useEffect(() => {
     const handleData = () => {
-      axios.get(`http://192.168.10.5:8000/controls/${text}/img`).then((res) => {
+      axios.get(`https://localhost:8000/controls/${text}/img`).then((res) => {
         let imgs = [];
         res.data.images.forEach((img) => {
-          imgs.push(`http://192.168.10.5:8000/controls/${text}/img/${img}`);
+          imgs.push(`https://localhost:8000/controls/${text}/img/${img}`);
         });
         let items = imgs.map((id, index) => {
           return {

@@ -19,6 +19,7 @@ import { useHistory } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Copyright from "./Copyright";
+import Sensor from "../Sensor";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,14 +38,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   avatar: {
+    backgroundColor: theme.palette.secondary.main,
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
   submit: {
+    backgroundColor: theme.palette.secondary.main,
     margin: theme.spacing(3, 0),
     padding: 10,
   },
@@ -71,71 +73,73 @@ export default function Form() {
   };
 
   return (
-    <Container className={classes.root} maxWidth="sm">
-      <Paper elevation={2} className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          SE CONNECTER
-        </Typography>
-        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            {...register("email")}
-            label="Adresse email"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            {...register("password")}
-            label="Mot de passe"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Connexion auto"
-          />
-          <Button
-            type="submit"
-            disableElevation
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Connexion
-          </Button>
-          {error}
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Mot de passe oublié?
-              </Link>
+    <Sensor>
+      <Container className={classes.root} maxWidth="sm">
+        <Paper elevation={2} className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            SE CONNECTER
+          </Typography>
+          <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              {...register("email")}
+              label="Adresse email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              {...register("password")}
+              label="Mot de passe"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Connexion auto"
+            />
+            <Button
+              type="submit"
+              disableElevation
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Connexion
+            </Button>
+            {error}
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Mot de passe oublié?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Vous n'avez pas de compte? "}
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Vous n'avez pas de compte? "}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-        <Box mt={8}>
-          <Copyright />
-        </Box>
-      </Paper>
-    </Container>
+          </form>
+          <Box mt={8}>
+            <Copyright />
+          </Box>
+        </Paper>
+      </Container>
+    </Sensor>
   );
 }

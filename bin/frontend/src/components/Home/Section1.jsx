@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import ReactPlayer from "react-player";
+import Sensor from "../Sensor";
 import green from "../../images/green.jpg";
 import svg1 from "../../images/partenaires/wordpress-logo-0b5b5c7b8b.svg";
 import svg2 from "../../images/partenaires/jetpack-logo-6e2b150192.svg";
@@ -25,14 +26,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
+    color: theme.palette.primary.main,
     fontWeight: theme.typography.fontWeightBold,
     padding: theme.spacing(2, 0),
     [theme.breakpoints.down("md")]: {
+      textAlign: "center",
       fontSize: "40px",
     },
   },
   span: {
-    color: theme.palette.secondary.dark,
+    color: theme.palette.secondary.main,
+    fontWeight: theme.typography.fontWeightBold,
   },
   subtitle: {
     padding: theme.spacing(1, 2),
@@ -63,30 +67,34 @@ export default function Section1() {
     <Box className={classes.root}>
       <Paper className={classes.paper} elevation={3} square>
         <Container maxWidth="md">
-          <Box>
-            <Typography className={classes.title} variant="h3">
-              La solution pour la fabriquation de vos cartes électroniques
-            </Typography>
-          </Box>
+          <Sensor>
             <ReactPlayer
               className={classes.video}
               url="https://www.youtube.com/watch?v=o8NPllzkFhE"
               width="100%"
             />
+          </Sensor>
           <Box>
-            <Typography variant="subtitle1" className={classes.subtitle}>
-              <span style={{ fontWeight: "bold", color: "black" }}>
-                K2 PROCESS
-              </span>{" "}
-              vous propose une approche sur-mesure de votre projet en
-              électronique et informatique industrielle, du stade de la
-              conception à l'étude R&D approfondie jusqu’à l’industrialisation
-              optimisée.
-            </Typography>
+            <Sensor>
+              <Typography className={classes.title} variant="h3">
+                La solution pour la fabriquation de vos
+                <span className={classes.span}> cartes électroniques</span>
+              </Typography>
+            </Sensor>
+            <Sensor>
+              <Typography variant="subtitle1" className={classes.subtitle}>
+                K2 Process vous propose une approche sur-mesure de votre projet
+                en électronique et informatique industrielle, du stade de la
+                conception à l'étude R&D approfondie jusqu’à l’industrialisation
+                optimisée.
+              </Typography>
+            </Sensor>
           </Box>
-          <Box>
-            <LogoPartenaires />
-          </Box>
+          <Sensor>
+            <Box>
+              <LogoPartenaires />
+            </Box>
+          </Sensor>
         </Container>
       </Paper>
       <Hidden smDown>

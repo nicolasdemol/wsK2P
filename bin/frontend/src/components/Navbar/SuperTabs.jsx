@@ -6,7 +6,7 @@ import Tab from "@material-ui/core/Tab";
 
 const AntTabs = withStyles((theme) => ({
   indicator: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
   },
 }))(Tabs);
 
@@ -21,6 +21,7 @@ const AntTab = withStyles((theme) => ({
       opacity: 1,
     },
     "&$selected": {
+      color: theme.palette.secondary.main,
       fontWeight: theme.typography.fontWeightBold,
     },
   },

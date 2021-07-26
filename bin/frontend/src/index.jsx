@@ -5,17 +5,16 @@ import App from "./App";
 
 import { AuthProvider } from "./hooks/useAuth";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
 import { red, blueGrey } from "@material-ui/core/colors";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: blueGrey[900],
-      dark: blueGrey[700],
     },
     secondary: {
-      main: "#DF2000",
+      main: red["A400"],
       dark: red["A700"],
     },
   },
@@ -31,7 +30,7 @@ const theme = createMuiTheme({
     button: {
       fontWeight: "bold",
     },
-    fontFamily: ["Roboto"].join(","),
+    fontFamily: ["Roboto:wght@900"].join(","),
   },
 });
 
