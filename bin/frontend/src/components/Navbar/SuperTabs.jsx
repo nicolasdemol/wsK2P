@@ -6,23 +6,23 @@ import Tab from "@material-ui/core/Tab";
 
 const AntTabs = withStyles((theme) => ({
   indicator: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
 }))(Tabs);
 
 const AntTab = withStyles((theme) => ({
   root: {
+    color: theme.palette.primary.main,
+    fontWeight: theme.typography.fontWeightBold,
+    lineHeight: 2.6,
     textTransform: "none",
-    fontSize: 16,
-    lineHeight: 3,
     minWidth: 72,
-    fontWeight: theme.typography.fontWeightRegular,
+    transition: "0.25s ease-in-out",
     "&:hover": {
       opacity: 1,
     },
     "&$selected": {
-      color: theme.palette.secondary.main,
-      fontWeight: theme.typography.fontWeightBold,
+      color: theme.palette.primary.main,
     },
   },
   selected: {},

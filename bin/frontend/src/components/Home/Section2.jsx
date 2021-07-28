@@ -14,14 +14,16 @@ const useStyles = makeStyles((theme) => ({
     alignContent: "center",
     fontWeight: theme.typography.fontWeightBold,
     textAlign: "center",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: "40px",
     },
   },
   span: {
     color: theme.palette.secondary.main,
   },
-  subtitle: {},
+  subtitle: {
+    padding: theme.spacing(1, 2),
+  },
 }));
 
 export default function Section2() {
@@ -34,17 +36,17 @@ export default function Section2() {
           <Grid item xs={12} className={classes.header}>
             <Typography
               color={"primary"}
-              variant="h3"
+              variant="h1"
               className={classes.title}
             >
               Notre Process
             </Typography>
-            <Typography variant="h3" className={classes.title}>
+            <Typography variant="h2" className={classes.title}>
               <span className={classes.span}>Optimisation Industrielle</span>
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.subtitle}>
-            <Typography variant={"subtitle1"}>
+            <Typography variant={"subtitle1"} className={classes.subtitle}>
               Nous sommes une société française spécialisé dans le domaine de la
               manufacture de produits électroniques en Inde et en France. Nous
               avons pour vocation de développer les projets pour le compte de

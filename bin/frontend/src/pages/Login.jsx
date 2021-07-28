@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "../components/Login/Form";
-import boardLogin from "../images/boardLogin.jpg";
+import boardLogin from "../images/boardLogin_black.png";
 import { Background } from "../components/Background";
 
 export default function Login() {

@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { useHistory } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -150,7 +150,7 @@ export default function SideNav() {
     <div>
       <Hidden mdUp>
         <IconButton
-          color="inherit"
+          color="default"
           aria-label="menu"
           onClick={toggleDrawer("left", true)}
         >

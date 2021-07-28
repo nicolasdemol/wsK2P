@@ -5,6 +5,7 @@ import {
   Hidden,
   Container,
   Grid,
+  Card,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import ReactPlayer from "react-player";
@@ -13,6 +14,7 @@ import green from "../../images/green.jpg";
 import svg1 from "../../images/partenaires/wordpress-logo-0b5b5c7b8b.svg";
 import svg2 from "../../images/partenaires/jetpack-logo-6e2b150192.svg";
 import svg3 from "../../images/partenaires/googlecloud-logo-aeef2d9bbd.svg";
+import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,18 +22,22 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     width: "60%",
-    minHeight: "100%",
+    minheight: "40em",
+    backgroundColor: theme.palette.background.default,
     [theme.breakpoints.down("sm")]: {
       width: "100%",
     },
+    [theme.breakpoints.up("xl")]: {
+      width: "70%",
+    },
   },
   title: {
+    letterSpacing: "-.046em",
     color: theme.palette.primary.main,
-    fontWeight: theme.typography.fontWeightBold,
-    padding: theme.spacing(2, 0),
+    fontWeight: 900,
+    padding: theme.spacing(2),
     [theme.breakpoints.down("md")]: {
-      textAlign: "center",
-      fontSize: "40px",
+      fontSize: 64,
     },
   },
   span: {
@@ -41,55 +47,46 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     padding: theme.spacing(1, 2),
   },
-  video: {
-    padding: theme.spacing(2, 0),
-  },
   shape: {
     width: 0,
     height: 0,
-    borderTopWidth: "45em",
-    borderTopColor: "white",
+    borderTopWidth: "40em",
+    borderTopColor: theme.palette.background.default,
     borderTopStyle: "solid",
     borderRight: "100px solid transparent",
   },
   image: {
     position: "absolute",
     right: 0,
-    maxHeight: "45em",
-    zIndex: -1,
+    maxHeight: "40em",
+    zIndex: -2,
     objectFit: "contain",
   },
 }));
 
 export default function Section1() {
   const classes = useStyles();
+
   return (
     <Box className={classes.root}>
       <Paper className={classes.paper} elevation={3} square>
         <Container maxWidth="md">
-          <Sensor>
-            <ReactPlayer
-              className={classes.video}
-              url="https://www.youtube.com/watch?v=o8NPllzkFhE"
-              width="100%"
-            />
-          </Sensor>
           <Box>
             <Sensor>
-              <Typography className={classes.title} variant="h3">
-                La solution pour la fabriquation de vos
-                <span className={classes.span}> cartes électroniques</span>
+              <Typography className={classes.title} variant="h1">
+                Pour Vous Aider à la Réalisation de
+                <span className={classes.span}> Vos Projets</span>
               </Typography>
             </Sensor>
             <Sensor>
               <Typography variant="subtitle1" className={classes.subtitle}>
                 K2 Process vous propose une approche sur-mesure de votre projet
                 en électronique et informatique industrielle, du stade de la
-                conception à l'étude R&D approfondie jusqu’à l’industrialisation
-                optimisée.
+                conception jusqu’à l’industrialisation optimisée.
               </Typography>
             </Sensor>
           </Box>
+
           <Sensor>
             <Box>
               <LogoPartenaires />
@@ -100,18 +97,17 @@ export default function Section1() {
       <Hidden smDown>
         <div className={classes.shape}></div>
         <img className={classes.image} src={green} alt="section1" />
-        <img
+        <div
           className={classes.image}
           style={{
+            backgroundColor: "black",
             zIndex: -1,
-            height: "45em",
+            height: "40em",
             width: "100%",
             right: 0,
-            opacity: 0.5,
-            backgroundColor: "black",
+            opacity: 0.6,
           }}
-          alt="section1"
-        />
+        ></div>
       </Hidden>
     </Box>
   );

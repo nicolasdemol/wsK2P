@@ -17,12 +17,18 @@ import Logo from "./Logo";
 import SuperTabs from "./SuperTabs";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundColor: theme.palette.background.default,
+    borderBottom: `1px solid ${theme.palette.primary.dark}`,
+    color: theme.palette.primary.main,
+  },
   toolbar: {
-    justifyContent: "center",
-    margin: theme.spacing(0,4),
+    margin: theme.spacing(0, 10),
     [theme.breakpoints.down("sm")]: {
-      margin: 0
-    }
+      margin: 0,
+    },
+
+    justifyContent: "center",
   },
   logo: {
     marginRight: "auto",
@@ -30,9 +36,6 @@ const useStyles = makeStyles((theme) => ({
   tabs: {
     position: "absolute",
     alignSelf: "flex-end",
-  },
-  button: {
-    margin: theme.spacing(1),
   },
 }));
 
@@ -60,10 +63,9 @@ export default function Navbar() {
       <AppBar
         className={classes.root}
         position={"sticky"}
-        color="inherit"
         elevation={isTop ? 5 : 0}
       >
-        <Toolbar className={classes.toolbar}>
+        <Toolbar variant="dense" className={classes.toolbar}>
           <div
             className={classes.logo}
             style={{ cursor: "pointer" }}
@@ -77,16 +79,15 @@ export default function Navbar() {
             </div>
             {user ? (
               <React.Fragment>
-                <Typography style={{ fontWeight: "bold", paddingRight: 10 }}>
-                  Teledyne Oldham Simtronic
+                <Typography style={{ paddingRight: 10, fontSize: 14 }}>
+                  Teledyne
                 </Typography>
                 <BadgeAvatars />
               </React.Fragment>
             ) : (
               <div>
                 <Button
-                  className={classes.button}
-                  variant="outlined"
+                  size="small"
                   onClick={() => {
                     history.push("/login");
                   }}

@@ -6,31 +6,36 @@ import App from "./App";
 import { AuthProvider } from "./hooks/useAuth";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { createTheme } from "@material-ui/core/styles";
-import { red, blueGrey } from "@material-ui/core/colors";
+import { deepOrange, grey, purple } from "@material-ui/core/colors";
 
 const theme = createTheme({
   palette: {
+    type: "dark",
     primary: {
-      main: blueGrey[900],
+      main: "#fff",
+      light: grey[200],
+      dark: grey[800],
     },
     secondary: {
-      main: red["A400"],
-      dark: red["A700"],
+      main: "#f13",
+    },
+    background: {
+      default: "hsl(0, 0%, 10%)",
+      paper: "hsl(0, 0%, 14%)",
     },
   },
   typography: {
-    fontWeightBold: 900,
+    fontWeightBold: 700,
+    fontSize: 15,
     h2: {
       fontSize: "60px",
     },
 
     subtitle1: {
-      color: blueGrey[500],
+      color: grey[400],
     },
-    button: {
-      fontWeight: "bold",
-    },
-    fontFamily: ["Roboto:wght@900"].join(","),
+
+    fontFamily: ["Helvetica"].join(","),
   },
 });
 
