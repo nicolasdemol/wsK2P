@@ -15,9 +15,9 @@ class ControlsController extends AbstractController
 
     private function connectVM()
     {
-        $host = "192.168.10.5";
-        $username = "Acces_serveur_pour_w";
-        $password = "K2Process@miseenplace2021";
+        $host = "127.0.0.1";
+        $username = "webserv";
+        $password = "poplpo";
 
         $sftp = new SFTP($host);
         $sftp->login($username, $password);
@@ -32,7 +32,7 @@ class ControlsController extends AbstractController
     {
         $sftp = $this->connectVM();
 
-        $path_results = "/D:/QUALITE/Resultat pour client";
+        $path_results = "~/Documents/QUALITE/Resultat pour client";
         $filename = $datecode . ".txt";
         $filepath = $path_results . "/" . $filename;
 
@@ -61,7 +61,7 @@ class ControlsController extends AbstractController
     {
         $sftp = $this->connectVM();
 
-        $path_traca = "/D:/QUALITE/Tracabilite";
+        $path_traca = "~/Documents/QUALITE/Tracabilite";
         $filename = $datecode . ".tra";
         $filepath = $path_traca . "/" . $filename;
 
@@ -101,7 +101,7 @@ class ControlsController extends AbstractController
 
         $sftp = $this->connectVM();
 
-        $path_traca = "/D:/QUALITE/Tracabilite";
+        $path_traca = "~/Documents/QUALITE/Tracabilite";
         $filename_image = $number . ".jpg";
         $filepath_image = $path_traca . "/" . substr($number, 0, 3) . "/" . $filename_image;
         $sftp->get($filepath_image, $filename_image);
