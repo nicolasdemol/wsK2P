@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Datecode from "../components/Controls/Datecode";
 import ProductDef from "../components/Controls/ProductDef";
+import { CssBaseline } from "@material-ui/core";
 import axios from "axios";
 import React from "react";
 
@@ -58,6 +59,8 @@ export default function Controls() {
 
   return (
     <React.Fragment>
+      <CssBaseline />
+
       <Datecode
         onChange={(value) => handleChange(value)}
         onDownload={() => handleDownload()}
