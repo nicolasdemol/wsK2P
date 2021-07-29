@@ -9,16 +9,15 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import { ListItemSecondaryAction, CssBaseline } from "@material-ui/core";
+import { ListItemSecondaryAction } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import ListItemText from "@material-ui/core/ListItemText";
-import { ListItemAvatar } from "@material-ui/core";
+import { ListItemAvatar, Box } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import GroupIcon from "@material-ui/icons/Group";
 import CallIcon from "@material-ui/icons/Call";
 import LockIcon from "@material-ui/icons/Lock";
-import Hidden from "@material-ui/core/Hidden";
 import { useAuth } from "../../hooks/useAuth";
 import ExitToApp from "@material-ui/icons/ExitToApp";
 import BadgeAvatars from "./BadgeAvatars";
@@ -56,7 +55,7 @@ export default function SideNav(props) {
   };
 
   const list = (anchor) => (
-    <div
+    <Box
       className={clsx(classes.list, {
         [classes.fullList]: anchor === "top" || anchor === "bottom",
       })}
@@ -67,7 +66,6 @@ export default function SideNav(props) {
       <List>
         {user ? (
           <React.Fragment>
-            <CssBaseline />
             <ListItem
               alignItems="flex-start"
               onClick={() => history.push("/profile")}
@@ -144,20 +142,18 @@ export default function SideNav(props) {
           </ListItem>
         </List>
       )}
-    </div>
+    </Box>
   );
 
   return (
     <div>
-      <Hidden mdUp>
-        <IconButton
-          color="default"
-          aria-label="menu"
-          onClick={toggleDrawer("left", true)}
-        >
-          <MenuIcon />
-        </IconButton>
-      </Hidden>
+      <IconButton
+        color="default"
+        aria-label="menu"
+        onClick={toggleDrawer("left", true)}
+      >
+        <MenuIcon />
+      </IconButton>
       <Drawer
         anchor="left"
         open={state["left"]}

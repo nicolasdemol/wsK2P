@@ -19,7 +19,7 @@ const credentials = {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(80, () => {
+httpServer.listen(3000, () => {
   console.log("HTTP Server running n port 80");
 });
 

@@ -6,7 +6,6 @@ import {
   AppBar,
   Toolbar,
   Box,
-  Hidden,
   Button,
   Switch,
   withStyles,
@@ -22,6 +21,7 @@ import SuperTabs from "./SuperTabs";
 import Logo from "./Logo";
 
 import { useAuth } from "../../hooks/useAuth";
+import Hidden from "@material-ui/core/Hidden";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,7 +50,9 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
     },
-    switch: {},
+    switch: {
+      margin: theme.spacing(0, 8),
+    },
   },
 }));
 
@@ -60,8 +62,6 @@ export default function Navbar(props) {
 
   const [isTop, setTop] = useState(false);
 
-  const { user } = useAuth();
-
   useEffect(() => {
     const onScroll = () => {
       const Top = window.scrollY > 10;
@@ -69,8 +69,8 @@ export default function Navbar(props) {
         setTop(!isTop);
       }
     };
-    document.addEventListener("scroll", onScroll, true);
-    return () => document.removeEventListener("scroll", onScroll, false);
+    window.addEventListener("scroll", onScroll, true);
+    return () => window.removeEventListener("scroll", onScroll, false);
   });
 
   return (
@@ -84,32 +84,12 @@ export default function Navbar(props) {
           <Box className={classes.logo} onClick={() => history.push("/")}>
             <Logo />
           </Box>
-          <Hidden smDown>
-            <Box className={classes.tabs}>
-              <SuperTabs />
-            </Box>
-            {user ? (
-              <Box className={classes.badge}>
-                <Typography variant="body2">Teledyne Inc.</Typography>
-                <BadgeAvatars />
-              </Box>
-            ) : (
-              <Box>
-                <Button
-                  variant="outlined"
-                  onClick={() => {
-                    history.push("/login");
-                  }}
-                  startIcon={<LockIcon />}
-                >
-                  Se connecter
-                </Button>
-              </Box>
-            )}
+          <Hidden lgUp>
             <DarkModeSwitch onClick={props.toggleDarkMode} />
-          </Hidden>
-          <Hidden mdUp>
             <SideNav />
+          </Hidden>
+          <Hidden mdDown>
+            <DefaultNav toggleDarkMode={props.toggleDarkMode} />
           </Hidden>
         </Toolbar>
       </AppBar>
@@ -117,17 +97,50 @@ export default function Navbar(props) {
   );
 }
 
-export const DarkModeSwitch = withStyles((theme) => ({
+const DefaultNav = (props) => {
+  const { user } = useAuth();
+  const classes = useStyles();
+  const history = useHistory();
+
+  return (
+    <React.Fragment>
+      <DarkModeSwitch onClick={props.toggleDarkMode} />
+      <Box className={classes.tabs}>
+        <SuperTabs />
+      </Box>
+      {user ? (
+        <Box className={classes.badge}>
+          <Typography variant="body2">Teledyne Inc.</Typography>
+          <BadgeAvatars />
+        </Box>
+      ) : (
+        <Box>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              history.push("/login");
+            }}
+            startIcon={<LockIcon />}
+          >
+            Se connecter
+          </Button>
+        </Box>
+      )}
+    </React.Fragment>
+  );
+};
+
+const DarkModeSwitch = withStyles((theme) => ({
   root: {
     width: 50,
     height: 40,
+    margin: theme.spacing(0, 4),
     padding: "12px 0px 8px 0",
-    margin: theme.spacing(0, 0, 0, 4),
     overflow: "visible",
   },
   switchBase: {
     width: 24,
-    padding: 1,
+    height: 40,
     "&$checked": {
       transform: "translateX(26px)",
       color: theme.palette.common.white,
@@ -158,7 +171,7 @@ export const DarkModeSwitch = withStyles((theme) => ({
             width: 40,
             height: 40,
             backgroundColor: "#43d",
-            color: "#ff8",
+            color: "#ff3",
             borderRadius: 40,
             padding: 10,
           }}
