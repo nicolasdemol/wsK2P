@@ -12,6 +12,7 @@ const certificate = fs.readFileSync("./cert/cert.pem", "utf8");
 const credentials = {
   key: privateKey,
   cert: certificate,
+  passphrase: "poplpo",
 };
 
 // Starting both http & https servers
