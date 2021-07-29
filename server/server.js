@@ -1,14 +1,28 @@
 const express = require("express");
 const path = require("path");
-const http = require("http");
+const https = require("https");
 const fs = require("fs");
 const app = express();
 
+// Certificate
+const privateKey = fs.readFileSync("./cert/key.pem", "utf8");
+const certificate = fs.readFileSync("./cert/cert.pem", "utf8");
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+};
+
 // Starting both http & https servers
 const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(80, () => {
   console.log("HTTP Server running on port 80");
+});
+
+httpsServer.listen(443, () => {
+  console.log("HTTPS Server running on port 443");
 });
 
 // Have Node serve the files for our built React app
