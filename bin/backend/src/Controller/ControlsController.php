@@ -32,7 +32,7 @@ class ControlsController extends AbstractController
     {
         $sftp = $this->connectVM();
 
-        $path_results = "~/Documents/QUALITE/Resultat pour client";
+        $path_results = "/home/webserv/Documents/QUALITE/Resultat pour client";
         $filename = $datecode . ".txt";
         $filepath = $path_results . "/" . $filename;
 
@@ -61,7 +61,7 @@ class ControlsController extends AbstractController
     {
         $sftp = $this->connectVM();
 
-        $path_traca = "~/Documents/QUALITE/Tracabilite";
+        $path_traca = "/home/webserv/Documents/QUALITE/Tracabilite";
         $filename = $datecode . ".tra";
         $filepath = $path_traca . "/" . $filename;
 
@@ -101,7 +101,7 @@ class ControlsController extends AbstractController
 
         $sftp = $this->connectVM();
 
-        $path_traca = "~/Documents/QUALITE/Tracabilite";
+        $path_traca = "/home/webserv/Documents/QUALITE/Tracabilite";
         $filename_image = $number . ".jpg";
         $filepath_image = $path_traca . "/" . substr($number, 0, 3) . "/" . $filename_image;
         $sftp->get($filepath_image, $filename_image);
