@@ -15,7 +15,7 @@ export default function Controls() {
 
   const handleDownload = () => {
     const method = "GET";
-    const url = `/express_backend/controls/${text}`;
+    const url = `/api/controls/${text}`;
 
     axios
       .request({
@@ -37,10 +37,10 @@ export default function Controls() {
 
   useEffect(() => {
     const handleData = () => {
-      axios.get(`/express_backend/controls/${text}/img`).then((res) => {
+      axios.get(`/api/controls/${text}/img`).then((res) => {
         let imgs = [];
         res.data.images.forEach((img) => {
-          imgs.push(`/express_backend/controls/${text}/img/${img}`);
+          imgs.push(`/api/controls/${text}/img/${img}`);
         });
         let items = imgs.map((id, index) => {
           return {
