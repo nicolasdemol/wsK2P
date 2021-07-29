@@ -134,7 +134,7 @@ const DarkModeSwitch = withStyles((theme) => ({
   root: {
     width: 50,
     height: 40,
-    margin: theme.spacing(0, 4),
+    marginRight: theme.spacing(4),
     padding: "12px 0px 8px 0",
     overflow: "visible",
   },
@@ -186,7 +186,7 @@ const DarkModeSwitch = withStyles((theme) => ({
             backgroundColor: "#fff",
             borderRadius: 40,
             padding: 10,
-            boxShadow: "0 9px 30px -6px #aaa",
+            boxShadow: "0 2px 10px 6px #aaa",
           }}
         />
       }

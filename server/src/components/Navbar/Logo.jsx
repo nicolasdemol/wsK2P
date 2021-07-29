@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 22,
     fontFamily: "Syncopate",
     color: theme.palette.primary.main,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 18,
+    },
   },
 }));
 
