@@ -37,18 +37,20 @@ app.get("/api/controls/:tra", (req, res) => {
     path.join(__dirname, `./api/QUALITE/Tracabilite/${tra}.tra`),
     "utf-8",
     (err, data) => {
-      data = data.replace(/[\s]+/gm, " ");
-      arrayTra = data.split(" ");
-
       const arr = [];
-      for (
-        let i = 0, x = 0;
-        i < arrayTra.length, x < arrayTra.length / 2;
-        i += 2, x++
-      ) {
-        const chunk = arrayTra.slice(i, i + 2);
+      if (!err) {
+        data = data.replace(/[\s]+/gm, " ");
+        arrayTra = data.split(" ");
 
-        arr.push({ name: chunk[0], img: chunk[1] });
+        for (
+          let i = 0, x = 0;
+          i < arrayTra.length, x < arrayTra.length / 2;
+          i += 2, x++
+        ) {
+          const chunk = arrayTra.slice(i, i + 2);
+
+          arr.push({ name: chunk[0], img: chunk[1] });
+        }
       }
 
       res.json(arr);
