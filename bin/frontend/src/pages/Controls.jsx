@@ -15,7 +15,7 @@ export default function Controls() {
 
   const handleDownload = () => {
     const method = "GET";
-    const url = `https://localhost:8000/controls/${text}`;
+    const url = `https://90.24.146.169:8000/controls/${text}`;
 
     axios
       .request({
@@ -37,19 +37,21 @@ export default function Controls() {
 
   useEffect(() => {
     const handleData = () => {
-      axios.get(`https://localhost:8000/controls/${text}/img`).then((res) => {
-        let imgs = [];
-        res.data.images.forEach((img) => {
-          imgs.push(`https://localhost:8000/controls/${text}/img/${img}`);
+      axios
+        .get(`https://90.24.146.169:8000/controls/${text}/img`)
+        .then((res) => {
+          let imgs = [];
+          res.data.images.forEach((img) => {
+            imgs.push(`https://90.24.146.169:8000/controls/${text}/img/${img}`);
+          });
+          let items = imgs.map((id, index) => {
+            return {
+              img: imgs[index],
+              title: res.data.products[index],
+            };
+          });
+          setData(items);
         });
-        let items = imgs.map((id, index) => {
-          return {
-            img: imgs[index],
-            title: res.data.products[index],
-          };
-        });
-        setData(items);
-      });
     };
 
     if (text.length === 7) {
