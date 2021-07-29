@@ -186,7 +186,7 @@ const DarkModeSwitch = withStyles((theme) => ({
             backgroundColor: "#fff",
             borderRadius: 40,
             padding: 10,
-            boxShadow: "0 2px 10px 6px #aaa",
+            boxShadow: "inset 0 4px 30px 6px #aaa",
           }}
         />
       }
