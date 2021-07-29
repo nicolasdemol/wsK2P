@@ -5,6 +5,12 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 const AntTabs = withStyles((theme) => ({
+  root: {
+    height: "100%",
+  },
+  flexContainer: {
+    height: "100%",
+  },
   indicator: {
     backgroundColor: theme.palette.primary.main,
   },
@@ -14,7 +20,6 @@ const AntTab = withStyles((theme) => ({
   root: {
     color: theme.palette.primary.main,
     fontWeight: theme.typography.fontWeightBold,
-    lineHeight: 2.6,
     textTransform: "none",
     minWidth: 72,
     transition: "0.25s ease-in-out",

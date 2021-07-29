@@ -5,14 +5,15 @@ import Box from "@material-ui/core/Box";
 import logo from "../../images/logoK2.png";
 
 const useStyles = makeStyles((theme) => ({
-  logo: {
+  root: {
     display: "flex",
     alignItems: "center",
+    cursor: "pointer",
   },
   title: {
     fontWeight: 700,
+    fontSize: 22,
     fontFamily: "Syncopate",
-    lineHeight: 1,
     color: theme.palette.primary.main,
   },
 }));
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 function Logo() {
   const classes = useStyles();
   return (
-    <Box className={classes.logo}>
+    <Box className={classes.root}>
       <img src={logo} alt="logo" width="28" height="42" />
       <Typography color="primary" className={classes.title}>
         K2 PROCESS

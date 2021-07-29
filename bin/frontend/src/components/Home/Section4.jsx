@@ -1,5 +1,5 @@
 import ReactPlayer from "react-player";
-import { Card, CardMedia, Grid, makeStyles } from "@material-ui/core";
+import { Card, Grid, makeStyles } from "@material-ui/core";
 import Sensor from "../Sensor";
 
 const useStyles = makeStyles((theme) => ({

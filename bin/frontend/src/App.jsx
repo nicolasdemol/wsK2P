@@ -10,6 +10,11 @@ import Controls from "./pages/Controls";
 import Data from "./pages/Data";
 import Navbar from "./components/Navbar";
 
+import { ThemeProvider } from "@material-ui/styles";
+import { AuthProvider } from "./hooks/useAuth";
+import { useDarkMode } from "./hooks/useDarkMode";
+import { createTheme } from "@material-ui/core";
+
 function App() {
   useEffect(() => {
     WebFont.load({
@@ -19,23 +24,31 @@ function App() {
     });
   }, []);
 
+  const [theme, toggleDarkMode] = useDarkMode();
+
+  const themeConf = createTheme(theme);
+
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute path="/profile">
-          <Profile />
-        </PrivateRoute>
-        <PrivateRoute path="/controls">
-          <Controls />
-        </PrivateRoute>
-        <PrivateRoute path="/data">
-          <Data />
-        </PrivateRoute>
-      </Switch>
-    </Router>
+    <AuthProvider>
+      <ThemeProvider theme={themeConf}>
+        <Router>
+          <Navbar toggleDarkMode={toggleDarkMode} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/profile">
+              <Profile />
+            </PrivateRoute>
+            <PrivateRoute path="/controls">
+              <Controls />
+            </PrivateRoute>
+            <PrivateRoute path="/data">
+              <Data />
+            </PrivateRoute>
+          </Switch>
+        </Router>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 

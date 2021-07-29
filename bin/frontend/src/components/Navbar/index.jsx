@@ -1,45 +1,60 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import {
+  makeStyles,
+  Typography,
+  AppBar,
+  Toolbar,
+  Box,
+  Hidden,
+  Button,
+  Switch,
+  withStyles,
+} from "@material-ui/core/";
 
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Button from "@material-ui/core/Button";
 import LockIcon from "@material-ui/icons/Lock";
-import Hidden from "@material-ui/core/Hidden";
-import Typography from "@material-ui/core/Typography";
+import NightsStayIcon from "@material-ui/icons/NightsStay";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+
 import SideNav from "./SideNav";
 import BadgeAvatars from "./BadgeAvatars";
+import SuperTabs from "./SuperTabs";
+import Logo from "./Logo";
 
 import { useAuth } from "../../hooks/useAuth";
-
-import Logo from "./Logo";
-import SuperTabs from "./SuperTabs";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
-    borderBottom: `1px solid ${theme.palette.primary.dark}`,
     color: theme.palette.primary.main,
+    borderBottom: ` 1px solid ${theme.palette.primary.light}`,
   },
   toolbar: {
     margin: theme.spacing(0, 10),
+    justifyContent: "center",
+    alignItems: "center",
     [theme.breakpoints.down("sm")]: {
       margin: 0,
     },
-
-    justifyContent: "center",
   },
   logo: {
     marginRight: "auto",
   },
   tabs: {
     position: "absolute",
-    alignSelf: "flex-end",
+    height: "100%",
+  },
+  badge: {
+    display: "flex",
+    alignItems: "center",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+    switch: {},
   },
 }));
 
-export default function Navbar() {
+export default function Navbar(props) {
   const classes = useStyles();
   let history = useHistory();
 
@@ -62,41 +77,36 @@ export default function Navbar() {
     <React.Fragment>
       <AppBar
         className={classes.root}
-        position={"sticky"}
+        position="sticky"
         elevation={isTop ? 5 : 0}
       >
-        <Toolbar variant="dense" className={classes.toolbar}>
-          <div
-            className={classes.logo}
-            style={{ cursor: "pointer" }}
-            onClick={() => history.push("/")}
-          >
+        <Toolbar className={classes.toolbar}>
+          <Box className={classes.logo} onClick={() => history.push("/")}>
             <Logo />
-          </div>
+          </Box>
           <Hidden smDown>
-            <div className={classes.tabs}>
+            <Box className={classes.tabs}>
               <SuperTabs />
-            </div>
+            </Box>
             {user ? (
-              <React.Fragment>
-                <Typography style={{ paddingRight: 10, fontSize: 14 }}>
-                  Teledyne
-                </Typography>
+              <Box className={classes.badge}>
+                <Typography variant="body2">Teledyne Inc.</Typography>
                 <BadgeAvatars />
-              </React.Fragment>
+              </Box>
             ) : (
-              <div>
+              <Box>
                 <Button
-                  size="small"
+                  variant="outlined"
                   onClick={() => {
                     history.push("/login");
                   }}
+                  startIcon={<LockIcon />}
                 >
-                  <LockIcon style={{ paddingRight: 2 }} />
                   Se connecter
                 </Button>
-              </div>
+              </Box>
             )}
+            <DarkModeSwitch onClick={props.toggleDarkMode} />
           </Hidden>
           <Hidden mdUp>
             <SideNav />
@@ -106,3 +116,75 @@ export default function Navbar() {
     </React.Fragment>
   );
 }
+
+export const DarkModeSwitch = withStyles((theme) => ({
+  root: {
+    width: 50,
+    height: 40,
+    padding: "12px 0px 8px 0",
+    margin: theme.spacing(0, 0, 0, 4),
+    overflow: "visible",
+  },
+  switchBase: {
+    width: 24,
+    padding: 1,
+    "&$checked": {
+      transform: "translateX(26px)",
+      color: theme.palette.common.white,
+      "& + $track": {
+        backgroundColor: `${theme.palette.primary.main}`,
+        opacity: 1,
+        border: "none",
+      },
+    },
+  },
+  track: {
+    borderRadius: 26 / 2,
+    backgroundColor: "#fff",
+    opacity: 1,
+    transition: theme.transitions.create(["background-color", "border"]),
+  },
+  checked: {},
+  focusVisible: {},
+}))(({ classes, ...props }) => {
+  return (
+    <Switch
+      focusVisibleClassName={classes.focusVisible}
+      disableRipple
+      icon={
+        <NightsStayIcon
+          size="small"
+          style={{
+            width: 40,
+            height: 40,
+            backgroundColor: "#43d",
+            color: "#ff8",
+            borderRadius: 40,
+            padding: 10,
+          }}
+        />
+      }
+      checkedIcon={
+        <Brightness4Icon
+          style={{
+            width: 40,
+            height: 40,
+            color: "hsl(0, 0%, 20%)",
+            backgroundColor: "#fff",
+            borderRadius: 40,
+            padding: 10,
+            boxShadow: "0 9px 30px -6px #aaa",
+          }}
+        />
+      }
+      classes={{
+        root: classes.root,
+        switchBase: classes.switchBase,
+        thumb: classes.thumb,
+        track: classes.track,
+        checked: classes.checked,
+      }}
+      {...props}
+    />
+  );
+});

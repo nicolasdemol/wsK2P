@@ -5,16 +5,13 @@ import {
   Hidden,
   Container,
   Grid,
-  Card,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import ReactPlayer from "react-player";
 import Sensor from "../Sensor";
 import green from "../../images/green.jpg";
 import svg1 from "../../images/partenaires/wordpress-logo-0b5b5c7b8b.svg";
 import svg2 from "../../images/partenaires/jetpack-logo-6e2b150192.svg";
 import svg3 from "../../images/partenaires/googlecloud-logo-aeef2d9bbd.svg";
-import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
     },
     [theme.breakpoints.up("xl")]: {
-      width: "70%",
+      width: "80%",
     },
   },
   title: {
