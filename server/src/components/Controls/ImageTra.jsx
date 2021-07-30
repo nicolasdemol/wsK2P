@@ -4,7 +4,7 @@ import ImageListItem from "@material-ui/core/ImageListItem";
 import ImageListItemBar from "@material-ui/core/ImageListItemBar";
 import Skeleton from "@material-ui/lab/Skeleton";
 
-export default function ProductDef(props) {
+export default function ImageTra(props) {
   let datecode = props.datecode;
   const [cols, setCols] = useState(5);
 

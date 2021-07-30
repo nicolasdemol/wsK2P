@@ -18,7 +18,7 @@ import Brightness4Icon from "@material-ui/icons/Brightness4";
 import SideNav from "./SideNav";
 import BadgeAvatars from "./BadgeAvatars";
 import SuperTabs from "./SuperTabs";
-import Logo from "./Logo";
+import Logo from "../Logo";
 
 import { useAuth } from "../../hooks/useAuth";
 import Hidden from "@material-ui/core/Hidden";
@@ -82,7 +82,7 @@ export default function Navbar(props) {
       >
         <Toolbar className={classes.toolbar}>
           <Box className={classes.logo} onClick={() => history.push("/")}>
-            <Logo themeType={props.themeType} />
+            <Logo />
           </Box>
           <Hidden lgUp>
             <DarkModeSwitch onClick={props.toggleDarkMode} />

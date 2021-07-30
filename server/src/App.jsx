@@ -32,10 +32,7 @@ function App() {
     <AuthProvider>
       <ThemeProvider theme={themeConf}>
         <Router>
-          <Navbar
-            themeType={themeConf.palette.type}
-            toggleDarkMode={toggleDarkMode}
-          />
+          <Navbar toggleDarkMode={toggleDarkMode} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />

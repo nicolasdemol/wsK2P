@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Datecode from "../components/Controls/Datecode";
-import ProductDef from "../components/Controls/ProductDef";
+import ImageTra from "../components/Controls/ImageTra";
 import { CssBaseline } from "@material-ui/core";
 
 import React from "react";
@@ -38,7 +38,7 @@ export default function Controls() {
         onChange={(value) => handleChange(value)}
         onDownload={() => handleDownload()}
       />
-      <ProductDef datecode={text} itemData={data} />
+      <ImageTra datecode={text} itemData={data} />
     </React.Fragment>
   );
 }

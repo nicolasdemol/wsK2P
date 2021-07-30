@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import elephantDark from "../../images/elephantDark.svg";
-import elephantLight from "../../images/elephantLight.svg";
+import elephantDark from "../images/elephantDark.svg";
+import elephantLight from "../images/elephantLight.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,17 +31,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Logo(props) {
+function Logo() {
+  const theme = useTheme();
   const classes = useStyles();
   const [logo, setLogo] = useState(elephantDark);
 
   useEffect(() => {
-    if (props.themeType === "dark") {
+    if (theme.palette.type === "dark") {
       setLogo(elephantDark);
     } else {
       setLogo(elephantLight);
     }
-  }, [props.themeType]);
+  }, [theme]);
   return (
     <Box className={classes.root}>
       <img src={logo} alt="logo" className={classes.logo} />

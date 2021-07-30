@@ -1,4 +1,4 @@
-import { useState, } from "react";
+import { useState } from "react";
 import { grey } from "@material-ui/core/colors";
 
 export const useDarkMode = () => {
@@ -37,10 +37,10 @@ const lightTheme = {
     },
 
     subtitle1: {
-      color: grey[400],
+      color: grey[500],
     },
 
-    fontFamily: ["Helvetica"].join(","),
+    fontFamily: ["Lato"].join(","),
   },
 };
 
@@ -57,7 +57,7 @@ const darkTheme = {
     },
     background: {
       default: "hsl(0, 0%, 10%)",
-      paper: "hsl(0, 0%, 24%)",
+      paper: "hsl(0, 0%, 16%)",
     },
   },
   typography: {
@@ -71,6 +71,6 @@ const darkTheme = {
       color: grey[400],
     },
 
-    fontFamily: ["Helvetica"].join(","),
+    fontFamily: ["Lato"].join(","),
   },
 };

@@ -1,15 +1,13 @@
 import ReactPlayer from "react-player";
-import { Card, Grid, makeStyles } from "@material-ui/core";
+import { Card, CardMedia, Grid, makeStyles, Paper } from "@material-ui/core";
 import Sensor from "../Sensor";
 
 const useStyles = makeStyles((theme) => ({
-  video: {
+  paper: {
+    position: "relative",
+    marginBottom: theme.spacing(8),
     borderRadius: 16,
-    height: "100vh",
-    margin: theme.spacing(8, 20),
-    [theme.breakpoints.down("sm")]: {
-      margin: theme.spacing(2),
-    },
+    overflow: "hidden",
   },
 }));
 
@@ -17,26 +15,16 @@ export default function Section4() {
   const classes = useStyles();
   return (
     <Sensor>
-      <Grid container>
-        <Grid item xs={12}>
-          <Card raised className={classes.video}>
-            <ReactPlayer
-              muted
-              playing
-              controls={false}
-              url="https://www.youtube.com/watch?v=w7ejDZ8SWv8"
-              width="100%"
-              height="100%"
-            />
-          </Card>
-        </Grid>
-        <Grid item xs={6}>
-          <Card raised></Card>
-        </Grid>
-        <Grid item xs={6}>
-          <Card raised></Card>
-        </Grid>
-      </Grid>
+      <Paper className={classes.paper}>
+        <ReactPlayer
+          muted
+          playing
+          width="100%"
+          height="44vh"
+          controls={false}
+          url="https://www.youtube.com/watch?v=2b2gJu-g3qE"
+        />
+      </Paper>
     </Sensor>
   );
 }

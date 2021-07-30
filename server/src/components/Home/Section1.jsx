@@ -1,63 +1,67 @@
-import {
-  Paper,
-  Box,
-  Typography,
-  Hidden,
-  Container,
-  Grid,
-} from "@material-ui/core";
+import { Box, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import Sensor from "../Sensor";
 import green from "../../images/green.jpg";
-import svg1 from "../../images/partenaires/wordpress-logo-0b5b5c7b8b.svg";
-import svg2 from "../../images/partenaires/jetpack-logo-6e2b150192.svg";
-import svg3 from "../../images/partenaires/googlecloud-logo-aeef2d9bbd.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: "relative",
+    marginTop: theme.spacing(4),
     display: "flex",
+    zIndex: 10,
+    background: `url(${green})`,
+    borderRadius: 16,
+    overflow: "hidden",
   },
   paper: {
+    padding: theme.spacing(4),
     width: "60%",
-    minheight: "40em",
-    backgroundColor: theme.palette.background.default,
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
-    },
-    [theme.breakpoints.up("xl")]: {
-      width: "80%",
+    maxWidth: "100%",
+    zIndex: 5,
+    [theme.breakpoints.down("md")]: {
+      width: "auto",
+      padding: theme.spacing(4, 0),
+      backgroundColor: "transparent",
     },
   },
   title: {
     letterSpacing: "-.046em",
-    color: theme.palette.primary.main,
+    color: "#fff",
     fontWeight: 900,
     padding: theme.spacing(2),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: 64,
     },
   },
   span: {
     color: theme.palette.secondary.main,
-    fontWeight: theme.typography.fontWeightBold,
   },
   subtitle: {
     padding: theme.spacing(1, 2),
+    color: "#fff",
   },
   shape: {
     width: 0,
     height: 0,
-    borderTopWidth: "40em",
-    borderTopColor: theme.palette.background.default,
+    borderTopWidth: 600,
+    borderTopColor: theme.palette.background.paper,
     borderTopStyle: "solid",
     borderRight: "100px solid transparent",
+    zIndex: 5,
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
-  image: {
+  fili: {
     position: "absolute",
-    right: 0,
-    maxHeight: "40em",
-    zIndex: -2,
-    objectFit: "contain",
+    backgroundColor: "hsl(0, 0%, 16%)",
+    opacity: 0.5,
+    height: "100%",
+    width: "100%",
+    zIndex: 4,
+    [theme.breakpoints.down("md")]: {
+      opacity: 0.8,
+    },
   },
 }));
 
@@ -65,66 +69,24 @@ export default function Section1() {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root}>
-      <Paper className={classes.paper} elevation={3} square>
-        <Container maxWidth="md">
-          <Box>
-            <Sensor>
-              <Typography className={classes.title} variant="h1">
-                Pour Vous Aider à la Réalisation de
-                <span className={classes.span}> Vos Projets</span>
-              </Typography>
-            </Sensor>
-            <Sensor>
-              <Typography variant="subtitle1" className={classes.subtitle}>
-                K2 Process vous propose une approche sur-mesure de votre projet
-                en électronique et informatique industrielle, du stade de la
-                conception jusqu’à l’industrialisation optimisée.
-              </Typography>
-            </Sensor>
-          </Box>
-
-          <Sensor>
-            <Box>
-              <LogoPartenaires />
-            </Box>
-          </Sensor>
-        </Container>
+    <Paper className={classes.root} elevation={5}>
+      <Paper className={classes.paper} elevation={0} square>
+        <Sensor>
+          <Typography className={classes.title} variant="h1">
+            Pour Vous Aider à la Réalisation de{" "}
+            <span className={classes.span}>Vos Projets</span>
+          </Typography>
+        </Sensor>
+        <Sensor>
+          <Typography variant="subtitle1" className={classes.subtitle}>
+            K2 Process vous propose une approche sur-mesure de votre projet en
+            électronique et informatique industrielle, du stade de la conception
+            jusqu’à l’industrialisation optimisée.
+          </Typography>
+        </Sensor>
       </Paper>
-      <Hidden smDown>
-        <div className={classes.shape}></div>
-        <img className={classes.image} src={green} alt="section1" />
-        <div
-          className={classes.image}
-          style={{
-            backgroundColor: "black",
-            zIndex: -1,
-            height: "40em",
-            width: "100%",
-            right: 0,
-            opacity: 0.6,
-          }}
-        ></div>
-      </Hidden>
-    </Box>
-  );
-}
-
-function LogoPartenaires() {
-  const logos = [svg1, svg2, svg3];
-  return (
-    <Grid container justify="center">
-      {logos.map((element) => {
-        return (
-          <Grid key={element} item>
-            <img
-              src={element}
-              style={{ paddingTop: 14, paddingBottom: 14 }}
-              alt=""
-            />
-          </Grid>
-        );
-      })}
-    </Grid>
+      <Box className={classes.shape}></Box>
+      <Box className={classes.fili}></Box>
+    </Paper>
   );
 }
