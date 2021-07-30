@@ -82,7 +82,7 @@ export default function Navbar(props) {
       >
         <Toolbar className={classes.toolbar}>
           <Box className={classes.logo} onClick={() => history.push("/")}>
-            <Logo />
+            <Logo themeType={props.themeType} />
           </Box>
           <Hidden lgUp>
             <DarkModeSwitch onClick={props.toggleDarkMode} />
@@ -134,9 +134,12 @@ const DarkModeSwitch = withStyles((theme) => ({
   root: {
     width: 50,
     height: 40,
-    marginRight: theme.spacing(4),
-    padding: "12px 0px 8px 0",
+    margin: theme.spacing(0, 8),
+    padding: "8px 0px 8px 0",
     overflow: "visible",
+    [theme.breakpoints.down("sm")]: {
+      margin: "auto",
+    },
   },
   switchBase: {
     width: 24,
@@ -182,11 +185,10 @@ const DarkModeSwitch = withStyles((theme) => ({
           style={{
             width: 40,
             height: 40,
-            color: "hsl(0, 0%, 20%)",
-            backgroundColor: "#fff",
+            backgroundColor: "hsl(0, 0%, 20%)",
+            color: "#fff",
             borderRadius: 40,
             padding: 10,
-            boxShadow: "inset 0 4px 30px 6px #aaa",
           }}
         />
       }

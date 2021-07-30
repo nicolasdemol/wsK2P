@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import logo from "../../images/logoK2.png";
+import elephantDark from "../../images/elephantDark.svg";
+import elephantLight from "../../images/elephantLight.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,20 +13,38 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontWeight: 700,
-    fontSize: 22,
+    fontSize: 24,
+    paddingTop: 4,
     fontFamily: "Syncopate",
     color: theme.palette.primary.main,
     [theme.breakpoints.down("sm")]: {
-      fontSize: 18,
+      fontSize: 20,
+    },
+  },
+  logo: {
+    width: 60,
+    height: 40,
+    [theme.breakpoints.down("sm")]: {
+      width: 50,
+      height: 30,
     },
   },
 }));
 
-function Logo() {
+function Logo(props) {
   const classes = useStyles();
+  const [logo, setLogo] = useState(elephantDark);
+
+  useEffect(() => {
+    if (props.themeType === "dark") {
+      setLogo(elephantDark);
+    } else {
+      setLogo(elephantLight);
+    }
+  }, [props.themeType]);
   return (
     <Box className={classes.root}>
-      <img src={logo} alt="logo" width="28" height="42" />
+      <img src={logo} alt="logo" className={classes.logo} />
       <Typography color="primary" className={classes.title}>
         K2 PROCESS
       </Typography>

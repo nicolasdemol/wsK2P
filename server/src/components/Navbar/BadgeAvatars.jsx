@@ -83,7 +83,7 @@ export default function BadgeAvatars() {
         variant="dot"
         onMouseEnter={handleClick}
       >
-        <Avatar alt="Teledyne" src={teledyne} />
+        <Avatar variant="circular" alt="Teledyne" src={teledyne} />
       </StyledBadge>
       <StyledMenu
         id="customized-menu"
