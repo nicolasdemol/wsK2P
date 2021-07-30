@@ -110,7 +110,7 @@ const DefaultNav = (props) => {
       </Box>
       {user ? (
         <Box className={classes.badge}>
-          <Typography variant="body2">Teledyne Inc.</Typography>
+          <Typography variant="overline">{user.email}</Typography>
           <BadgeAvatars />
         </Box>
       ) : (

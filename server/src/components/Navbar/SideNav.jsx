@@ -73,7 +73,7 @@ export default function SideNav(props) {
               <ListItemAvatar>
                 <BadgeAvatars />
               </ListItemAvatar>
-              <ListItemText primary="Teledyne Oldham Simtronic" />
+              <ListItemText primary={"TELEDYNE"} />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
                   <NavigateNextIcon />

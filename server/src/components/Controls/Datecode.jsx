@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   title: {
+    marginRight: theme.spacing(1),
     fontWeight: theme.typography.fontWeightBold,
     [theme.breakpoints.down("xs")]: {
       fontSize: "18px",
@@ -37,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     margin: theme.spacing(0, 4),
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(0, 1),
+    },
   },
   navRight: {
     display: "flex",

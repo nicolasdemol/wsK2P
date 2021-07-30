@@ -75,7 +75,7 @@ export default function BadgeAvatars() {
     <Box>
       <StyledBadge
         style={{ cursor: "pointer" }}
-        overlap="circle"
+        overlap="circular"
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "right",
@@ -83,7 +83,7 @@ export default function BadgeAvatars() {
         variant="dot"
         onMouseEnter={handleClick}
       >
-        <Avatar variant="circular" alt="Teledyne" src={teledyne} />
+        <Avatar alt="Teledyne" src={teledyne} />
       </StyledBadge>
       <StyledMenu
         id="customized-menu"
