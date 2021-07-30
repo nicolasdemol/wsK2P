@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     [theme.breakpoints.down("sm")]: {
       color: "#fff",
-      fontSize: 64,
+      fontSize: 56,
     },
   },
   span: {

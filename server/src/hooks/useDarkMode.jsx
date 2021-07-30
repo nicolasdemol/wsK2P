@@ -26,7 +26,7 @@ const lightTheme = {
       dark: "hsl(0, 0%, 10%)",
     },
     secondary: {
-      main: "#f14",
+      main: "#fa4",
     },
   },
   typography: {
@@ -40,7 +40,7 @@ const lightTheme = {
       color: grey[600],
     },
 
-    fontFamily: ["Lato"].join(","),
+    fontFamily: ["Montserrat"].join(","),
   },
 };
 
@@ -53,11 +53,11 @@ const darkTheme = {
       dark: "hsl(0, 0%, 70%)",
     },
     secondary: {
-      main: "#f14",
+      main: "#fc8",
     },
     background: {
-      default: "hsl(0, 0%, 10%)",
-      paper: "hsl(0, 0%, 14%)",
+      default: "hsl(0, 0%, 6%)",
+      paper: "hsl(0, 0%, 9%)",
     },
   },
   typography: {
@@ -71,6 +71,6 @@ const darkTheme = {
       color: grey[400],
     },
 
-    fontFamily: ["Lato"].join(","),
+    fontFamily: ["Montserrat"].join(","),
   },
 };
