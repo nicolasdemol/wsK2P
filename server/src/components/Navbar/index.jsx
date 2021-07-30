@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
     color: theme.palette.primary.main,
-    borderBottom: ` 1px solid ${theme.palette.primary.light}`,
   },
   toolbar: {
     margin: theme.spacing(0, 10),

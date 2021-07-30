@@ -6,7 +6,6 @@ import green from "../../images/green.jpg";
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    marginTop: theme.spacing(4),
     display: "flex",
     zIndex: 10,
     background: `url(${green})`,
@@ -26,10 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     letterSpacing: "-.046em",
-    color: "#fff",
+    color: theme.palette.primary.main,
     fontWeight: 900,
     padding: theme.spacing(2),
     [theme.breakpoints.down("sm")]: {
+      color: "#fff",
       fontSize: 64,
     },
   },
@@ -38,7 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     padding: theme.spacing(1, 2),
-    color: "#fff",
+    [theme.breakpoints.down("sm")]: {
+      color: "#fff",
+    },
   },
   shape: {
     width: 0,

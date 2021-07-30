@@ -37,7 +37,7 @@ const lightTheme = {
     },
 
     subtitle1: {
-      color: grey[500],
+      color: grey[600],
     },
 
     fontFamily: ["Lato"].join(","),
@@ -57,7 +57,7 @@ const darkTheme = {
     },
     background: {
       default: "hsl(0, 0%, 10%)",
-      paper: "hsl(0, 0%, 16%)",
+      paper: "hsl(0, 0%, 14%)",
     },
   },
   typography: {
