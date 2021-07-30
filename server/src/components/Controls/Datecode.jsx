@@ -66,7 +66,7 @@ export default function Datecode(props) {
   };
 
   return (
-    <Paper className={classes.paper} elevation={0} square>
+    <Paper className={classes.paper} elevation={5} square>
       <Box className={classes.navLeft}>
         <DoneOutlineIcon fontSize="small" style={{ marginRight: 8 }} />
         <Typography variant="h6" className={classes.title}>
