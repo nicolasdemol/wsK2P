@@ -13,7 +13,6 @@ import Navbar from "./components/Navbar";
 import { ThemeProvider } from "@material-ui/styles";
 import { AuthProvider } from "./hooks/useAuth";
 import { useDarkMode } from "./hooks/useDarkMode";
-import { createTheme } from "@material-ui/core";
 
 function App() {
   useEffect(() => {
