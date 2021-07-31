@@ -19,7 +19,10 @@ function App() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ["Montserrat:500,900", "Syncopate"],
+        families: [
+          "Montserrat:100,200,300,400,500,600,700,800,900",
+          "Syncopate",
+        ],
       },
     });
   }, []);

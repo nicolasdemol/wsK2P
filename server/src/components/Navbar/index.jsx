@@ -109,7 +109,6 @@ const DefaultNav = (props) => {
       </Box>
       {user ? (
         <Box className={classes.badge}>
-          <Typography variant="overline">{user.email}</Typography>
           <BadgeAvatars />
         </Box>
       ) : (
@@ -172,7 +171,7 @@ const DarkModeSwitch = withStyles((theme) => ({
           style={{
             width: 40,
             height: 40,
-            backgroundColor: "#43d",
+            backgroundColor: "#44f",
             color: "#ff3",
             borderRadius: 40,
             padding: 10,

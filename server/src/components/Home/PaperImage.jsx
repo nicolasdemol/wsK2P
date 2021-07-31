@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    letterSpacing: "-.046em",
     color: theme.palette.primary.main,
     fontWeight: 900,
     padding: theme.spacing(2),
     [theme.breakpoints.down("sm")]: {
       color: "#fff",
-      fontSize: 56,
+      fontSize: 40,
+      letterSpacing: "-0.05em",
     },
   },
   span: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   shape: {
     width: 0,
     height: 0,
-    borderTopWidth: 600,
+    borderTopWidth: "46em",
     borderTopColor: theme.palette.background.paper,
     borderTopStyle: "solid",
     borderRight: "100px solid transparent",
@@ -67,28 +67,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Section1() {
+export default function PaperImage() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} elevation={5}>
-      <Paper className={classes.paper} elevation={0} square>
-        <Sensor>
+    <Sensor>
+      <Paper className={classes.root} elevation={5}>
+        <Paper className={classes.paper} elevation={0} square>
           <Typography className={classes.title} variant="h1">
-            Pour Vous Aider à la Réalisation de{" "}
-            <span className={classes.span}>Vos Projets</span>
+            Notre Expertise pour Réaliser{" "}
+            <span className={classes.span}>Votre Projet</span>
           </Typography>
-        </Sensor>
-        <Sensor>
           <Typography variant="subtitle1" className={classes.subtitle}>
             K2 Process vous propose une approche sur-mesure de votre projet en
-            électronique et informatique industrielle, du stade de la conception
-            jusqu’à l’industrialisation optimisée.
+            électronique et informatique industrielle. Notre objectif est de
+            développer les projets pour le compte de nos clients français.
           </Typography>
-        </Sensor>
+        </Paper>
+        <Box className={classes.shape}></Box>
+        <Box className={classes.fili}></Box>
       </Paper>
-      <Box className={classes.shape}></Box>
-      <Box className={classes.fili}></Box>
-    </Paper>
+    </Sensor>
   );
 }

@@ -26,7 +26,7 @@ const lightTheme = {
       dark: "hsl(0, 0%, 10%)",
     },
     secondary: {
-      main: "#fa4",
+      main: "#f59",
     },
   },
   typography: {
@@ -53,7 +53,7 @@ const darkTheme = {
       dark: "hsl(0, 0%, 70%)",
     },
     secondary: {
-      main: "#fc8",
+      main: "#f59",
     },
     background: {
       default: "hsl(0, 0%, 6%)",

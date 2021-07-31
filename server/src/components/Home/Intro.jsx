@@ -1,11 +1,47 @@
-import { Box, makeStyles, useTheme } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Container,
+  makeStyles,
+  Paper,
+  Typography,
+  useTheme,
+} from "@material-ui/core";
 
 import landscape from "../../images/landscape.jpeg";
+import React from "react";
+import Logo from "../Logo";
+import CallIcon from "@material-ui/icons/Call";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
     width: "100%",
+  },
+  container: {
+    height: "80%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  paper: {
+    padding: theme.spacing(6),
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 16,
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(4, 2),
+    },
+  },
+  title: {
+    textAlign: "center",
+    padding: theme.spacing(2, 0),
+    fontWeight: 700,
+  },
+  button: {
+    marginTop: theme.spacing(1),
   },
   landscape: {
     position: "absolute",
@@ -13,15 +49,15 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     background: `url(${landscape})`,
     backgroundSize: "cover",
-    backgroundPosition: "center",
     opacity: 0.3,
     height: "100%",
     width: "100%",
-    zIndex: -1,
+    zIndex: -100,
   },
   waveTop: {
     position: "absolute",
     left: 0,
+    borderTop: `1em solid ${theme.palette.background.default}`,
   },
   waveBottom: {
     position: "absolute",
@@ -32,9 +68,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Intro() {
   const classes = useStyles();
+
   return (
     <Box className={classes.root}>
       <WaveTop />
+      <Container className={classes.container} maxWidth={"sm"}>
+        <Paper className={classes.paper}>
+          <Logo />
+          <Typography className={classes.title} variant="h4">
+            Demander Votre Compte Utilisateur
+          </Typography>
+          <Button
+            startIcon={<CallIcon />}
+            className={classes.button}
+            variant="outlined"
+          >
+            Nous contacter
+          </Button>
+        </Paper>
+      </Container>
       <Box className={classes.landscape}></Box>
       <WaveBottom />
     </Box>
@@ -45,7 +97,7 @@ function WaveTop() {
   const classes = useStyles();
   const theme = useTheme();
   return (
-    <div className="relative -mt-12 lg:-mt-24">
+    <div>
       <svg
         className={classes.waveTop}
         viewBox="0 0 1439 147"
@@ -87,7 +139,7 @@ function WaveBottom() {
   const classes = useStyles();
   const theme = useTheme();
   return (
-    <div className="relative -mt-12 lg:-mt-24">
+    <div>
       <svg
         className={classes.waveBottom}
         viewBox="0 0 1428 174"

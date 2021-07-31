@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    paddingBottom: theme.spacing(10),
   },
   title: {
     padding: theme.spacing(2, 0),
@@ -42,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Section3() {
+export default function Features() {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
@@ -50,22 +49,23 @@ export default function Section3() {
         icon={<DeveloperBoardIcon fontSize="large" />}
         title="Réalisation prototypes"
       >
-        TheFront is built to make your life easier. Variables, build tooling,
-        documentation, and reusable components.
+        Nous prenons grand soin d'aider nos clients à l'élaboration de leur
+        cahier des charges et à l'étude de celui-ci, il suffit de nous
+        contacter.
       </GridItem>
       <GridItem
         icon={<WidgetsIcon fontSize="large" />}
         title="Assemblage de cartes"
       >
-        TheFront is built to make your life easier. Variables, build tooling,
-        documentation, and reusable components.
+        Nous disposons d'un atelier de fabrication et de notre propre ligne
+        d'assemblage automatisée pour la réalisation de cartes électroniques.
       </GridItem>
       <GridItem
         icon={<CodeIcon fontSize="large" />}
         title="Programmation Software"
       >
-        TheFront is built to make your life easier. Variables, build tooling,
-        documentation, and reusable components.
+        Nous mettons à disposition nos ingénieurs qualifiés seront répondre à
+        toutes vos contraintes à la réalisation de votre projet.
       </GridItem>
     </Grid>
   );

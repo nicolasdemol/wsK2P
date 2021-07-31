@@ -5,13 +5,13 @@ import Sensor from "../Sensor";
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "relative",
-    marginBottom: theme.spacing(8),
     borderRadius: 16,
     overflow: "hidden",
+    width: "100%",
   },
 }));
 
-export default function Section4() {
+export default function PaperVideo() {
   const classes = useStyles();
   return (
     <Sensor>
@@ -20,7 +20,7 @@ export default function Section4() {
           muted
           playing
           width="100%"
-          height="44vh"
+          height="44em"
           controls={false}
           url="https://www.youtube.com/watch?v=2b2gJu-g3qE"
         />
