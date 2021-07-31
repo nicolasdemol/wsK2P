@@ -29,11 +29,9 @@ function App() {
 
   const [theme, toggleDarkMode] = useDarkMode();
 
-  const themeConf = createTheme(theme);
-
   return (
     <AuthProvider>
-      <ThemeProvider theme={themeConf}>
+      <ThemeProvider theme={theme}>
         <Router>
           <Navbar toggleDarkMode={toggleDarkMode} />
           <Switch>

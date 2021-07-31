@@ -20,6 +20,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Copyright from "./Copyright";
 import Sensor from "../Sensor";
+import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    backgroundColor: theme.palette.primary.main,
     margin: theme.spacing(3, 0),
     padding: 10,
   },
@@ -116,9 +116,8 @@ export default function Form() {
               type="submit"
               disableElevation
               fullWidth
-              variant="contained"
-              color="primary"
               className={classes.submit}
+              endIcon={<TrendingFlatIcon />}
             >
               Connexion
             </Button>

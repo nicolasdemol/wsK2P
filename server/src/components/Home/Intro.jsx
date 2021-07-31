@@ -78,11 +78,7 @@ export default function Intro() {
           <Typography className={classes.title} variant="h4">
             Demander Votre Compte Utilisateur
           </Typography>
-          <Button
-            startIcon={<CallIcon />}
-            className={classes.button}
-            variant="outlined"
-          >
+          <Button startIcon={<CallIcon />} className={classes.button}>
             Nous contacter
           </Button>
         </Paper>

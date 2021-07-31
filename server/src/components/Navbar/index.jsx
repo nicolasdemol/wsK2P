@@ -113,7 +113,6 @@ const DefaultNav = (props) => {
       ) : (
         <Box>
           <Button
-            variant="outlined"
             onClick={() => {
               history.push("/login");
             }}
