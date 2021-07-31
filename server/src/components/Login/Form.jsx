@@ -40,7 +40,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   avatar: {
-    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.background.paper,
+    border: `2px solid ${theme.palette.primary.main}`,
     margin: theme.spacing(1),
   },
   form: {
@@ -128,7 +130,7 @@ export default function Form() {
                   Mot de passe oublié?
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid item xs>
                 <Link href="#" variant="body2">
                   {"Vous n'avez pas de compte? "}
                 </Link>

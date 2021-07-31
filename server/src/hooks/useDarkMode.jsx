@@ -25,7 +25,7 @@ const lightTheme = createTheme({
     primary: {
       main: "hsl(0, 0%, 20%)",
       light: "hsl(0, 0%, 90%)",
-      dark: "hsl(0, 0%, 10%)",
+      dark: "hsl(0, 0%, 9%)",
     },
     secondary: {
       main: "#f59",
@@ -48,7 +48,7 @@ const lightTheme = createTheme({
     MuiButton: {
       root: {
         fontWeight: 600,
-        border: "1px solid hsl(0, 0%, 10%)",
+        border: "1px solid hsl(0, 0%, 9%)",
         borderRadius: 0,
         outline: 0,
         transform: "translate(3px,-3px)",
@@ -63,8 +63,8 @@ const lightTheme = createTheme({
           bottom: "-5px",
           width: "100%",
           height: "5px",
-          borderBottom: "1px solid hsl(0, 0%, 10%)",
-          borderLeft: "1px solid hsl(0, 0%, 10%)",
+          borderBottom: "1px solid hsl(0, 0%, 9%)",
+          borderLeft: "1px solid hsl(0, 0%, 9%)",
         },
         "&::after": {
           position: "absolute",
@@ -75,9 +75,14 @@ const lightTheme = createTheme({
           top: "5px",
           width: "5px",
           height: "100%",
-          borderTop: "1px solid hsl(0, 0%, 10%)",
-          borderRight: "1px solid hsl(0, 0%, 10%)",
+          borderTop: "1px solid hsl(0, 0%, 9%)",
+          borderRight: "1px solid hsl(0, 0%, 9%)",
         },
+      },
+    },
+    MuiListItemIcon: {
+      root: {
+        color: "hsl(0, 0%, 20%)",
       },
     },
   },
@@ -117,35 +122,30 @@ const darkTheme = createTheme({
       root: {
         fontWeight: 600,
         border: "1px solid #fff",
-        borderRadius: 0,
+        borderRadius: 4,
         outline: 0,
-        transform: "translate(3px,-3px)",
+        transform: "translate(0,-3px)",
         letterSpacing: ".08rem",
         position: "relative",
-        "&::before": {
+        "&::before": {},
+        "&::after": {
+          borderRadius: 4,
           position: "absolute",
           display: "block",
           boxSizing: "border-box",
           content: '""',
           left: "5px",
-          bottom: "-5px",
-          width: "100%",
-          height: "5px",
-          borderBottom: "1px solid #fff",
-          borderLeft: "1px solid #fff",
-        },
-        "&::after": {
-          position: "absolute",
-          display: "block",
-          boxSizing: "border-box",
-          content: '""',
-          right: "-5px",
           top: "5px",
-          width: "5px",
+          width: "100%",
           height: "100%",
-          borderTop: "1px solid #fff",
+          borderBottom: "1px solid #fff",
           borderRight: "1px solid #fff",
         },
+      },
+    },
+    MuiListItemIcon: {
+      root: {
+        color: "#fff",
       },
     },
   },
