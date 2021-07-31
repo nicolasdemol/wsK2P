@@ -1,7 +1,8 @@
-import { Box, Paper, Typography } from "@material-ui/core";
+import { Box, Button, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import Sensor from "../Sensor";
 import green from "../../images/green.jpg";
+import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,9 +38,19 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
   },
   subtitle: {
-    padding: theme.spacing(1, 2),
+    padding: theme.spacing(1, 2, 4, 2),
     [theme.breakpoints.down("sm")]: {
       color: "#fff",
+    },
+  },
+  button: {
+    margin: theme.spacing(0, 4),
+    [theme.breakpoints.down("sm")]: {
+      color: "#fff",
+      borderColor: "#fff",
+      "&::after": {
+        borderColor: "#fff",
+      },
     },
   },
   shape: {
@@ -83,6 +94,9 @@ export default function PaperImage() {
             électronique et informatique industrielle. Notre objectif est de
             développer les projets pour le compte de nos clients français.
           </Typography>
+          <Button startIcon={<TrendingFlatIcon />} className={classes.button}>
+            Voir nos Services
+          </Button>
         </Paper>
         <Box className={classes.shape}></Box>
         <Box className={classes.fili}></Box>

@@ -20,7 +20,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Copyright from "./Copyright";
 import Sensor from "../Sensor";
-import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
+import FingerprintIcon from "@material-ui/icons/Fingerprint";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -119,7 +119,7 @@ export default function Form() {
               disableElevation
               fullWidth
               className={classes.submit}
-              endIcon={<TrendingFlatIcon />}
+              startIcon={<FingerprintIcon />}
             >
               Connexion
             </Button>
