@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8, 0, 16, 0),
     backgroundColor: theme.palette.background.default,
     textAlign: "center",
-    borderTop: `2px solid ${theme.palette.primary.main}`,
+    borderTop: `1px dashed ${theme.palette.secondary.main}`,
     [theme.breakpoints.down("sm")]: {
       padding: theme.spacing(4, 6, 8, 6),
     },
@@ -32,13 +32,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 900,
   },
   bottom: {
-    borderTop: `2px solid ${theme.palette.primary.main}`,
+    borderTop: `1px dashed ${theme.palette.secondary.main}`,
     height: "100%",
     width: "100%",
     display: "flex",
     alignItems: "center",
     "& > *": {
-      padding: theme.spacing(2, 8),
+      padding: theme.spacing(4, 8),
       display: "flex",
       justifyContent: "center",
     },

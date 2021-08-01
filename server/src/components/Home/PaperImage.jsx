@@ -36,9 +36,13 @@ const useStyles = makeStyles((theme) => ({
   },
   span: {
     color: theme.palette.secondary.main,
+    [theme.breakpoints.down("sm")]: {
+      color: theme.palette.primary.light,
+    },
   },
   subtitle: {
     padding: theme.spacing(1, 2, 4, 2),
+    fontWeight: 600,
     [theme.breakpoints.down("sm")]: {
       color: "#fff",
     },
@@ -67,14 +71,11 @@ const useStyles = makeStyles((theme) => ({
   },
   fili: {
     position: "absolute",
-    backgroundColor: "hsl(0, 0%, 16%)",
-    opacity: 0.5,
+    backgroundColor: theme.palette.secondary.main,
+    opacity: 0.7,
     height: "100%",
     width: "100%",
     zIndex: 4,
-    [theme.breakpoints.down("md")]: {
-      opacity: 0.8,
-    },
   },
 }));
 

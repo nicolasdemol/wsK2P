@@ -28,7 +28,7 @@ const lightTheme = createTheme({
       dark: "hsl(0, 0%, 9%)",
     },
     secondary: {
-      main: "#3FEEE6",
+      main: "#ff5000",
     },
   },
   typography: {
@@ -87,7 +87,7 @@ const darkTheme = createTheme({
       dark: "hsl(0, 0%, 70%)",
     },
     secondary: {
-      main: "#3FEEE6",
+      main: "#ff5000",
     },
     background: {
       default: "hsl(0, 0%, 6%)",

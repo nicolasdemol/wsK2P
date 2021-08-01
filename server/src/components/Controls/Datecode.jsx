@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       padding: theme.spacing(1, 2),
     },
-    borderTop: `1px dashed ${theme.palette.primary.main}`,
-    borderBottom: `1px dashed ${theme.palette.primary.main}`,
+    borderTop: `1px dashed ${theme.palette.secondary.main}`,
+    borderBottom: `1px dashed ${theme.palette.secondary.main}`,
   },
   navLeft: {
     marginLeft: 14,
