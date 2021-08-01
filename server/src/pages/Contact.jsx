@@ -6,6 +6,8 @@ import {
   makeStyles,
   Typography,
   Grid,
+  TextField,
+  Button,
 } from "@material-ui/core";
 import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
 import BigTitle from "../components/BigTitle";
@@ -20,12 +22,31 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     transition: "0.25s ease-in-out",
     cursor: "pointer",
-    border: `4px solid ${theme.palette.primary.main}`,
+    border: `2px solid ${theme.palette.primary.main}`,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     margin: theme.spacing(2),
+    "& > *": {
+      fontWeight: 700,
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(1),
+    },
+  },
+  textfield: {
+    margin: theme.spacing(4),
+    "& > *": {
+      fontSize: 30,
+    },
+    [theme.breakpoints.down("xs")]: {
+      margin: theme.spacing(2, 1),
+    },
+  },
+  button: {
+    margin: theme.spacing(6, 2, 16, 2),
+    padding: theme.spacing(1, 0),
   },
 }));
 
@@ -37,16 +58,37 @@ export default function Contact() {
       <BigTitle title="Nous Contacter" subtitle="Que voulez-vous faire ?" />
       <Container maxWidth={"md"}>
         <Grid container className={classes.gridContainer}>
-          <GridItem title="Application" />
-          <GridItem title="Site Internet" />
+          <GridItem title="Prototypes" />
+          <GridItem title="Software" />
           <GridItem title="Automatisation" />
         </Grid>
         <Grid container className={classes.gridContainer}>
-          <GridItem title="Référencement" />
-          <GridItem title="Webdesign" />
+          <GridItem title="Achats" />
+          <GridItem title="Partenariat" />
         </Grid>
         <Grid container className={classes.gridContainer}>
-          <GridItem title="Marketing" />
+          <GridItem title="Autres" />
+        </Grid>
+        <Grid container className={classes.gridContainer}>
+          <Grid item xs={6} sm={5} className={classes.gridContainer}>
+            <TextField
+              className={classes.textfield}
+              label="Nom"
+              fullWidth
+            ></TextField>
+          </Grid>
+          <Grid item xs={6} sm={5} className={classes.gridContainer}>
+            <TextField
+              className={classes.textfield}
+              label="Email"
+              fullWidth
+            ></TextField>
+          </Grid>
+          <Grid item xs={12} sm={5} className={classes.gridContainer}>
+            <Button fullWidth className={classes.button}>
+              Envoyer la requête
+            </Button>
+          </Grid>
         </Grid>
       </Container>
     </Box>
@@ -64,7 +106,7 @@ function GridItem(props) {
 
   return (
     <Grid
-      xs={10}
+      xs={12}
       sm={4}
       md={3}
       onClick={handleClick}
@@ -84,7 +126,7 @@ function GridItem(props) {
           fontSize="small"
         />
       ) : null}
-      <Typography variant="h6" className={classes.title}>
+      <Typography variant="button" className={classes.title}>
         {props.title}
       </Typography>
       {console.log(props.children)}

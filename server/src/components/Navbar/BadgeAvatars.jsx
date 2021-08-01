@@ -7,14 +7,13 @@ import MenuList from "@material-ui/core/MenuList";
 import Badge from "@material-ui/core/Badge";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, useTheme } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import ExitToApp from "@material-ui/icons/ExitToApp";
 import CloudIcon from "@material-ui/icons/Cloud";
 import { useAuth } from "../../hooks/useAuth";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
-import teledyne from "../../images/teledyne.png";
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -22,11 +21,14 @@ const StyledBadge = withStyles((theme) => ({
     color: "#44b700",
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
   },
+  icon: {
+    backgroundColor: theme.palette.primary.main,
+  },
 }))(Badge);
 
 const StyledMenu = withStyles({
   paper: {
-    border: "1px solid #d3d4d5",
+    borderRadius: 16,
   },
 })((props) => (
   <Menu
@@ -50,7 +52,7 @@ const StyledMenuItem = withStyles((theme) => ({
     "&:focus": {
       backgroundColor: theme.palette.secondary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
+        color: theme.palette.primary.main,
       },
     },
   },
@@ -62,6 +64,8 @@ export default function BadgeAvatars() {
   const { signout } = useAuth();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const theme = useTheme();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -83,7 +87,7 @@ export default function BadgeAvatars() {
         variant="dot"
         onMouseEnter={handleClick}
       >
-        <Avatar alt="Teledyne" src={teledyne} />
+        <Avatar style={{ backgroundColor: theme.palette.primary.main }} />
       </StyledBadge>
       <StyledMenu
         id="customized-menu"

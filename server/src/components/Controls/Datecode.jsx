@@ -73,9 +73,10 @@ export default function Datecode(props) {
           Tracabilité
         </Typography>
         <TextField
+          required
           className={classes.text}
           onChange={(event) => handleChange(event)}
-          label="Datecode*"
+          label="Datecode"
           variant={"outlined"}
           size={"small"}
         />
