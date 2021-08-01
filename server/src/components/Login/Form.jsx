@@ -18,7 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
-import Copyright from "./Copyright";
+import Copyright from "../Copyright";
 import Sensor from "../Sensor";
 import FingerprintIcon from "@material-ui/icons/Fingerprint";
 

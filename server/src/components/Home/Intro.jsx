@@ -12,15 +12,16 @@ import {
 import React from "react";
 import Logo from "../Logo";
 import CallIcon from "@material-ui/icons/Call";
+import Copyright from "../Copyright";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    height: "90vh",
+    height: "91vh",
     width: "100%",
     marginBottom: theme.spacing(8),
     [theme.breakpoints.down("sm")]: {
-      height: "80vh",
+      height: "76vh",
     },
   },
   container: {
@@ -46,13 +47,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
   },
   button: {
-    marginTop: theme.spacing(1),
+    margin: theme.spacing(1, 0, 4, 0),
   },
   landscape: {
     position: "absolute",
     top: 0,
     left: 0,
-    background: "linear-gradient(60deg, #ff5000 0%, #f4E090 100%)",
+    background: "linear-gradient(30deg, #ff5000 0%, #f4E090 100%)",
     height: "100%",
     width: "100%",
     zIndex: -100,
@@ -115,6 +116,7 @@ export default function Intro() {
           <Button startIcon={<CallIcon />} className={classes.button}>
             Nous contacter
           </Button>
+          <Copyright />
         </Paper>
       </Container>
       <Box className={classes.landscape}></Box>
