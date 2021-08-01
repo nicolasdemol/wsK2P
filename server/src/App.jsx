@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Controls from "./pages/Controls";
 import Data from "./pages/Data";
 import Navbar from "./components/Navbar";
+import Contact from "./pages/Contact";
 
 import { ThemeProvider } from "@material-ui/styles";
 import { AuthProvider } from "./hooks/useAuth";
@@ -36,6 +37,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
+            <Route path="/contact" component={Contact} />
             <PrivateRoute path="/profile">
               <Profile />
             </PrivateRoute>

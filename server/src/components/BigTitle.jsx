@@ -1,14 +1,15 @@
 import { Typography, Grid, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import React from "react";
-import Sensor from "../Sensor";
-import Features from "./Features";
+import Sensor from "./Sensor";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    width: "100%",
+  },
   gridContainer: {
     textAlign: "center",
-    paddingBottom: theme.spacing(12),
+    padding: theme.spacing(4, 0),
   },
   header: {
     padding: theme.spacing(2, 0),
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Process() {
+export default function BigTitle(props) {
   const classes = useStyles();
 
   return (
@@ -48,23 +49,20 @@ export default function Process() {
               variant="h1"
               className={classes.title1}
             >
-              Notre Process
+              {props.title}
             </Typography>
             <Typography variant="h2" className={classes.title2}>
-              <span className={classes.span}>Optimisation Industrielle</span>
+              <span className={classes.span}>{props.subtitle}</span>
             </Typography>
           </Grid>
           <Grid item md={8} className={classes.subtitle}>
             <Typography variant={"subtitle1"} className={classes.subtitle}>
-              Nous sommes une société française spécialisée dans le domaine de
-              la manufacture de produits électroniques en Inde et en France.
-              Notre processus repose sur la conception du produit, son
-              industrialisation et son optimisation.
+              {props.text}
             </Typography>
           </Grid>
         </Grid>
       </Sensor>
-      <Features />
+      {props.children}
     </Box>
   );
 }

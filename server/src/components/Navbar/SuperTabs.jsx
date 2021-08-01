@@ -47,7 +47,7 @@ export default function SuperTabs() {
       <AntTab onClick={() => history.push("/")} label="Accueil" />
       <AntTab label="Produits & Services" />
       <AntTab label="Partenaires" />
-      <AntTab label="Contact" />
+      <AntTab onClick={() => history.push("/contact")} label="Contact" />
     </AntTabs>
   );
 }

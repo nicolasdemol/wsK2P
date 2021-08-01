@@ -13,6 +13,7 @@ import React from "react";
 import Logo from "../Logo";
 import CallIcon from "@material-ui/icons/Call";
 import Copyright from "../Copyright";
+import Sensor from "../Sensor";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -108,16 +109,18 @@ export default function Intro() {
     <Box className={classes.root}>
       <WaveAnimated position="top" />
       <Container className={classes.container} maxWidth={"sm"}>
-        <Paper className={classes.paper}>
-          <Logo />
-          <Typography className={classes.title} variant="h4">
-            Demander Votre Compte Utilisateur
-          </Typography>
-          <Button startIcon={<CallIcon />} className={classes.button}>
-            Nous contacter
-          </Button>
-          <Copyright />
-        </Paper>
+        <Sensor>
+          <Paper className={classes.paper}>
+            <Logo />
+            <Typography className={classes.title} variant="h4">
+              Demander Votre Compte Utilisateur
+            </Typography>
+            <Button startIcon={<CallIcon />} className={classes.button}>
+              Nous contacter
+            </Button>
+            <Copyright />
+          </Paper>
+        </Sensor>
       </Container>
       <Box className={classes.landscape}></Box>
       <WaveAnimated position="bottom" />

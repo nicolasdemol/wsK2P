@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(10),
     [theme.breakpoints.down("sm")]: {
       marginTop: 0,
-      backgroundColor: theme.palette.background.paper,
+      backgroundColor: theme.palette.background.default,
     },
   },
   paper: {
@@ -36,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(0, 4),
       boxShadow: "none",
+      backgroundColor: theme.palette.background.default,
     },
   },
   avatar: {

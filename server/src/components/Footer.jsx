@@ -1,7 +1,13 @@
 import { Box, Grid, Typography, Link, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CallIcon from "@material-ui/icons/Call";
+import Copyright from "./Copyright";
 import Logo from "./Logo";
+
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import YouTubeIcon from "@material-ui/icons/YouTube";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,6 +65,8 @@ export default function Footer() {
           </GridItem>
           <GridItem title="NOUS CONTACTER">
             <Link variant="h6">Devenir membre</Link>
+            <Link variant="h6">Devenir membre</Link>
+            <Link variant="h6">Devenir membre</Link>
           </GridItem>
           <GridItem title="RÉSEAUX SOCIAUX">
             <Link variant="h6">Instagram</Link>
@@ -70,13 +78,14 @@ export default function Footer() {
       </Box>
       <Box>
         <Grid container className={classes.bottom}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={4}>
             <Logo />
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Button startIcon={<CallIcon />} className={classes.button}>
-              Nous contacter
-            </Button>
+          <Grid item xs={12} sm={4}>
+            <Copyright />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <SocialMedia />
           </Grid>
         </Grid>
       </Box>
@@ -92,6 +101,26 @@ function GridItem(props) {
         {props.title}
       </Typography>
       {props.children}
+    </Grid>
+  );
+}
+
+function SocialMedia() {
+  const classes = useStyles();
+  return (
+    <Grid container className={classes.gridContainer}>
+      <Grid item xs={2}>
+        <FacebookIcon fontSize="large" />
+      </Grid>
+      <Grid item xs={2}>
+        <InstagramIcon fontSize="large" />
+      </Grid>
+      <Grid item xs={2}>
+        <YouTubeIcon fontSize="large" />
+      </Grid>
+      <Grid item xs={2}>
+        <LinkedInIcon fontSize="large" />
+      </Grid>
     </Grid>
   );
 }

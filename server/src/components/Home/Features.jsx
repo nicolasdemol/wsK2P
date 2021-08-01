@@ -10,11 +10,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "center",
+    paddingTop: theme.spacing(8),
   },
   title: {
+    fontWeight: 900,
     padding: theme.spacing(2, 0),
   },
   titleHover: {
+    fontWeight: 900,
     padding: theme.spacing(2, 0),
     color: theme.palette.secondary.main,
   },
@@ -47,7 +50,7 @@ export default function Features() {
     <Grid container className={classes.root}>
       <GridItem
         icon={<DeveloperBoardIcon fontSize="large" />}
-        title="Réalisation prototypes"
+        title="Réalisation de prototypes"
       >
         Nous prenons grand soin d'aider nos clients à l'élaboration de leur
         cahier des charges et à l'étude de celui-ci, il suffit de nous
@@ -92,7 +95,7 @@ function GridItem(props) {
           {props.icon}
         </Avatar>
         <Typography
-          variant="h6"
+          variant="h5"
           className={active ? classes.titleHover : classes.title}
         >
           {props.title}
