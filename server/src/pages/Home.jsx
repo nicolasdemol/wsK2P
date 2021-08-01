@@ -6,6 +6,7 @@ import Sections from "../components/Sections";
 import PaperImage from "../components/Home/PaperImage";
 import Process from "../components/Home/Process";
 import PaperVideo from "../components/Home/PaperVideo";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Process />
         <PaperVideo />
       </Sections>
+      <Footer />
     </React.Fragment>
   );
 }

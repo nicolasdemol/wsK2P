@@ -75,7 +75,7 @@ export default function Datecode(props) {
         <TextField
           className={classes.text}
           onChange={(event) => handleChange(event)}
-          label="Datecode"
+          label="Datecode*"
           variant={"outlined"}
           size={"small"}
         />
