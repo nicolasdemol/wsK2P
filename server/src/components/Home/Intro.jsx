@@ -14,6 +14,7 @@ import Logo from "../Logo";
 import CallIcon from "@material-ui/icons/Call";
 import Copyright from "../Copyright";
 import Sensor from "../Sensor";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,6 +105,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Intro() {
   const classes = useStyles();
+  const history = useHistory()
 
   return (
     <Box className={classes.root}>
@@ -115,7 +117,7 @@ export default function Intro() {
             <Typography className={classes.title} variant="h4">
               Demander Votre Compte Utilisateur
             </Typography>
-            <Button startIcon={<CallIcon />} className={classes.button}>
+            <Button onClick={() => history.push('/contact')} startIcon={<CallIcon />} className={classes.button}>
               Nous contacter
             </Button>
             <Copyright />

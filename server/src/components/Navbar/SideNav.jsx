@@ -103,7 +103,7 @@ export default function SideNav(props) {
           </ListItemIcon>
           <ListItemText primary="Partenaires" />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => history.push("/contact")}>
           <ListItemIcon>
             <CallIcon />
           </ListItemIcon>

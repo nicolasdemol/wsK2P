@@ -4,14 +4,12 @@ import {
   Container,
   CssBaseline,
   makeStyles,
-  Button,
   Typography,
   Grid,
 } from "@material-ui/core";
 import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
 import BigTitle from "../components/BigTitle";
 import { useTheme } from "@material-ui/core/styles";
-import Sensor from "../components/Sensor";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
