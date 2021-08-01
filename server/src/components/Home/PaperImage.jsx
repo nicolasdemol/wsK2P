@@ -34,12 +34,6 @@ const useStyles = makeStyles((theme) => ({
       letterSpacing: "-0.05em",
     },
   },
-  span: {
-    color: theme.palette.secondary.main,
-    [theme.breakpoints.down("sm")]: {
-      color: theme.palette.primary.light,
-    },
-  },
   subtitle: {
     padding: theme.spacing(1, 2, 4, 2),
     fontWeight: 600,
@@ -60,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   shape: {
     width: 0,
     height: 0,
-    borderTopWidth: "46em",
+    borderTopWidth: "46vh",
     borderTopColor: theme.palette.background.paper,
     borderTopStyle: "solid",
     borderRight: "100px solid transparent",
@@ -87,8 +81,7 @@ export default function PaperImage() {
       <Paper className={classes.root} elevation={5}>
         <Paper className={classes.paper} elevation={0} square>
           <Typography className={classes.title} variant="h1">
-            Notre Expertise pour Réaliser{" "}
-            <span className={classes.span}>Votre Projet</span>
+            Notre Expertise pour Réaliser Votre Projet
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitle}>
             K2 Process vous propose une approche sur-mesure de votre projet en

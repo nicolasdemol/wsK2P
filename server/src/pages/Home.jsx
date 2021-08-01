@@ -13,7 +13,7 @@ export default function Home() {
     <React.Fragment>
       <CssBaseline />
       <Intro />
-      <Sections maxWidth={"xl"} margin={"10em"}>
+      <Sections maxWidth={"xl"} margin={"8em"}>
         <PaperImage />
         <Process />
         <PaperVideo />

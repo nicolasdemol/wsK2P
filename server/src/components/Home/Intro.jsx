@@ -9,7 +9,6 @@ import {
   useTheme,
 } from "@material-ui/core";
 
-import landscape from "../../images/landscape.jpeg";
 import React from "react";
 import Logo from "../Logo";
 import CallIcon from "@material-ui/icons/Call";
@@ -19,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     height: "90vh",
     width: "100%",
+    marginBottom: theme.spacing(8),
+    [theme.breakpoints.down("sm")]: {
+      height: "80vh",
+    },
   },
   container: {
     height: "90%",
@@ -49,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: 0,
     left: 0,
-    background: "linear-gradient(60deg, #ff5000 0%, #ffa751 100%)",
+    background: "linear-gradient(60deg, #ff5000 0%, #f4E090 100%)",
     height: "100%",
     width: "100%",
     zIndex: -100,
@@ -59,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     width: "100%",
     height: "15vh",
-    minHeight: "100px",
-    maxHeight: "150px",
+    minHeight: "150px",
+    maxHeight: "250px",
     [theme.breakpoints.down("xs")]: {
       height: "40px",
       minHeight: "40px",
@@ -137,7 +140,7 @@ function WaveAnimated(props) {
       }
     };
     handlePosition();
-  }, []);
+  });
 
   return (
     <div>

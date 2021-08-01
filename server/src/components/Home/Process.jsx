@@ -5,6 +5,7 @@ import Sensor from "../Sensor";
 import Features from "./Features";
 
 const useStyles = makeStyles((theme) => ({
+  root: {},
   gridContainer: {
     textAlign: "center",
     paddingBottom: theme.spacing(12),
@@ -38,7 +39,7 @@ export default function Process() {
   const classes = useStyles();
 
   return (
-    <Box>
+    <Box className={classes.root}>
       <Sensor>
         <Grid container className={classes.gridContainer}>
           <Grid item xs={12} className={classes.header}>

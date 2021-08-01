@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: theme.palette.background.default,
-    paddingTop: theme.spacing(8),
   },
 }));
 
@@ -20,7 +19,7 @@ export default function Sections(props) {
       <Box
         className={classes.root}
         style={{
-          paddingBottom: `${props.margin}`,
+          marginBottom: `${props.margin}`,
         }}
       >
         {element}
