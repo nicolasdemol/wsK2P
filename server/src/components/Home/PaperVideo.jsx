@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   paper: {
+    position: "relative",
     borderRadius: 16,
     overflow: "hidden",
   },

@@ -44,10 +44,7 @@ export default function SideNav(props) {
   const { user, signout } = useAuth();
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
+    if (event.type === "keydown") {
       return;
     }
 
