@@ -20,12 +20,13 @@ export default function Controls() {
 
   useEffect(() => {
     const handleData = () => {
+      setError(false);
       fetch(`/api/controls/${text}`)
         .then((res) => res.clone().json())
-        .catch((err) => setError(err.clone().json()))
         .then((data) => {
           setData(data);
-        });
+        })
+        .catch((err) => setError(true));
     };
 
     if (text.length === 7) {
@@ -44,7 +45,7 @@ export default function Controls() {
         onDownload={() => handleDownload()}
       />
       {error ? (
-        <p>{error.message}</p>
+        <p>Datecode indisponible ou inexistant</p>
       ) : (
         <ImageTra datecode={text} itemData={data} />
       )}

@@ -51,8 +51,6 @@ app.get("/api/controls/:tra", (req, res) => {
 
           arr.push({ name: chunk[0], img: chunk[1] });
         }
-      } else {
-        arr.push({ message: "Datecode indisponible ou inexistant !" });
       }
 
       res.json(arr);
