@@ -1,5 +1,5 @@
 import React from "react";
-import { CssBaseline, Button } from "@material-ui/core";
+import { CssBaseline } from "@material-ui/core";
 
 import green from "../images/green.jpg";
 
