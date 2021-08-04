@@ -12,7 +12,6 @@ import { useHistory } from "react-router-dom";
 import ExitToApp from "@material-ui/icons/ExitToApp";
 import CloudIcon from "@material-ui/icons/Cloud";
 import { useAuth } from "../../hooks/useAuth";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
 
 const StyledBadge = withStyles((theme) => ({

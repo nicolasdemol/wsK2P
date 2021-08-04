@@ -19,7 +19,7 @@ const credentials = {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(80, () => {
+httpServer.listen(4000, () => {
   console.log("HTTP Server running n port 80");
 });
 
@@ -31,14 +31,14 @@ httpsServer.listen(443, () => {
 app.use(express.static(path.join(__dirname, "./build")));
 
 // GET Data (name, img) related to datecode (tra)
-app.get("/api/controls/:tra", (req, res) => {
+app.get("/api/controls/:tra", (req, res, next) => {
   tra = req.params.tra;
   fs.readFile(
     path.join(__dirname, `./api/QUALITE/Tracabilite/${tra}.tra`),
     "utf-8",
     (err, data) => {
-      const arr = [];
       if (!err) {
+        const arr = [];
         data = data.replace(/[\s]+/gm, " ");
         arrayTra = data.split(" ");
 
@@ -51,9 +51,10 @@ app.get("/api/controls/:tra", (req, res) => {
 
           arr.push({ name: chunk[0], img: chunk[1] });
         }
+        res.json(arr);
+      } else {
+        return next(err);
       }
-
-      res.json(arr);
     }
   );
 });
