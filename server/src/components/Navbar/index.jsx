@@ -163,18 +163,6 @@ const DarkModeSwitch = withStyles((theme) => ({
       focusVisibleClassName={classes.focusVisible}
       disableRipple
       icon={
-        <Brightness4Icon
-          style={{
-            width: 40,
-            height: 40,
-            backgroundColor: "hsl(0, 0%, 20%)",
-            color: "#fff",
-            borderRadius: 40,
-            padding: 10,
-          }}
-        />
-      }
-      checkedIcon={
         <NightsStayIcon
           size="small"
           style={{
@@ -182,6 +170,18 @@ const DarkModeSwitch = withStyles((theme) => ({
             height: 40,
             backgroundColor: "#44f",
             color: "#ff3",
+            borderRadius: 40,
+            padding: 10,
+          }}
+        />
+      }
+      checkedIcon={
+        <Brightness4Icon
+          style={{
+            width: 40,
+            height: 40,
+            backgroundColor: "hsl(0, 0%, 20%)",
+            color: "#fff",
             borderRadius: 40,
             padding: 10,
           }}

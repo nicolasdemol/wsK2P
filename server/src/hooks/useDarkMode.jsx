@@ -3,7 +3,7 @@ import { grey } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core";
 
 export const useDarkMode = () => {
-  const [theme, setTheme] = useState(lightTheme);
+  const [theme, setTheme] = useState(darkTheme);
 
   const toggleDarkMode = () => {
     const updateTheme = () => {
