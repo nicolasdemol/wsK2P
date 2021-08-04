@@ -22,7 +22,7 @@ export default function Controls() {
     const handleData = () => {
       fetch(`/api/controls/${text}`)
         .then((res) => res.clone().json())
-        .catch((error) => setError(error))
+        .catch((err) => setError(err.clone().json()))
         .then((data) => {
           setData(data);
         });
