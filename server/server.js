@@ -19,7 +19,7 @@ const credentials = {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(80, () => {
+httpServer.listen(4000, () => {
   console.log("HTTP Server running n port 80");
 });
 
@@ -52,7 +52,7 @@ app.get("/api/controls/:tra", (req, res) => {
           arr.push({ name: chunk[0], img: chunk[1] });
         }
       } else {
-        arr.push({message: "Datecode inexistant ou indisponible."})
+        arr.push({ message: "Datecode indisponible ou inexistant !" });
       }
 
       res.json(arr);

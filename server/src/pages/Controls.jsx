@@ -31,6 +31,9 @@ export default function Controls() {
     if (text.length === 7) {
       handleData();
     }
+    if (text.length === 0) {
+      setData(null);
+    }
   }, [text]);
   return (
     <React.Fragment>
