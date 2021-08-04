@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { Grid, Avatar, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import WidgetsIcon from "@material-ui/icons/Widgets";
-import DeveloperBoardIcon from "@material-ui/icons/DeveloperBoard";
-import CodeIcon from "@material-ui/icons/Code";
-import Sensor from "../Sensor";
+
+import Sensor from "./Sensor";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,31 +42,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Features() {
+export default function ThreeFeatures(props) {
   const classes = useStyles();
   return (
     <Grid container className={classes.root}>
       <GridItem
-        icon={<DeveloperBoardIcon fontSize="large" />}
-        title="Réalisation de prototypes"
+        icon={props.icon1}
+        title={props.title1}
       >
-        Nous prenons grand soin d'aider nos clients à l'élaboration de leur
-        cahier des charges et à l'étude de celui-ci, il suffit de nous
-        contacter.
+        {props.text1}
+        
       </GridItem>
       <GridItem
-        icon={<WidgetsIcon fontSize="large" />}
-        title="Assemblage de cartes"
+        icon={props.icon2}
+        title={props.title2}
       >
-        Nous disposons d'un atelier de fabrication et de notre propre ligne
-        d'assemblage automatisée pour la réalisation de cartes électroniques.
+      {props.text2}
+        
       </GridItem>
       <GridItem
-        icon={<CodeIcon fontSize="large" />}
-        title="Programmation Software"
+        icon={props.icon3}
+        title={props.title3}
       >
-        Nous mettons à disposition nos ingénieurs qualifiés seront répondre à
-        toutes vos contraintes à la réalisation de votre projet.
+        {props.text3}
+        
       </GridItem>
     </Grid>
   );

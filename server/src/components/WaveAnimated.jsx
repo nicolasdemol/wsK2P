@@ -1,66 +1,8 @@
-import { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  makeStyles,
-  Paper,
-  Typography,
-  useTheme,
-} from "@material-ui/core";
-
-import React from "react";
-import Logo from "../Logo";
-import CallIcon from "@material-ui/icons/Call";
-import Copyright from "../Copyright";
-import Sensor from "../Sensor";
-import { useHistory } from "react-router";
+import React, { useEffect, useState } from "react";
+import { makeStyles, useTheme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "relative",
-    height: "91vh",
-    width: "100%",
-    marginBottom: theme.spacing(8),
-    [theme.breakpoints.down("sm")]: {
-      height: "76vh",
-    },
-  },
-  container: {
-    height: "90%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  paper: {
-    padding: theme.spacing(6),
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 16,
-    [theme.breakpoints.down("sm")]: {
-      padding: theme.spacing(4, 2),
-    },
-  },
-  title: {
-    textAlign: "center",
-    padding: theme.spacing(2, 0),
-    fontWeight: 700,
-  },
-  button: {
-    margin: theme.spacing(1, 0, 4, 0),
-  },
-  landscape: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    background: "linear-gradient(30deg, #ff5000 0%, #f4E090 100%)",
-    height: "100%",
-    width: "100%",
-    zIndex: -100,
-  },
-  waves: {
     position: "absolute",
     left: 0,
     width: "100%",
@@ -103,34 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Intro() {
-  const classes = useStyles();
-  const history = useHistory()
-
-  return (
-    <Box className={classes.root}>
-      <WaveAnimated position="top" />
-      <Container className={classes.container} maxWidth={"sm"}>
-        <Sensor>
-          <Paper className={classes.paper}>
-            <Logo />
-            <Typography className={classes.title} variant="h4">
-              Demander Votre Compte Utilisateur
-            </Typography>
-            <Button onClick={() => history.push('/contact')} startIcon={<CallIcon />} className={classes.button}>
-              Nous contacter
-            </Button>
-            <Copyright />
-          </Paper>
-        </Sensor>
-      </Container>
-      <Box className={classes.landscape}></Box>
-      <WaveAnimated position="bottom" />
-    </Box>
-  );
-}
-
-function WaveAnimated(props) {
+export default function WaveAnimated(props) {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -152,7 +67,7 @@ function WaveAnimated(props) {
   return (
     <div>
       <svg
-        className={classes.waves}
+        className={classes.root}
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 24 150 28"

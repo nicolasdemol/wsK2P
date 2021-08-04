@@ -142,17 +142,16 @@ const DarkModeSwitch = withStyles((theme) => ({
     height: 40,
     "&$checked": {
       transform: "translateX(26px)",
-      color: theme.palette.common.white,
       "& + $track": {
-        backgroundColor: `${theme.palette.primary.main}`,
         opacity: 1,
         border: "none",
+        backgroundColor: theme.palette.primary.main,
       },
     },
   },
   track: {
+    backgroundColor: theme.palette.primary.main,
     borderRadius: 26 / 2,
-    backgroundColor: "#fff",
     opacity: 1,
     transition: theme.transitions.create(["background-color", "border"]),
   },
@@ -164,6 +163,18 @@ const DarkModeSwitch = withStyles((theme) => ({
       focusVisibleClassName={classes.focusVisible}
       disableRipple
       icon={
+        <Brightness4Icon
+          style={{
+            width: 40,
+            height: 40,
+            backgroundColor: "hsl(0, 0%, 20%)",
+            color: "#fff",
+            borderRadius: 40,
+            padding: 10,
+          }}
+        />
+      }
+      checkedIcon={
         <NightsStayIcon
           size="small"
           style={{
@@ -171,18 +182,6 @@ const DarkModeSwitch = withStyles((theme) => ({
             height: 40,
             backgroundColor: "#44f",
             color: "#ff3",
-            borderRadius: 40,
-            padding: 10,
-          }}
-        />
-      }
-      checkedIcon={
-        <Brightness4Icon
-          style={{
-            width: 40,
-            height: 40,
-            backgroundColor: "hsl(0, 0%, 20%)",
-            color: "#fff",
             borderRadius: 40,
             padding: 10,
           }}

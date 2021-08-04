@@ -1,7 +1,7 @@
 import { Box, Button, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import Sensor from "../Sensor";
-import green from "../../images/green.jpg";
+import Sensor from "./Sensor";
+
 import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,16 +9,19 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     display: "flex",
     zIndex: 10,
-    background: `url(${green})`,
-    borderRadius: 16,
     overflow: "hidden",
   },
   paper: {
-    padding: theme.spacing(4),
-    width: "60%",
+    display: "flex",
+    flexWrap: "wrap",
+    padding: theme.spacing(6, 20, 6, 6),
+    width: "70%",
     maxWidth: "100%",
     zIndex: 5,
+    clipPath: "polygon(0 0, 100% 0, 90% 101%, 0 101%)",
     [theme.breakpoints.down("md")]: {
+      justifyContent: "center",
+      clipPath: "none",
       width: "auto",
       padding: theme.spacing(4, 0),
       backgroundColor: "transparent",
@@ -26,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: theme.palette.primary.main,
-    fontWeight: 900,
+    fontWeight: 800,
     padding: theme.spacing(2),
     [theme.breakpoints.down("sm")]: {
       color: "#fff",
-      fontSize: 40,
+      fontSize: 48,
       letterSpacing: "-0.05em",
     },
   },
@@ -51,18 +54,6 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  shape: {
-    width: 0,
-    height: 0,
-    borderTopWidth: "46vh",
-    borderTopColor: theme.palette.background.paper,
-    borderTopStyle: "solid",
-    borderRight: "100px solid transparent",
-    zIndex: 5,
-    [theme.breakpoints.down("md")]: {
-      display: "none",
-    },
-  },
   fili: {
     position: "absolute",
     backgroundColor: theme.palette.secondary.main,
@@ -73,26 +64,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PaperImage() {
+export default function PaperImage(props) {
   const classes = useStyles();
 
   return (
     <Sensor>
-      <Paper className={classes.root} elevation={5}>
+      <Paper
+        className={classes.root}
+        style={{ background: `url(${props.backgroundImage})` }}
+        elevation={5}
+      >
         <Paper className={classes.paper} elevation={0} square>
           <Typography className={classes.title} variant="h1">
-            Notre Expertise pour Réaliser Votre Projet
+            {props.title}
           </Typography>
           <Typography variant="subtitle1" className={classes.subtitle}>
-            K2 Process vous propose une approche sur-mesure de votre projet en
-            électronique et informatique industrielle. Notre objectif est de
-            développer les projets pour le compte de nos clients français.
+            {props.subtitle}
           </Typography>
           <Button startIcon={<TrendingFlatIcon />} className={classes.button}>
             Voir nos Services
           </Button>
+          <Box className={classes.shape}></Box>
         </Paper>
-        <Box className={classes.shape}></Box>
         <Box className={classes.fili}></Box>
       </Paper>
     </Sensor>

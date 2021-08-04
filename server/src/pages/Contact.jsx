@@ -10,7 +10,7 @@ import {
   Button,
 } from "@material-ui/core";
 import DoneOutlineIcon from "@material-ui/icons/DoneOutline";
-import BigTitle from "../components/BigTitle";
+import WithTitle from "../components/WithTitle";
 import { useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,7 +55,7 @@ export default function Contact() {
   return (
     <Box className={classes.root}>
       <CssBaseline />
-      <BigTitle title="Nous Contacter" subtitle="Que voulez-vous faire ?" />
+      <WithTitle title="Nous Contacter" subtitle="Que voulez-vous faire ?" />
       <Container maxWidth={"md"}>
         <Grid container className={classes.gridContainer}>
           <GridItem title="Prototypes" />

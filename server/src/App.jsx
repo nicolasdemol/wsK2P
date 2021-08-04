@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile";
 import Controls from "./pages/Controls";
 import Data from "./pages/Data";
 import Navbar from "./components/Navbar";
@@ -38,9 +37,6 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/contact" component={Contact} />
-            <PrivateRoute path="/profile">
-              <Profile />
-            </PrivateRoute>
             <PrivateRoute path="/controls">
               <Controls />
             </PrivateRoute>

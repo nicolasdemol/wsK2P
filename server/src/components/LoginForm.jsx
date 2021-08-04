@@ -16,10 +16,10 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../hooks/useAuth";
 import { useForm } from "react-hook-form";
-import Copyright from "../Copyright";
-import Sensor from "../Sensor";
+import Copyright from "./Copyright";
+import Sensor from "./Sensor";
 import FingerprintIcon from "@material-ui/icons/Fingerprint";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Form() {
+export default function LoginForm() {
   const classes = useStyles();
 
   let history = useHistory();
@@ -73,7 +73,7 @@ export default function Form() {
         setError(error.message);
       })
       .then(() => {
-        history.push("/profile");
+        history.push("/controls");
       });
   };
 

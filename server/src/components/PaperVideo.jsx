@@ -1,6 +1,6 @@
 import ReactPlayer from "react-player";
 import { makeStyles, Paper, Box } from "@material-ui/core";
-import Sensor from "../Sensor";
+import Sensor from "./Sensor";
 import React from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     position: "relative",
-    borderRadius: 16,
     overflow: "hidden",
   },
 }));
@@ -26,7 +25,7 @@ export default function PaperVideo(props) {
             width="100%"
             height="44em"
             controls={false}
-            url="https://www.youtube.com/watch?v=2b2gJu-g3qE"
+            url={props.url}
           />
         </Paper>
       </Sensor>

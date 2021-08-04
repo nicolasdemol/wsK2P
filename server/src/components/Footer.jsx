@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, Link } from "@material-ui/core";
+import { Box, Grid, Typography, Link, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Copyright from "./Copyright";
 import Logo from "./Logo";
@@ -11,11 +11,8 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    padding: theme.spacing(8, 0, 16, 0),
-    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(8, 0, 12, 0),
     textAlign: "center",
-    borderTop: `1px dashed ${theme.palette.secondary.main}`,
-    borderBottom: `1px dashed ${theme.palette.secondary.main}`,
     [theme.breakpoints.down("sm")]: {
       padding: theme.spacing(4, 6, 8, 6),
     },
@@ -38,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 900,
   },
   bottom: {
+    backgroundColor: theme.palette.background.default,
     height: "100%",
     width: "100%",
     display: "flex",
@@ -55,7 +53,7 @@ export default function Footer() {
   const classes = useStyles();
   return (
     <Box>
-      <Box className={classes.root}>
+      <Paper elevation={5} className={classes.root} square>
         <Grid container className={classes.gridContainer}>
           <GridItem title="À PROPOS">
             <Link variant="h6">Notre Process</Link>
@@ -74,8 +72,8 @@ export default function Footer() {
             <Link variant="h6">LinkedIn</Link>
           </GridItem>
         </Grid>
-      </Box>
-      <Box>
+      </Paper>
+      <Paper elevation={5} square>
         <Grid container className={classes.bottom}>
           <Grid item xs={12} sm={4}>
             <Logo />
@@ -87,7 +85,7 @@ export default function Footer() {
             <SocialMedia />
           </Grid>
         </Grid>
-      </Box>
+      </Paper>
     </Box>
   );
 }

@@ -27,9 +27,7 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 const StyledMenu = withStyles({
-  paper: {
-    borderRadius: 16,
-  },
+  paper: {},
 })((props) => (
   <Menu
     disableScrollLock={true}
@@ -96,12 +94,6 @@ export default function BadgeAvatars() {
         open={Boolean(anchorEl)}
       >
         <MenuList onMouseLeave={handleClose} style={{ outline: "none" }}>
-          <StyledMenuItem onClick={() => history.push("/profile")}>
-            <ListItemIcon>
-              <AccountCircleIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary="Votre profile" />
-          </StyledMenuItem>
           <StyledMenuItem onClick={() => history.push("/controls")}>
             <ListItemIcon>
               <DoneOutlineIcon fontSize="small" />

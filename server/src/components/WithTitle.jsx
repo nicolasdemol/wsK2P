@@ -14,14 +14,14 @@ const useStyles = makeStyles((theme) => ({
   header: {
     padding: theme.spacing(2, 0),
   },
-  title1: {
+  title: {
     fontWeight: 900,
     textAlign: "center",
     [theme.breakpoints.down("sm")]: {
       fontSize: 54,
     },
   },
-  title2: {
+  subtitle: {
     fontWeight: 900,
     textAlign: "center",
     [theme.breakpoints.down("sm")]: {
@@ -31,12 +31,12 @@ const useStyles = makeStyles((theme) => ({
   span: {
     color: theme.palette.secondary.main,
   },
-  subtitle: {
+  text: {
     margin: "auto",
   },
 }));
 
-export default function BigTitle(props) {
+export default function WithTitle(props) {
   const classes = useStyles();
 
   return (
@@ -47,16 +47,16 @@ export default function BigTitle(props) {
             <Typography
               color={"primary"}
               variant="h1"
-              className={classes.title1}
+              className={classes.title}
             >
               {props.title}
             </Typography>
-            <Typography variant="h2" className={classes.title2}>
+            <Typography variant="h2" className={classes.subtitle}>
               <span className={classes.span}>{props.subtitle}</span>
             </Typography>
           </Grid>
-          <Grid item md={8} className={classes.subtitle}>
-            <Typography variant={"subtitle1"} className={classes.subtitle}>
+          <Grid item md={8} className={classes.text}>
+            <Typography variant={"subtitle1"} className={classes.text}>
               {props.text}
             </Typography>
           </Grid>

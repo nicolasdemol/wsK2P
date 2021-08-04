@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Datecode from "../components/Controls/Datecode";
+import DatecodeSearch from "../components/Controls/DatecodeSearch";
 import ImageTra from "../components/Controls/ImageTra";
 import { CssBaseline } from "@material-ui/core";
 
@@ -8,6 +8,7 @@ import React from "react";
 export default function Controls() {
   const [text, setText] = useState("");
   const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
 
   const handleChange = (value) => {
     setText(value);
@@ -21,6 +22,7 @@ export default function Controls() {
     const handleData = () => {
       fetch(`/api/controls/${text}`)
         .then((res) => res.clone().json())
+        .catch((error) => setError(error))
         .then((data) => {
           setData(data);
         });
@@ -34,11 +36,15 @@ export default function Controls() {
     <React.Fragment>
       <CssBaseline />
 
-      <Datecode
+      <DatecodeSearch
         onChange={(value) => handleChange(value)}
         onDownload={() => handleDownload()}
       />
-      <ImageTra datecode={text} itemData={data} />
+      {error ? (
+        <p>{error.message}</p>
+      ) : (
+        <ImageTra datecode={text} itemData={data} />
+      )}
     </React.Fragment>
   );
 }

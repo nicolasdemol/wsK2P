@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "../components/Login/Form";
+import LoginForm from "../components/LoginForm";
 import boardLogin from "../images/boardLogin_black.png";
 import { Background } from "../components/Background";
 import { CssBaseline } from "@material-ui/core";
@@ -8,7 +8,7 @@ export default function Login() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Form />
+      <LoginForm />
       <Background position="right bottom" image={boardLogin} />
     </React.Fragment>
   );

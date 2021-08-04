@@ -3,7 +3,7 @@ import { grey } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core";
 
 export const useDarkMode = () => {
-  const [theme, setTheme] = useState(darkTheme);
+  const [theme, setTheme] = useState(lightTheme);
 
   const toggleDarkMode = () => {
     const updateTheme = () => {
@@ -45,6 +45,11 @@ const lightTheme = createTheme({
     fontFamily: ["Montserrat"].join(","),
   },
   overrides: {
+    MuiPaper: {
+      rounded: {
+        borderRadius: 16,
+      },
+    },
     MuiButton: {
       root: {
         fontWeight: 600,
@@ -108,6 +113,11 @@ const darkTheme = createTheme({
     fontFamily: ["Montserrat"].join(","),
   },
   overrides: {
+    MuiPaper: {
+      rounded: {
+        borderRadius: 16,
+      },
+    },
     MuiButton: {
       root: {
         fontWeight: 600,

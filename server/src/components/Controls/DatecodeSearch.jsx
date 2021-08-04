@@ -58,7 +58,7 @@ const HtmlTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-export default function Datecode(props) {
+export default function DatecodeSearch(props) {
   const classes = useStyles();
 
   const handleChange = (event) => {
