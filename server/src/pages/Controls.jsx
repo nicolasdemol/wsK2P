@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import DatecodeSearch from "../components/Controls/DatecodeSearch";
 import ImageTra from "../components/Controls/ImageTra";
-import { CssBaseline } from "@material-ui/core";
+import { CssBaseline, Snackbar } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import React from "react";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default function Controls() {
   const [text, setText] = useState("");
@@ -18,6 +23,16 @@ export default function Controls() {
     window.open(`/api/controls/${text}/file`, "_blank");
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   useEffect(() => {
     const handleData = () => {
       setError(false);
@@ -26,7 +41,10 @@ export default function Controls() {
         .then((data) => {
           setData(data);
         })
-        .catch((err) => setError(true));
+        .catch((err) => {
+          setError(true);
+          setOpen(true);
+        });
     };
 
     if (text.length === 7) {
@@ -45,7 +63,11 @@ export default function Controls() {
         onDownload={() => handleDownload()}
       />
       {error ? (
-        <p>Datecode indisponible ou inexistant</p>
+        <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error">
+            Datecode indisponible ou inexistant !
+          </Alert>
+        </Snackbar>
       ) : (
         <ImageTra datecode={text} itemData={data} />
       )}
